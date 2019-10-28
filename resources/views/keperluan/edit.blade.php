@@ -44,8 +44,8 @@
                                 </form>
                             </div>
                             <div class="card-footer text-right">
-                                <a href=""  class="btn" > <i class="mdi mdi-close"></i> Batal</a>
-                                <a href="" class="btn btn-primary">Ubah data</a>
+                                <a href=""  class="btn" ><i class="mdi mdi-close-circle-outline"></i> Batal</a>
+                                <button type="button" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Ubah data</button>
                             </div>
                         </div>
                     </div>
