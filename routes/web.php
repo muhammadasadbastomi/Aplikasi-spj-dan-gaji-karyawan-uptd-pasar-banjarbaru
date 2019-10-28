@@ -18,4 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/beranda', 'adminController@index')->name('beranda');
+
+Route::get('/beranda', 'adminController@index')
+       ->name('beranda');
+
+//route pegawai
+Route::get('/pegawai', 'adminController@pegawaiIndex')
+       ->name('pegawaiIndex');
+Route::get('/pegawai/edit', 'adminController@pegawaiEdit')
+       ->name('pegawaiEdit');
+//akhir route pegawai
+
+//route keperluan
+Route::get('/keperluan', 'adminController@keperluanIndex')
+       ->name('keperluanIndex');
+Route::get('/keperluan/edit', 'adminController@keperluanEdit')
+       ->name('keperluanEdit');
+//akhir route keperluan

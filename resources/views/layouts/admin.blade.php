@@ -12,6 +12,7 @@
     <title>Aplikasi SPJ dan gajih Karyawan</title>
     <link href="{{asset('admin/assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <link href="{{asset('admin/dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
    
 </head>
 
@@ -163,6 +164,10 @@
             </div>
         </aside>
         @yield('content')
+        <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+        </div>
     </div>
     <script src="{{asset('admin/assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('admin/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
@@ -180,7 +185,15 @@
     <script src="{{asset('admin/assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
     <script src="{{asset('admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
     <script src="{{asset('admin/dist/js/pages/chart/chart-page-init.js')}}"></script>
-
+    <script src="{{asset('admin/assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
+    <script src="{{asset('admin/assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
+    <script src="{{asset('admin/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
 </body>
 
 </html>
