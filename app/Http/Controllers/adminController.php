@@ -23,16 +23,28 @@ class adminController extends Controller
         return view('pegawai.edit');
     }
 
-    //Halaman Data Pegawai
+    //Halaman Data Keperluan
     public function keperluanIndex(){
 
         return view('keperluan.index');
     }
         
-    //Halaman Data Pegawai
+    //Halaman Data Keperluan
     public function keperluanEdit(){
     
         return view('keperluan.edit');
+    }
+
+    //Halaman Data pajak
+    public function pajakIndex(){
+
+        return view('pajak.index');
+    }
+        
+    //Halaman Data pajak
+    public function pajakEdit(){
+    
+        return view('pajak.edit');
     }
 
 
