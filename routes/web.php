@@ -42,3 +42,10 @@ Route::get('/pajak', 'adminController@pajakIndex')
 Route::get('/pajak/edit', 'adminController@pajakEdit')
        ->name('pajakEdit');
 //akhir route keperluan
+
+//route keperluan
+Route::get('/kendaraan', 'adminController@kendaraanIndex')
+       ->name('kendaraanIndex');
+Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
+       ->name('kendaraanEdit');
+//akhir route keperluan

@@ -47,5 +47,16 @@ class adminController extends Controller
         return view('pajak.edit');
     }
 
+    //Halaman Data kendaraan
+    public function kendaraanIndex(){
+    
+        return view('kendaraan.index');
+    }
+    //Halaman Data kendaraan
+    public function kendaraanEdit(){
+    
+         return view('kendaraan.edit');
+    }
+
 
 }

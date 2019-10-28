@@ -146,7 +146,7 @@
                                 <li class="sidebar-item"><a href="{{Route('pajakIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pajak </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pegawai </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('keperluanIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Keperluan </span></a></li>
-                                <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('kendaraanIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-elements.html" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Elements</span></a></li>
