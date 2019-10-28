@@ -28,7 +28,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{Route('beranda')}}">
                         <b class="logo-icon p-l-10">
                             <img src="{{asset('admin/assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                         </b>
@@ -140,11 +140,12 @@
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Beranda</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('beranda')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Beranda</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Master Data </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="icon-material.html" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pegawai </span></a></li>
-                                <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Keperluan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pajak </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pegawai </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('keperluanIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Keperluan </span></a></li>
                                 <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
                             </ul>
                         </li>
