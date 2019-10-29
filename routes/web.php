@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -51,3 +51,10 @@ Route::get('/kendaraan', 'adminController@kendaraanIndex')
 Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
        ->name('kendaraanEdit');
 //akhir route keperluan
+
+//route standard harga
+Route::get('/standardHarga', 'adminController@standardHargaIndex')
+       ->name('standardHargaIndex');
+Route::get('/standardHarga/edit', 'adminController@standardHargaEdit')
+       ->name('standardHargaEdit');
+//akhir standard harga

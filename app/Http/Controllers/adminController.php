@@ -29,6 +29,17 @@ class adminController extends Controller
     }
 
     //Halaman Data Keperluan
+    public function standardHargaIndex(){
+
+        return view('standardHarga.index');
+    }
+        
+    //Halaman Data standard harga
+    public function standardHargaEdit(){
+    
+        return view('standardHarga.edit');
+    }
+    //Halaman Data standard harga
     public function keperluanIndex(){
 
         return view('keperluan.index');
