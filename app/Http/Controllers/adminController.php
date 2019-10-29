@@ -16,7 +16,12 @@ class adminController extends Controller
 
         return view('pegawai.index');
     }
-    
+    //halaman Detail karyawan
+    public function pegawaiDetail(){
+
+        return view('pegawai.detail');
+    }
+
     //Halaman Data Pegawai
     public function pegawaiEdit(){
 
@@ -45,6 +50,17 @@ class adminController extends Controller
     public function pajakEdit(){
     
         return view('pajak.edit');
+    }
+
+    //Halaman Data kendaraan
+    public function kendaraanIndex(){
+    
+        return view('kendaraan.index');
+    }
+    //Halaman Data kendaraan
+    public function kendaraanEdit(){
+    
+        return view('kendaraan.edit');
     }
 
 

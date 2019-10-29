@@ -47,6 +47,7 @@
                                                 <td class="text-center"><span class="badge badge-success">PNS</span></td>
                                                 <td>IV/c</td>
                                                 <td class="text-center">
+                                                <a href="{{Route('pegawaiDetail')}}" class="btn btn-primary"><i class="mdi mdi-eye"></i> Detail</a>
                                                 <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
@@ -105,8 +106,8 @@
      </div>
     </div>
       <div class="modal-footer">
-        <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close"></i> Batal</a>
-        <button type="button" class="btn btn-primary"> <i class="mdi mdi-sd"></i> Simpan</button>
+        <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
+        <button type="button" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
       </div>
     </div>
   </div>

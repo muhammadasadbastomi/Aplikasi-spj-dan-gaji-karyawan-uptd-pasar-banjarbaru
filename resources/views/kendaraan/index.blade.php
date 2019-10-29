@@ -4,7 +4,7 @@
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Keperluan</h4>
+                        <h4 class="page-title">Data Kendaraan</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -19,7 +19,7 @@
             <div class="container-fluid">
             <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Tabel Data Keperluan Pencairan</h5>
+                                <h5 class="card-title">Tabel Data Kendaraan</h5>
                                 <div class="text-right">
                                 <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData"><i class="mdi mdi-add"></i>+ tambah data</a>               
@@ -30,30 +30,34 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>No Rek</th>
-                                                <th>Keperluan</th>
-                                                <th class="text-center">pajak</th>
+                                                <th>Nopol</th>
+                                                <th>Merk</th>
+                                                <th class="text-center">Jenis</th>
+                                                <th class="text-center">pemegang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>152.02.2.011 </td>
-                                                <td>Makan Minum Ops Lapangan </td>
-                                                <td class="text-center">PPH23</td>
+                                                <td>DA.2315 PAR</td>
+                                                <td>Toyota</td>
+                                                <td class="text-center"><span class="badge badge-success">Roda 4</span></td>
+                                                <td>Tri Angga T. Utama</td>
                                                 <td class="text-center">
-                                                    <a href="{{Route('keperluanEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
+                                                    <a href="#" class="btn btn-primary"><i class="mdi mdi-printer"></i> cetak SK</a>
+                                                    <a href="{{Route('kendaraanEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                     <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                            <th>No</th>
-                                                <th>No Rek</th>
-                                                <th>Keperluan</th>
-                                                <th class="text-center">pajak</th>
+                                                <th>No</th>
+                                                <th>Nopol</th>
+                                                <th>Merk</th>
+                                                <th class="text-center">Jenis</th>
+                                                <th class="text-center">pemegang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </tfoot>
@@ -82,29 +86,32 @@
       </div>
       <div class="modal-body">
       <div class="form-group m-t-20">
-        <label> Nomor Rek</label>
-        <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="5.2.2.xx">
+        <label> Nomor Polisi</label>
+        <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="">
      </div>
      <div class="form-group">
-        <label>Keperluan </label>
-        <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="Belanja XXX">
+        <label>Merek </label>
+        <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="">
      </div>
      <div class="form-group">
-        <label>Pajak </label>
+        <label>Jenis </label>
         <select name="" id="" class="form-control">
-            <option value="">Isi Jika ada</option>
-            <option value="">PPN</option>
-            <option value="">PPh 21</option>
-            <option value="">PPh 22</option>
-            <option value="">PPh 23</option>
-            <option value="">PPh 24</option>
+            <option value="">Roda 2</option>
+            <option value="">roda 4</option>
+        </select>
+     </div>
+     <div class="form-group">
+        <label>Pemegang Aset </label>
+        <select name="" id="" class="form-control">
+            <option value="">Tri Angga t. Utama</option>
+            <option value="">Tomy</option>
         </select>
      </div>
     </div>
-        <div class="modal-footer">
-            <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
-            <button type="button" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
-        </div>
+      <div class="modal-footer">
+        <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
+        <button type="button" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
+      </div>
     </div>
   </div>
 </div>

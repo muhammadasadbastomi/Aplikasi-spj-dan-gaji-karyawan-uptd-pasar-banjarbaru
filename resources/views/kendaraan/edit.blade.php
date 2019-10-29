@@ -23,22 +23,25 @@
                                 <br>
                                 <form action="" method="post">
                                 <div class="form-group m-t-20">
-                                    <label> Nomor Rek</label>
-                                    <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="5.2.2.xx">
+                                    <label> Nomor Polisi</label>
+                                    <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Keperluan </label>
-                                    <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="Belanja XXX">
+                                    <label>Merek </label>
+                                    <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Pajak </label>
+                                    <label>Jenis </label>
                                     <select name="" id="" class="form-control">
-                                        <option value="">Isi Jika ada</option>
-                                        <option value="">PPN</option>
-                                        <option value="">PPh 21</option>
-                                        <option value="">PPh 22</option>
-                                        <option value="">PPh 23</option>
-                                        <option value="">PPh 24</option>
+                                        <option value="">Roda 2</option>
+                                        <option value="">roda 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Pemegang Aset </label>
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Tri Angga t. Utama</option>
+                                        <option value="">Tomy</option>
                                     </select>
                                 </div>
                                 </form>

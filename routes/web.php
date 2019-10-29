@@ -25,6 +25,8 @@ Route::get('/beranda', 'adminController@index')
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')
        ->name('pegawaiIndex');
+Route::get('/pegawai/detail', 'adminController@pegawaiDetail')
+       ->name('pegawaiDetail');
 Route::get('/pegawai/edit', 'adminController@pegawaiEdit')
        ->name('pegawaiEdit');
 //akhir route pegawai
@@ -41,4 +43,11 @@ Route::get('/pajak', 'adminController@pajakIndex')
        ->name('pajakIndex');
 Route::get('/pajak/edit', 'adminController@pajakEdit')
        ->name('pajakEdit');
+//akhir route keperluan
+
+//route keperluan
+Route::get('/kendaraan', 'adminController@kendaraanIndex')
+       ->name('kendaraanIndex');
+Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
+       ->name('kendaraanEdit');
 //akhir route keperluan
