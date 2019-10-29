@@ -73,6 +73,24 @@ class adminController extends Controller
     
         return view('kendaraan.edit');
     }
+    //Halaman Data kendaraan
+    public function pencairanIndex(){
+    
+        return view('pencairan.index');
+    }
+    public function pencairanAdd(){
+    
+        return view('pencairan.add');
+    }
+    public function inputKeterangan(){
+    
+        return view('pencairan.inputKeterangan');
+    }
+    //Halaman Data kendaraan
+    public function pencairanEdit(){
+    
+        return view('pencairan.edit');
+    }
 
 
 }
