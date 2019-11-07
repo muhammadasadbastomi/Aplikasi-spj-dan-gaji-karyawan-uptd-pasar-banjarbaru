@@ -58,3 +58,11 @@ Route::get('/standardHarga', 'adminController@standardHargaIndex')
 Route::get('/standardHarga/edit', 'adminController@standardHargaEdit')
        ->name('standardHargaEdit');
 //akhir standard harga
+
+//pencairan
+Route::get('/pencairanIndex', 'adminController@pencairanIndex')
+       ->name('pencairanIndex');
+Route::get('/pencairanAdd', 'adminController@pencairanAdd')
+       ->name('pencairanAdd');
+Route::get('/inputKeterangan', 'adminController@inputKeterangan')
+       ->name('inputKeterangan');
