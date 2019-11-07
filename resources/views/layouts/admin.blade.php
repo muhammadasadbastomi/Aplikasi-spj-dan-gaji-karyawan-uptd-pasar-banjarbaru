@@ -41,35 +41,8 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav float-left mr-auto">
                         <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
-                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>   
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
-                        </li>
                     </ul>
                     <ul class="navbar-nav float-right">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"></i>
-                            </a>
-                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 mdi mdi-comment-processing"></i>
                             </a>
@@ -104,11 +77,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('admin/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> Nama Admin</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                                 <div class="dropdown-divider"></div>
@@ -124,24 +93,24 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('beranda')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Beranda</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Master Data </span></a>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">Master Data </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{Route('pajakIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pajak </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Data Pegawai </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('keperluanIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Keperluan </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('standardHargaIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Standard Harga </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('kendaraanIndex')}}" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pajakIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Pajak </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Pegawai </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('keperluanIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Keperluan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('standardHargaIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Standard Harga </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('kendaraanIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-move-resize-variant"></i><span class="hide-menu">Pencairan </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{Route('pencairanAdd')}}" class="sidebar-link"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu"> buat Pencairan </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('pencairanIndex')}}" class="sidebar-link"><i class="mdi mdi-multiplication-box"></i><span class="hide-menu"> Data Pencairan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pencairanAdd')}}" class="sidebar-link"><i class="mdi mdi-border-color"></i><span class="hide-menu"> buat Pencairan </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pencairanIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Pencairan </span></a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-move-resize-variant"></i><span class="hide-menu">Manajemen PPTK </span></a>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">Manajemen PPTK </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{Route('pencairanIndex')}}" class="sidebar-link"><i class="mdi mdi-multiplication-box"></i><span class="hide-menu"> Data PPTK </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pencairanIndex')}}" class="sidebar-link"><i class="mdi mdi-account-card-details"></i><span class="hide-menu"> Data PPTK </span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -169,7 +138,6 @@
     <script src="{{asset('admin/assets/libs/flot/jquery.flot.stack.js')}}"></script>
     <script src="{{asset('admin/assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
     <script src="{{asset('admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
-    <script src="{{asset('admin/dist/js/pages/chart/chart-page-init.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
