@@ -11,6 +11,12 @@
 |
 */
 
+Route::namespace('API')->prefix('api')->name('API.')->group(function(){
+       Route::prefix('golongan')->name('golongan.')->group(function(){
+               Route::get('', 'GolonganController@get')->name('get');
+       });
+});
+
 Route::get('/', function () {
     return view('auth.login');
 });
