@@ -8,4 +8,5 @@ class Golongan extends Model
 {
     protected $fillable = ['golongan', 'keterangan'];
     protected $hidden = ['id'];
+    protected $appends = array('uuid');
 }
