@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Golongan;
 use HCrypt;
-use Redis;
+use Illuminate\Support\Facades\Redis;
 
-class GolonganController extends Controller
+class GolonganController extends APIController
 {
     public function get(){
         $golongan = Redis::get("golongan:all");
