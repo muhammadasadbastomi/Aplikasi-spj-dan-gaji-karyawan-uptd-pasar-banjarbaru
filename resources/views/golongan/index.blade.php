@@ -29,9 +29,8 @@
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Pajak</th>
-                                                <th class="text-center">Potongan (%)</th>
+                                                <th>Golongan</th>
+                                                <th>Keterangan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
@@ -63,12 +62,12 @@
       <div class="modal-body">
           <form action="" method="post">
       <div class="form-group m-t-20">
-        <label> Nama Pajak</label>
-        <input type="text" class="form-control date-inputmask" name="nama" placeholder="">
+        <label> Golongan</label>
+        <input type="text" class="form-control date-inputmask" name="golongan" placeholder="">
      </div>
      <div class="form-group">
-        <label>Potongan (%)</label>
-        <input type="number" class="form-control phone-inputmask" name="besaran" placeholder="contoh (10)">
+        <label>Keterangan</label>
+        <input type="text" class="form-control phone-inputmask" name="keterangan" placeholder="contoh (10)">
      </div>
     
     </div>
@@ -83,6 +82,9 @@
 @endsection
 @section('script')
 <script>
+function hapus(uuid){
+    alert(uuid);
+}
 
 $(document).ready(function() {
     $('#zero_config').DataTable( {
@@ -92,18 +94,19 @@ $(document).ready(function() {
         searching: true,
         ajax: {
             "type": "GET",
-            "url": "{{route('API.pajak.get')}}",
+            "url": "{{route('API.golongan.get')}}",
             "dataSrc": "data",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
             "processData": true
         },
         columns: [
-            {"data": "nama"},
-            {"data": "besaran"},
+            {"data": "golongan"},
+            {"data": "keterangan"},
             {data: null, render : function ( data, type, row, meta ) {
+                var uuid = data.uuid;
                 return type === 'display'  ?
-                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <a href="" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></a>':
+                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <button onclick="hapus(\'' +uuid+'\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]
@@ -112,7 +115,7 @@ $(document).ready(function() {
         e.preventDefault()
         var form = $('#modal-body form');
         $.ajax({
-                url: "{{Route('API.pajak.create')}}",
+                url: "{{Route('API.golongan.create')}}",
                 type: "post",
                 data: $(this).serialize(),
                 success: function (response) {

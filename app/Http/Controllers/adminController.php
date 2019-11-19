@@ -10,7 +10,10 @@ class adminController extends Controller
 
         return view('index');
     }
+    public function golonganIndex(){
 
+        return view('golongan.index');
+    }
     //Halaman Data Pegawai
     public function pegawaiIndex(){
 

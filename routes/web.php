@@ -40,6 +40,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/beranda', 'adminController@index')
        ->name('beranda');
 
+Route::get('/golongan', 'adminController@golonganIndex')
+       ->name('golonganIndex');
+
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')
        ->name('pegawaiIndex');
