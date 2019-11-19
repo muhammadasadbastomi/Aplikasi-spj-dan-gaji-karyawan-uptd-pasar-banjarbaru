@@ -24,7 +24,7 @@ class PajakController extends APIController
     }
 
     public function find($id){
-        $id = HCrypt::decrypt($id);
+        // $id = HCrypt::decrypt($id);
         if (!$id) {
             return $this->returnController("error", "failed decrypt id");
         }
@@ -51,7 +51,7 @@ class PajakController extends APIController
     }
 
     public function update($id, Request $req){
-        $id = HCrypt::decrypt($id);
+        // $id = HCrypt::decrypt($id);
         if (!$id) {
             return $this->returnController("error", "failed decrypt id");
         }
@@ -73,7 +73,7 @@ class PajakController extends APIController
     }
 
     public function delete($id){
-        $id = HCrypt::decrypt($id);
+        // $id = HCrypt::decrypt($id);
         if (!$id) {
             return $this->returnController("error", "failed decrypt id");
         }
