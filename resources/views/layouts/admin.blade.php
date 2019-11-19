@@ -142,6 +142,7 @@
     <script src="{{asset('admin/assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert/sweetalert.min.js') }}"></script>
 @yield('script')   
 </body>
 

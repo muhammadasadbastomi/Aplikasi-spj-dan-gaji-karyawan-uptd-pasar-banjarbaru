@@ -22,7 +22,7 @@
                                 <h5 class="card-title">Tabel Data Pajak Pencairan</h5>
                                 <div class="text-right">
                                 <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#mediumModal"><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
                                 <div class="table-responsive">
@@ -50,7 +50,7 @@
         </div>
 
 <!-- Modal -->
-<div class="modal fade" id="tambahData" tabindex="-1" role="dialog" aria-labelledby="tambahData" aria-hidden="true">
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="tambahData" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,8 +82,45 @@
 @endsection
 @section('script')
 <script>
-function hapus(uuid){
-    alert(uuid);
+function hapus(uuid, name){
+    var csrf_token=$('meta[name="csrf_token"]').attr('content');
+    Swal.fire({
+                title: 'apa anda yakin?',
+                text: " Menghapus Kecamatan data " + name,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'hapus data',
+                cancelButtonText: 'batal',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url : "{{ url('/api/golongan')}}" + '/' + uuid,
+                        type : "POST",
+                        data : {'_method' : 'DELETE', '_token' :csrf_token},
+                        success: function (response) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Data Berhasil Dihapus',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $('#zero_config').DataTable().ajax.reload(null, false);
+                },
+                    })
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    Swal.fire(
+                        'Dibatalkan',
+                        'data batal dihapus',
+                        'error'
+                    )
+                }
+            })
 }
 
 $(document).ready(function() {
@@ -122,6 +159,13 @@ $(document).ready(function() {
                     form.trigger('reset');
                     $('#mediumModal').modal('hide');
                     $('#zero_config').DataTable().ajax.reload();
+                    Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
                 },
                 error:function(response){
                     console.log(response);
