@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Redis;
 class GolonganController extends APIController
 {
     public function get(){
-        $golongan = Redis::get("golongan:all");
+        $golongan = json_decode(redis::get("golongan::all"));
+        // $golongan = Redis::get("golongan:all");
         if (!$golongan) {
             $golongan = golongan::all();
             if (!$golongan) {

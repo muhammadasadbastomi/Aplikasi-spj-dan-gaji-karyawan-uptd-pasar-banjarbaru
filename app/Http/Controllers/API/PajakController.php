@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Redis;
 class PajakController extends APIController
 {
     public function get(){
-        $pajak = Redis::get("pajak:all");
+        $pajak = json_decode(redis::get("pajak::all"));
+        // $pajak = Redis::get("pajak:all");
         if (!$pajak) {
             $pajak = pajak::all();
             if (!$pajak) {
                 return $this->returnController("error", "failed get pajak data");
             }
+            // dd($pajak);
             Redis::set("pajak:all", $pajak);            
 
         }
