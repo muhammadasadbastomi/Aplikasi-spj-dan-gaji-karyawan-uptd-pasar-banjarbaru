@@ -28,8 +28,8 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::delete('{uuid}', 'PajakController@delete')->name('delete');
        });
 
-       Route::prefix('pajak')->name('pajak.')->group(function(){
-       Route::get('', 'PajakController@get')->name('get');
+       Route::prefix('keperluan')->name('keperluan.')->group(function(){
+       Route::get('', 'KeperluanController@get')->name('get');
        });
 });
 
