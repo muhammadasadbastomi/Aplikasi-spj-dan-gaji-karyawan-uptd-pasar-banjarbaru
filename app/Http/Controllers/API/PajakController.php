@@ -66,15 +66,18 @@ class PajakController extends APIController
             return $this->returnController("error", "failed find data pajak");
         }
 
-        $update = $pajak->update($req->all());
-        if (!$update) {
+        $pajak->nama     = $req->nama;
+        $pajak->besaran    = $req->besaran;
+        $pajak->update();
+
+        if (!$pajak) {
             return $this->returnController("error", "failed find data pajak");
         }
 
         Redis::del("pajak:all");
-        Redis::set("pajak:$id", $update);
+        Redis::set("pajak:$id", $pajak);
 
-        return $this->returnController("ok", $update);
+        return $this->returnController("ok", $pajak);
     }
 
     public function delete($id){
