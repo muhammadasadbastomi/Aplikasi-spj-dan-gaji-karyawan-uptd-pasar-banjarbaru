@@ -29,7 +29,8 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
        });
 
        Route::prefix('keperluan')->name('keperluan.')->group(function(){
-       Route::get('', 'KeperluanController@get')->name('get');
+              Route::get('', 'KeperluanController@get')->name('get');
+              Route::get('{uuid}', 'KeperluanController@find')->name('find');
        });
 });
 
