@@ -15,6 +15,7 @@ class CreatePajaksTable extends Migration
     {
         Schema::create('pajaks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('uuid')->nullable();
             $table->string('nama')->length(100);
             $table->integer('besaran');
             $table->timestamps();
