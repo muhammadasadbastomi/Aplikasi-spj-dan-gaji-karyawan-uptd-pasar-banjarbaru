@@ -22,11 +22,11 @@
                                 <h5 class="card-title">Tabel Data Pajak Pencairan</h5>
                                 <div class="text-right">
                                 <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#mediumModal"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <button href="" class="btn btn-outline-primary pull-right" id="tambah" >+ tambah data</button>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Golongan</th>
@@ -46,45 +46,38 @@
             </div>
            
         </div>
-
-<!-- Modal -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="tambahData" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="" method="post">
-      <div class="form-group m-t-20">
-        <label> Golongan</label>
-        <input type="text" class="form-control date-inputmask" name="golongan" placeholder="">
-     </div>
-     <div class="form-group">
-        <label>Keterangan</label>
-        <input type="text" class="form-control phone-inputmask" name="keterangan" placeholder="contoh (10)">
-     </div>
-    
-    </div>
-      <div class="modal-footer">
-        <a href=""  class="" ><i class="mdi mdi-close-circle-outline"></i> Batal</a>
-        <button type="submit" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
-    </form>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="modal fade" id="mediumModal"  role="dialog" >
+                    <div class="modal-dialog modal-lg" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mediumModalLabel">Tambah Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <form  method="post" action="">
+                                <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Nama golongan</label><input type="text" id="golongan" name="golongan" placeholder="Uji ..." class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Keterangan</label> <textarea id="keterangan" name="keterangan" placeholder="" class="form-control"></textarea></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
+                                <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>  
+ </div> 
 @endsection
 @section('script')
 <script>
-function hapus(uuid, name){
+function hapus(uuid, golongan){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
                 title: 'apa anda yakin?',
-                text: " Menghapus Kecamatan data " + name,
+                text: " Menghapus Kecamatan data " + golongan,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -98,34 +91,52 @@ function hapus(uuid, name){
                         type : "POST",
                         data : {'_method' : 'DELETE', '_token' :csrf_token},
                         success: function (response) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Data Berhasil Dihapus',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    $('#zero_config').DataTable().ajax.reload(null, false);
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Berhasil Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    $('#datatable').DataTable().ajax.reload(null, false);
                 },
-                    })
-                } else if (
-                    // Read more about handling dismissals
-                    result.dismiss === swal.DismissReason.cancel
-                ) {
-                    Swal.fire(
-                        'Dibatalkan',
-                        'data batal dihapus',
-                        'error'
-                    )
-                }
             })
-}
-
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+                Swal.fire(
+                'Dibatalkan',
+                'data batal dihapus',
+                'error'
+                )
+            }
+        })
+    }
+    $('#tambah').click(function(){
+        $('.modal-title').text('Tambah Data');
+        $('#golongan').val('');
+        $('#keterangan').val('');  
+        $('#btn-form').text('Simpan Data');
+        $('#mediumModal').modal('show');
+    })
+    function edit(uuid){
+        $.ajax({
+            type: "GET",
+            url: "{{ url('/api/golongan')}}" + '/' + uuid,
+            beforeSend: false,
+            success : function(returnData) {
+                $('.modal-title').text('Edit Data');
+                $('#id').val(returnData.data.uuid);
+                $('#golongan').val(returnData.data.golongan);
+                $('#keterangan').val(returnData.data.keterangan);  
+                $('#btn-form').text('Ubah Data');
+                $('#mediumModal').modal('show');
+            }
+        })
+    }
 $(document).ready(function() {
-    $('#zero_config').DataTable( {
+    $('#datatable').DataTable( {
         responsive: true,
         processing: true,
-        serverSide: true,
+        serverSide: false,
         searching: true,
         ajax: {
             "type": "GET",
@@ -138,10 +149,11 @@ $(document).ready(function() {
         columns: [
             {"data": "golongan"},
             {"data": "keterangan"},
-            {data: null, render : function ( data, type, row, meta ) {
-                var uuid = data.uuid;
+            {data: null , render : function ( data, type, row, meta ) {
+                var uuid = row.uuid;
+                var golongan = row.golongan;
                 return type === 'display'  ?
-                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <button onclick="hapus(\'' +uuid+'\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + golongan + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]
@@ -149,28 +161,52 @@ $(document).ready(function() {
     $("form").submit(function (e) {
         e.preventDefault()
         var form = $('#modal-body form');
-        $.ajax({
-                url: "{{Route('API.golongan.create')}}",
-                type: "post",
+        if($('.modal-title').text() == 'Edit Data'){
+            var url = '{{route("API.golongan.update", '')}}'
+            var id = $('#id').val();
+            $.ajax({
+                url: url+'/'+id,
+                type: "put",
                 data: $(this).serialize(),
                 success: function (response) {
                     form.trigger('reset');
                     $('#mediumModal').modal('hide');
-                    $('#zero_config').DataTable().ajax.reload();
+                    $('#datatable').DataTable().ajax.reload();
                     Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Your work has been saved',
-                    showConfirmButton: false,
-                    timer: 1500
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Data Berhasil Tersimpan',
+                        showConfirmButton: false,
+                        timer: 1500
                     })
                 },
                 error:function(response){
                     console.log(response);
                 }
             })
-} );
-} );
-
+        }else{
+            $.ajax({
+                url: "{{Route('API.golongan.create')}}",
+                type: "post",
+                data: $(this).serialize(),
+                success: function (response) {
+                    form.trigger('reset');
+                    $('#mediumModal').modal('hide');
+                    $('#datatable').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error:function(response){
+                    console.log(response);
+                }
+            })
+        }
+    } );
+    } );
 </script>
 @endsection

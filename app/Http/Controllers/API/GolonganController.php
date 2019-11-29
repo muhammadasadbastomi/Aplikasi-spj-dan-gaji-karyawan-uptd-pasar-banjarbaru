@@ -100,7 +100,6 @@ class GolonganController extends APIController
 
         Redis::del("golongan:all");
         Redis::del("golongan:$id");
-
         return $this->returnController("ok", "success delete data golongan");
     }
 }
