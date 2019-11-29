@@ -45,8 +45,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/beranda', 'adminController@index')
        ->name('beranda');
 
+//Route golongan
 Route::get('/golongan', 'adminController@golonganIndex')
        ->name('golonganIndex');
+Route::get('/golongan/cetak', 'adminController@golonganCetak')
+       ->name('golonganCetak');
+//akhir Route golongan
 
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')

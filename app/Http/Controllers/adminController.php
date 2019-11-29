@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Pajak;
+use App\golongan;
 use Carbon\Carbon;
 use PDF;
 
@@ -104,6 +105,14 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataPajak', ['pajak'=>$pajak,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Pajak.pdf');
+    }
+
+    public function golonganCetak(){
+        $golongan=golongan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataGolongan', ['golongan'=>$golongan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data golongan.pdf');
     }
 
 
