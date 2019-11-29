@@ -26,7 +26,11 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::post('', 'PajakController@create')->name('create');
               Route::put('{uuid}', 'PajakController@update')->name('update');
               Route::delete('{uuid}', 'PajakController@delete')->name('delete');
-      });
+       });
+
+       Route::prefix('pajak')->name('pajak.')->group(function(){
+       Route::get('', 'PajakController@get')->name('get');
+       });
 });
 
 Route::get('/', function () {
