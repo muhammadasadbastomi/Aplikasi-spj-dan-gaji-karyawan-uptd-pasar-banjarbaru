@@ -69,7 +69,7 @@
       </div>  
  </div> 
 @endsection
-@section('script')
+@section('script') 
 <script>
 function hapus(uuid, name){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');

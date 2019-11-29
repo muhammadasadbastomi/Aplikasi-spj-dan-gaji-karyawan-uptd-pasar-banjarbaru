@@ -79,7 +79,8 @@ class GolonganController extends APIController
         return $this->returnController("ok", $golongan);
     }
 
-    public function delete($id){
+    public function delete($uuid){
+        $id = HCrypt::decrypt($uuid);
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
         }
