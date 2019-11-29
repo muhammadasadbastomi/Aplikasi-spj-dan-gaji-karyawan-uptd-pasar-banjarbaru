@@ -8,4 +8,8 @@ class Pajak extends Model
 {
     protected $fillable = ['uuid','nama', 'besaran'];
     protected $hidden = ['id'];
+
+    public function keperluan(){
+        return $this->HasMany('App\Keperluan');
+      }
 }
