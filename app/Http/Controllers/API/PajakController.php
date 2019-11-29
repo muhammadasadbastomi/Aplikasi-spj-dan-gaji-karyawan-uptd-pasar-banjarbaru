@@ -12,13 +12,11 @@ class PajakController extends APIController
 {
     public function get(){
         $pajak = json_decode(redis::get("pajak::all"));
-        // $pajak = Redis::get("pajak:all");
         if (!$pajak) {
             $pajak = pajak::all();
             if (!$pajak) {
                 return $this->returnController("error", "failed get pajak data");
             }
-            // dd($pajak);
             Redis::set("pajak:all", $pajak);            
 
         }
@@ -26,7 +24,7 @@ class PajakController extends APIController
     }
 
     public function find($id){
-        // $id = HCrypt::decrypt($id);
+        $id = HCrypt::decrypt($id);
         if (!$id) {
             return $this->returnController("error", "failed decrypt id");
         }
@@ -44,12 +42,17 @@ class PajakController extends APIController
     }
 
     public function create(Request $req){
-        $create = pajak::create($req->all());
-        if (!$create) {
+        $pajak = pajak::create($req->all());
+        $pajak_id= $pajak->id;
+        $uuid = HCrypt::encrypt($pajak_id);
+        $setuuid = golongan::findOrFail($pajak_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+        if (!$pajak) {
             return $this->returnController("error", "failed create data pajak");
         }
         Redis::del("pajak:all");
-        return $this->returnController("ok", $create);
+        return $this->returnController("ok", $pajak);
     }
 
     public function update($id, Request $req){
