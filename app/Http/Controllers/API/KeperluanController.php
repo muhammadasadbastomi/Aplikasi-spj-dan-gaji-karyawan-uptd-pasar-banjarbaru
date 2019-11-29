@@ -8,7 +8,7 @@ use App\Keperluan;
 use HCrypt;
 use Illuminate\Support\Facades\Redis;
 
-class KeperluanController extends Controller
+class KeperluanController extends APIController
 {
     public function get(){
         $keperluan = json_decode(redis::get("keperluan::all"));
