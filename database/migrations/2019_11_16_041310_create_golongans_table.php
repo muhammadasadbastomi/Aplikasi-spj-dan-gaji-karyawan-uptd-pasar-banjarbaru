@@ -15,6 +15,7 @@ class CreateGolongansTable extends Migration
     {
         Schema::create('golongans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('uuid')->nullable();
             $table->string('golongan')->length(50);
             $table->string('keterangan')->length(100);
             $table->timestamps();
