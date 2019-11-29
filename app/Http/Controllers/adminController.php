@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Pajak;
+use Carbon\Carbon;
+use PDF;
 
 use Illuminate\Http\Request;
 
@@ -93,6 +96,14 @@ class adminController extends Controller
     public function pencairanEdit(){
     
         return view('pencairan.edit');
+    }
+
+    public function pajakCetak(){
+        $pajak=pajak::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataPajak', ['pajak'=>$pajak,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data Pajak.pdf');
     }
 
 
