@@ -29,8 +29,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 48344951
       MYSQL_DATABASE: spj_uptd
-
-  cache:
-    image: redis
-    ports:
-      - "6379:6379"
