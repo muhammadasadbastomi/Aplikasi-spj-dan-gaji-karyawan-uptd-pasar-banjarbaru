@@ -82,11 +82,11 @@
 @endsection
 @section('script')
 <script>
-function hapus(uuid, name){
+function hapus(id){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
                 title: 'apa anda yakin?',
-                text: " Menghapus Kecamatan data " + name,
+                text: " Menghapus Kecamatan data ",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -96,7 +96,7 @@ function hapus(uuid, name){
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url : "{{ url('/api/golongan')}}" + '/' + uuid,
+                        url : "{{ url('/api/golongan')}}" + '/' + id,
                         type : "POST",
                         data : {'_method' : 'DELETE', '_token' :csrf_token},
                         success: function (response) {
@@ -141,9 +141,9 @@ $(document).ready(function() {
             {"data": "golongan"},
             {"data": "keterangan"},
             {data: null, render : function ( data, type, row, meta ) {
-                var uuid = data.uuid;
+                var id = data.id;
                 return type === 'display'  ?
-                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <button onclick="hapus(\'' +uuid+'\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <button onclick="hapus(\'' +id+'\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]

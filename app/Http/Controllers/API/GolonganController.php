@@ -73,8 +73,7 @@ class GolonganController extends APIController
         return $this->returnController("ok", $update);
     }
 
-    public function delete($uuid){
-        $id = HCrypt::decrypt($uuid);
+    public function delete($id){
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
         }
@@ -94,7 +93,6 @@ class GolonganController extends APIController
 
         Redis::del("golongan:all");
         Redis::del("golongan:$id");
-
         return $this->returnController("ok", "success delete data golongan");
     }
 }

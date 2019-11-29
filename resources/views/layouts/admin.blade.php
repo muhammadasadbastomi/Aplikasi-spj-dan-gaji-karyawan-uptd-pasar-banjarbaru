@@ -124,6 +124,7 @@
             </footer>
         </div>
     </div>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer ></script>
     <script src="{{asset('admin/assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('admin/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
     <script src="{{asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
