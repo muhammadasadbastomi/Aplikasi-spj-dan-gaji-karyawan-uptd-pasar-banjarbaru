@@ -45,7 +45,7 @@ class PajakController extends APIController
         $pajak = pajak::create($req->all());
         $pajak_id= $pajak->id;
         $uuid = HCrypt::encrypt($pajak_id);
-        $setuuid = golongan::findOrFail($pajak_id);
+        $setuuid = pajak::findOrFail($pajak_id);
         $setuuid->uuid = $uuid;
         $setuuid->update();
         if (!$pajak) {
