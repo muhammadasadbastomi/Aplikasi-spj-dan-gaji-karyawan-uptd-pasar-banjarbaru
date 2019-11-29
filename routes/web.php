@@ -25,8 +25,12 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::get('{uuid}', 'PajakController@find')->name('find');
               Route::post('', 'PajakController@create')->name('create');
               Route::put('{uuid}', 'PajakController@update')->name('update');
-              Route::delete('{id}', 'PajakController@delete')->name('delete');
-      });
+              Route::delete('{uuid}', 'PajakController@delete')->name('delete');
+       });
+
+       Route::prefix('keperluan')->name('keperluan.')->group(function(){
+       Route::get('', 'KeperluanController@get')->name('get');
+       });
 });
 
 Route::get('/', function () {
