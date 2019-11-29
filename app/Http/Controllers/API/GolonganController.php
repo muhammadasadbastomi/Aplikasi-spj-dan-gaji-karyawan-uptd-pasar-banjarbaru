@@ -12,7 +12,6 @@ class GolonganController extends APIController
 {
     public function get(){
         $golongan = json_decode(redis::get("golongan::all"));
-        // $golongan = Redis::get("golongan:all");
         if (!$golongan) {
             $golongan = golongan::all();
             if (!$golongan) {
@@ -43,12 +42,17 @@ class GolonganController extends APIController
     }
 
     public function create(Request $req){
-        $create = golongan::create($req->all());
-        if (!$create) {
+        $golongan = golongan::create($req->all());
+        $golongan_id= $golongan->id;
+        $uuid = HCrypt::encrypt($golongan_id);
+        $setuuid = golongan::findOrFail($golongan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+        if (!$golongan) {
             return $this->returnController("error", "failed create data golongan");
         }
         Redis::del("golongan:all");
-        return $this->returnController("ok", $create);
+        return $this->returnController("ok", $golongan);
     }
 
     public function update($uuid, Request $req){
