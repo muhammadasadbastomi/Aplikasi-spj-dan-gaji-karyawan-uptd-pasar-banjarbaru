@@ -40,4 +40,18 @@ class KeperluanController extends APIController
 
         return $this->returnController("ok", $keperluan);
     }
+
+    public function create(Request $req){
+        $keperluan = keperluan::create($req->all());
+        $keperluan_id= $keperluan->id;
+        $uuid = HCrypt::encrypt($keperluan_id);
+        $setuuid = keperluan::findOrFail($keperluan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+        if (!$keperluan) {
+            return $this->returnController("error", "failed create data keperluan");
+        }
+        Redis::del("keperluan:all");
+        return $this->returnController("ok", $keperluan);
+    }
 }
