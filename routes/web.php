@@ -46,8 +46,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/beranda', 'adminController@index')
        ->name('beranda');
 
+//Route golongan
 Route::get('/golongan', 'adminController@golonganIndex')
        ->name('golonganIndex');
+Route::get('/golongan/cetak', 'adminController@golonganCetak')
+       ->name('golonganCetak');
+//akhir Route golongan
 
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')
@@ -65,19 +69,19 @@ Route::get('/keperluan/edit', 'adminController@keperluanEdit')
        ->name('keperluanEdit');
 //akhir route keperluan
 
-//route keperluan
+//route pajak
 Route::get('/pajak', 'adminController@pajakIndex')
        ->name('pajakIndex');
-Route::get('/pajak/edit', 'adminController@pajakEdit')
-       ->name('pajakEdit');
-//akhir route keperluan
+Route::get('/pajak/cetak', 'adminController@pajakCetak')
+       ->name('pajakCetak');
+//akhir route pajak
 
-//route keperluan
+//route kendaraan
 Route::get('/kendaraan', 'adminController@kendaraanIndex')
        ->name('kendaraanIndex');
 Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
        ->name('kendaraanEdit');
-//akhir route keperluan
+//akhir route kendaraan
 
 //route standard harga
 Route::get('/standardHarga', 'adminController@standardHargaIndex')
