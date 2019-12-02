@@ -12,7 +12,6 @@ class GolonganController extends APIController
 {
     public function get(){
         $golongan = json_decode(redis::get("golongan::all"));
-        // $golongan = Redis::get("golongan:all");
         if (!$golongan) {
             $golongan = golongan::all();
             if (!$golongan) {
@@ -43,12 +42,17 @@ class GolonganController extends APIController
     }
 
     public function create(Request $req){
-        $create = golongan::create($req->all());
-        if (!$create) {
+        $golongan = golongan::create($req->all());
+        $golongan_id= $golongan->id;
+        $uuid = HCrypt::encrypt($golongan_id);
+        $setuuid = golongan::findOrFail($golongan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+        if (!$golongan) {
             return $this->returnController("error", "failed create data golongan");
         }
         Redis::del("golongan:all");
-        return $this->returnController("ok", $create);
+        return $this->returnController("ok", $golongan);
     }
 
     public function update($uuid, Request $req){
@@ -57,20 +61,22 @@ class GolonganController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
 
-        $golongan = golongan::find($id);
+        $golongan = golongan::findOrFail($id);
         if (!$golongan) {
             return $this->returnController("error", "failed find data golongan");
         }
 
-        $update = $golongan->update($req->all());
-        if (!$update) {
+        $golongan->golongan     = $req->golongan;
+        $golongan->keterangan    = $req->keterangan;
+        $golongan->update();
+        if (!$golongan) {
             return $this->returnController("error", "failed find data golongan");
         }
 
         Redis::del("golongan:all");
-        Redis::set("golongan:$id", $update);
+        Redis::set("golongan:$id", $golongan);
 
-        return $this->returnController("ok", $update);
+        return $this->returnController("ok", $golongan);
     }
 
     public function delete($uuid){
@@ -94,7 +100,6 @@ class GolonganController extends APIController
 
         Redis::del("golongan:all");
         Redis::del("golongan:$id");
-
         return $this->returnController("ok", "success delete data golongan");
     }
 }

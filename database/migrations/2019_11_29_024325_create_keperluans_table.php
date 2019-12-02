@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGolongansTable extends Migration
+class CreateKeperluansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateGolongansTable extends Migration
      */
     public function up()
     {
-        Schema::create('golongans', function (Blueprint $table) {
+        Schema::create('keperluans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('uuid')->nullable();
-            $table->string('golongan')->length(50);
-            $table->string('keterangan')->length(100);
+            $table->unsignedBigInteger('pajak_id');
+            $table->string('keperluan')->length(50);
             $table->timestamps();
+            $table->foreign('pajak_id')->references('id')->on('pajaks')->onDelete('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateGolongansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('golongans');
+        Schema::dropIfExists('keperluans');
     }
 }

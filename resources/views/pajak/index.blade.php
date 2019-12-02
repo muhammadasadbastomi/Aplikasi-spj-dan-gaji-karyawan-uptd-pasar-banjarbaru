@@ -21,15 +21,14 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data Pajak Pencairan</h5>
                                 <div class="text-right">
-                                <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="{{Route('pajakCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <button href="" class="btn btn-outline-primary pull-right" id="tambah" >+ tambah data</button>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Pajak</th>
                                                 <th class="text-center">Potongan (%)</th>
                                                 <th class="text-center">Aksi</th>
@@ -39,56 +38,103 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-             
-
-            </div>
-           
+            </div>          
         </div>
-
-<!-- Modal -->
-<div class="modal fade" id="tambahData" tabindex="-1" role="dialog" aria-labelledby="tambahData" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="" method="post">
-      <div class="form-group m-t-20">
-        <label> Nama Pajak</label>
-        <input type="text" class="form-control date-inputmask" name="nama" placeholder="">
-     </div>
-     <div class="form-group">
-        <label>Potongan (%)</label>
-        <input type="number" class="form-control phone-inputmask" name="besaran" placeholder="contoh (10)">
-     </div>
-    
-    </div>
-      <div class="modal-footer">
-        <a href=""  class="" ><i class="mdi mdi-close-circle-outline"></i> Batal</a>
-        <button type="submit" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
-    </form>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="modal fade" id="mediumModal"  role="dialog" >
+                    <div class="modal-dialog modal-lg" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mediumModalLabel">Tambah Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <form  method="post" action="">
+                                <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Nama Pajak</label><input type="text" id="nama" name="nama" placeholder="Uji ..." class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Besaran</label><input type="text" id="besaran" name="besaran" placeholder="" class="form-control"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
+                                <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>  
+ </div> 
 @endsection
-@section('script')
+@section('script') 
 <script>
-
+function hapus(uuid, name){
+    var csrf_token=$('meta[name="csrf_token"]').attr('content');
+    Swal.fire({
+                title: 'apa anda yakin?',
+                text: " Menghapus Kecamatan data " + name,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'hapus data',
+                cancelButtonText: 'batal',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url : "{{ url('/api/pajak')}}" + '/' + uuid,
+                        type : "POST",
+                        data : {'_method' : 'DELETE', '_token' :csrf_token},
+                        success: function (response) {
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Berhasil Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    $('#datatable').DataTable().ajax.reload(null, false);
+                },
+            })
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+                Swal.fire(
+                'Dibatalkan',
+                'data batal dihapus',
+                'error'
+                )
+            }
+        })
+    }
+    $('#tambah').click(function(){
+        $('.modal-title').text('Tambah Data');
+        $('#nama').val('');
+        $('#besaran').val('');  
+        $('#btn-form').text('Simpan Data');
+        $('#mediumModal').modal('show');
+    })
+    function edit(uuid){
+        $.ajax({
+            type: "GET",
+            url: "{{ url('/api/pajak')}}" + '/' + uuid,
+            beforeSend: false,
+            success : function(returnData) {
+                $('.modal-title').text('Edit Data');
+                $('#id').val(returnData.data.uuid);
+                $('#nama').val(returnData.data.nama);
+                $('#besaran').val(returnData.data.besaran);  
+                $('#btn-form').text('Ubah Data');
+                $('#mediumModal').modal('show');
+            }
+        })
+    }
 $(document).ready(function() {
-    $('#zero_config').DataTable( {
+    $('#datatable').DataTable( {
         responsive: true,
         processing: true,
-        serverSide: true,
+        serverSide: false,
         searching: true,
         ajax: {
             "type": "GET",
@@ -101,9 +147,11 @@ $(document).ready(function() {
         columns: [
             {"data": "nama"},
             {"data": "besaran"},
-            {data: null, render : function ( data, type, row, meta ) {
+            {data: null , render : function ( data, type, row, meta ) {
+                var uuid = row.uuid;
+                var name = row.name;
                 return type === 'display'  ?
-                    '<a href="" class="btn btn-sm btn-outline-primary" ><i class="ti-pencil"></i></a> <a href="" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></a>':
+                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + name + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]
@@ -111,21 +159,52 @@ $(document).ready(function() {
     $("form").submit(function (e) {
         e.preventDefault()
         var form = $('#modal-body form');
-        $.ajax({
+        if($('.modal-title').text() == 'Edit Data'){
+            var url = '{{route("API.pajak.update", '')}}'
+            var id = $('#id').val();
+            $.ajax({
+                url: url+'/'+id,
+                type: "put",
+                data: $(this).serialize(),
+                success: function (response) {
+                    form.trigger('reset');
+                    $('#mediumModal').modal('hide');
+                    $('#datatable').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Data Berhasil Tersimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error:function(response){
+                    console.log(response);
+                }
+            })
+        }else{
+            $.ajax({
                 url: "{{Route('API.pajak.create')}}",
                 type: "post",
                 data: $(this).serialize(),
                 success: function (response) {
                     form.trigger('reset');
                     $('#mediumModal').modal('hide');
-                    $('#zero_config').DataTable().ajax.reload();
+                    $('#datatable').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 },
                 error:function(response){
                     console.log(response);
                 }
             })
-} );
-} );
-
+        }
+    } );
+    } );
 </script>
 @endsection
