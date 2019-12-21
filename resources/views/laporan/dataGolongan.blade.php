@@ -94,7 +94,6 @@
                 </thead>
                 <tbody>
                     @foreach ($golongan as $r)
-
                     <tr>
                         <td>{{$r->golongan}}</td>
                         <td>{{$r->keterangan}} </td>
