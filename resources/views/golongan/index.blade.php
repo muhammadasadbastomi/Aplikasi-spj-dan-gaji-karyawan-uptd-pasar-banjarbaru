@@ -44,7 +44,6 @@
                     </div>
                 </div>
             </div>
-           
         </div>
         <div class="modal fade" id="mediumModal"  role="dialog" >
                     <div class="modal-dialog modal-lg" >
