@@ -95,5 +95,7 @@ Route::get('/pencairanIndex', 'adminController@pencairanIndex')
        ->name('pencairanIndex');
 Route::get('/pencairanAdd', 'adminController@pencairanAdd')
        ->name('pencairanAdd');
+Route::post('/pencairanAdd', 'adminController@pencairanStore')
+       ->name('pencairanStore');
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');

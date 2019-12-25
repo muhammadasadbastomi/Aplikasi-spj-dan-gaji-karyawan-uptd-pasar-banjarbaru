@@ -89,6 +89,26 @@ class adminController extends Controller
     
         return view('pencairan.add');
     }
+
+    public function pencairanStore(Request $request){
+        $keperluan = $request->keperluan;
+
+        if($keperluan == "Belanja Alat Tulis kantor"){
+            $no_rek = '1551.201.01.04';
+            return view('pencairan.inputKeterangan',compact('keperluan','no_rek'));
+        }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
+            $no_rek = '1551.201.01.05';
+            return view('pencairan.inputKeterangan',compact('keperluan','no_rek'));
+        }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
+            $no_rek = '1551.201.01.06';
+            return view('pencairan.inputKeteranganRoda2',compact('keperluan','no_rek'));
+        }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
+            $no_rek = '1551.201.01.08';
+            return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek'));
+        }
+
+    }
+
     public function inputKeterangan(){
     
         return view('pencairan.inputKeterangan');
