@@ -31,16 +31,15 @@
                                         <label> Agustus</label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Item </label>
+                                        <label>Kendaraan </label>
                                         <select name="" id="" class="form-control">
-                                            <option value="">Data ngambil dari Standard Harga</option>
-                                            <option value="">Pencil</option>
-                                            <option value="">flashdisk</option>
+                                            <option value="">Data ngambil dari data kendaraan (Roda 2)</option>
+                                            <option value="">DA.6402.PAD</option>
                                         </select>
                                     </div>
                                     <div class="form-group m-t-20">
-                                        <label> Jumlah</label>
-                                        <input type="number" class="form-control date-inputmask" id="date-mask" placeholder="Masukan NIP/NRTK">
+                                        <label> Jumlah Pencairan</label>
+                                        <input type="number" class="form-control date-inputmask" id="date-mask" >
                                     </div>
                                 </form>
                                 <div class="text-right">
@@ -51,10 +50,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Item</th>
+                                                <th>Kendaraan</th>
                                                 <th>Satuan</th>
                                                 <th>Harga Satuan</th>
-                                                <th>Jumlah</th>
+                                                <th>Jumlah Pencairan</th>
                                                 <th>total</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -62,11 +61,11 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Pencil 2B</td>
+                                                <td>DA.6402 PAD</td>
                                                 <td>Buah </td>
-                                                <td class="text-center">Rp.3.000</td>
-                                                <td class="text-center">4</td>
-                                                <td class="text-center">Rp.12.000</td>
+                                                <td class="text-center">Rp.20.000</td>
+                                                <td class="text-center">5</td>
+                                                <td class="text-center">Rp.100.000</td>
                                                 <td class="text-center">
                                                 <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
@@ -74,11 +73,11 @@
                                             </tr>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Penggaris</td>
+                                                <td>DA.6403 PAD</td>
                                                 <td>Buah </td>
-                                                <td class="text-center">Rp.6.000</td>
-                                                <td class="text-center">2</td>
-                                                <td class="text-center">Rp.12.000</td>
+                                                <td class="text-center">Rp.20.000</td>
+                                                <td class="text-center">6</td>
+                                                <td class="text-center">Rp.120.000</td>
                                                 <td class="text-center">
                                                 <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>

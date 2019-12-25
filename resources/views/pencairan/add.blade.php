@@ -21,24 +21,27 @@
                             <div class="card-body">
                                 <h5 class="card-title">Input Data Pencairan</h5>
                                 <br>
-                                <form action="" method="post">
+                                <form  method="post" action="">
                                     <div class="form-group m-t-20">
                                         <label> Bulan Pencairan</label>
                                         <input type="Date" class="form-control date-inputmask" id="date-mask" placeholder="Masukan NIP/NRTK">
                                     </div>
                                     <div class="form-group">
                                         <label>Keperluan </label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Belanja Alat Tulis kantor</option>
-                                            <option value="">Belanja Peralatan dan Perlengkapan komputer</option>
-                                            <option value="">Belanja makan Minum Harian</option>
+                                        <select name="keperluan" id="keperluan" class="form-control">
+                                            <option value="Belanja Alat Tulis kantor">Belanja Alat Tulis kantor</option>
+                                            <option value="Belanja Peralatan dan Perlengkapan komputer">Belanja Peralatan dan Perlengkapan komputer</option>
+                                            <option value="Belanja Oprasional Transport Roda 2">Belanja Oprasional Transport Roda 2</option>
+                                            <option value="Belanja Oprasional Transport Roda 4">Belanja Oprasional Transport Roda 4</option>
+                                            <option value="Belanja Gajih Pegawai Kontrak">Belanja Gajih Pegawai Kontrak</option>
                                         </select>
                                     </div>
-                                </form>
                             </div>
                             <div class="card-footer text-right">
                                 <a href=""  class="btn" > <i class="mdi mdi-close"></i> Batal</a>
-                                <a href="{{Route('inputKeterangan')}}" class="btn btn-primary">Buat Pencairan</a>
+                                <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
+                                {{csrf_field() }}
+                                </form>
                             </div>
                         </div>
                     </div>
