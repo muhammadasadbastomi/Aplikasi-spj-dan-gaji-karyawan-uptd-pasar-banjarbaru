@@ -106,3 +106,7 @@ Route::post('/pencairanAdd', 'adminController@pencairanStore')
        ->name('pencairanStore');
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
+
+//user 
+Route::get('/userIndex', 'adminController@userIndex')
+       ->name('userIndex');

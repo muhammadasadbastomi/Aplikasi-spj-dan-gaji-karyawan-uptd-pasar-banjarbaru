@@ -14,6 +14,12 @@ class adminController extends Controller
 
         return view('index');
     }
+
+    public function userIndex(){
+
+        return view('user.index');
+    }
+
     public function golonganIndex(){
 
         return view('golongan.index');
