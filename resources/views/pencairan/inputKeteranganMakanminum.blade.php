@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label> Jumlah Karyawan Kontrak</label>
-                                         : <label for="" class="badge badge-success"> 30 Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
+                                         : <label for="" class="badge badge-success"> 30 Karyawan (ambil jumlah dari data pegawai))</label>
                                     </div>
                                 </form>                               
                                     <div class="card-footer text-right">

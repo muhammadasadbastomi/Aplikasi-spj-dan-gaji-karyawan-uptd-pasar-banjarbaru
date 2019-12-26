@@ -34,6 +34,7 @@
                                             <option value="Belanja Oprasional Transport Roda 2">Belanja Oprasional Transport Roda 2</option>
                                             <option value="Belanja Oprasional Transport Roda 4">Belanja Oprasional Transport Roda 4</option>
                                             <option value="Belanja Gajih Pegawai Kontrak">Belanja Gajih Pegawai Kontrak</option>
+                                            <option value="Belanja Makan Minum Harian">Belanja Makan Minum Harian</option>
                                         </select>
                                     </div>
                             </div>

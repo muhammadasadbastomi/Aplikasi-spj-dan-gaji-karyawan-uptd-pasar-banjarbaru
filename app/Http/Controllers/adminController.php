@@ -98,13 +98,16 @@ class adminController extends Controller
             return view('pencairan.inputKeterangan',compact('keperluan','no_rek'));
         }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
             $no_rek = '1551.201.01.05';
-            return view('pencairan.inputKeterangan',compact('keperluan','no_rek'));
+            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
             $no_rek = '1551.201.01.06';
-            return view('pencairan.inputKeteranganRoda2',compact('keperluan','no_rek'));
+            return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $no_rek = '1551.201.01.08';
             return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek'));
+        }elseif($keperluan == "Belanja Makan Minum Harian"){
+            $no_rek = '1551.201.01.09';
+            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek'));
         }
 
     }
