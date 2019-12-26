@@ -53,6 +53,13 @@ Route::get('/golongan/cetak', 'adminController@golonganCetak')
        ->name('golonganCetak');
 //akhir Route golongan
 
+//Route jabatan
+Route::get('/jabatan', 'adminController@jabatanIndex')
+       ->name('jabatanIndex');
+Route::get('/jabatan/cetak', 'adminController@jabatanCetak')
+       ->name('jabatanCetak');
+//akhir Route golongan
+
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')
        ->name('pegawaiIndex');

@@ -18,6 +18,12 @@ class adminController extends Controller
 
         return view('golongan.index');
     }
+
+    public function jabatanIndex(){
+
+        return view('jabatan.index');
+    }
+
     //Halaman Data Pegawai
     public function pegawaiIndex(){
 
