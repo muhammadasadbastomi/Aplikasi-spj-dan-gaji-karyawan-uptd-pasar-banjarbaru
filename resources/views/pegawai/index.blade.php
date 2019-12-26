@@ -47,9 +47,9 @@
                                                 <td class="text-center"><span class="badge badge-success">PNS</span></td>
                                                 <td>IV/c</td>
                                                 <td class="text-center">
-                                                <a href="{{Route('pegawaiDetail')}}" class="btn btn-primary"><i class="mdi mdi-eye"></i> Detail</a>
-                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
-                                                <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
+                                                <a href="{{Route('pegawaiDetail')}}" class="btn btn-primary"><i class="mdi mdi-eye"></i> </a>
+                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> </a>
+                                                <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> </a>
                                                 </td>
                                             </tr>
                                         </tbody>

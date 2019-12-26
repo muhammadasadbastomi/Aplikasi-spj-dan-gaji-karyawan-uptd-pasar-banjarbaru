@@ -45,9 +45,9 @@
                                                 <td class="text-center"><span class="badge badge-success">Roda 4</span></td>
                                                 <td>Tri Angga T. Utama</td>
                                                 <td class="text-center">
-                                                    <a href="#" class="btn btn-primary"><i class="mdi mdi-printer"></i> cetak SK</a>
-                                                    <a href="{{Route('kendaraanEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
-                                                    <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
+                                                    <a href="#" class="btn btn-primary"><i class="mdi mdi-printer"></i> SK</a>
+                                                    <a href="{{Route('kendaraanEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> </a>
+                                                    <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>

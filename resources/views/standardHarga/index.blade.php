@@ -43,8 +43,8 @@
                                                 <td>Rp.3000</td>
                                                 <td class="text-center"> Belanja Alat Tulis Kantor</td>
                                                 <td class="text-center">
-                                                    <a href="{{Route('standardHargaEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
-                                                    <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
+                                                    <a href="{{Route('standardHargaEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> </a>
+                                                    <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>

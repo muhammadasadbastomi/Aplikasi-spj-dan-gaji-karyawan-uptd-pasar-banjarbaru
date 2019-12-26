@@ -159,7 +159,7 @@
                             let uuid = row.uuid;
                             let golongan = row.golongan;
                             return type === 'display'  ?
-                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + golongan + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + golongan + '\')" class="btn btn-sm btn-outline-danger" > <i class="mdi mdi-pocorn"></i></button>':
                         data;
                         }}
                     ]
