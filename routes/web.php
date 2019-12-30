@@ -12,6 +12,13 @@
 */
 
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
+       Route::prefix('user')->name('user.')->group(function(){
+               Route::get('', 'UserController@get')->name('get');
+               Route::get('{uuid}', 'UserController@find')->name('find');
+               Route::post('', 'UserController@create')->name('create');
+               Route::post('/update/{uuid}', 'UserController@update')->name('update');
+               Route::delete('{uuid}', 'UserController@delete')->name('delete');
+               });
        Route::prefix('golongan')->name('golongan.')->group(function(){
                Route::get('', 'GolonganController@get')->name('get');
                Route::get('{uuid}', 'GolonganController@find')->name('find');
@@ -139,6 +146,6 @@ Route::post('/pencairanAdd', 'adminController@pencairanStore')
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
 
-//user 
+//user
 Route::get('/userIndex', 'adminController@userIndex')
        ->name('userIndex');
