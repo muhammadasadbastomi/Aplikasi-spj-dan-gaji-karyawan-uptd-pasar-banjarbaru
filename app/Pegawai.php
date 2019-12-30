@@ -23,4 +23,9 @@ class Pegawai extends Model
     {
         return $this->belongsTo('App\Jabatan');
     }
+
+    public function kendaraan()
+    {
+        return $this->HasOne('App\Kendaraan');
+    }
 }
