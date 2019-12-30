@@ -33,6 +33,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::get('{uuid}', 'KeperluanController@find')->name('find');
               Route::post('', 'KeperluanController@create')->name('create');
        });
+
+       Route::prefix('jabatan')->name('jabatan.')->group(function(){
+              Route::get('', 'JabatanController@get')->name('get');
+              Route::get('{uuid}', 'JabatanController@find')->name('find');
+              Route::post('', 'JabatanController@create')->name('create');
+              Route::put('{uuid}', 'JabatanController@update')->name('update');
+              Route::delete('{uuid}', 'JabatanController@delete')->name('delete');
+       });
 });
 
 Route::get('/', function () {
