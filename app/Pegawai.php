@@ -11,7 +11,7 @@ class Pegawai extends Model
         'status_pegawai', 'status_kawin', 'golongan_darah','foto','golongan_id', 'jabatan_id'
     ];
     protected $hidden = [
-        'id', 
+        'id', 'golongan_id', 'jabatan_id'
     ];
 
     public function golongan()
