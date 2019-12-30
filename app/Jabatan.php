@@ -14,8 +14,8 @@ class Jabatan extends Model
         'id'
     ];
 
-    public function karyawan()
+    public function pegawai()
     {
-        return $this->HasMany('App\Karyawan');
+        return $this->HasMany('App\Pegawai');
     }
 }
