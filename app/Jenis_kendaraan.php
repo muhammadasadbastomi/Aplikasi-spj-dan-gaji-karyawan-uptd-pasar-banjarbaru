@@ -8,4 +8,9 @@ class Jenis_kendaraan extends Model
 {
     protected $fillable = ['uuid','kode_jenis', 'jenis'];
     protected $hidden = ['id'];
+
+    public function kendaraan()
+    {
+        return $this->HasOne('App\Kendaraan');
+    }
 }
