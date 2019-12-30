@@ -49,6 +49,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::put('{uuid}', 'PegawaiController@update')->name('update');
               Route::delete('{uuid}', 'PegawaiController@delete')->name('delete');
        });
+
+       Route::prefix('jenis-kendaraan')->name('jenis-kendaraan.')->group(function(){
+              Route::get('', 'JenisController@get')->name('get');
+              Route::get('{uuid}', 'JenisController@find')->name('find');
+              Route::post('', 'JenisController@create')->name('create');
+              Route::put('{uuid}', 'JenisController@update')->name('update');
+              Route::delete('{uuid}', 'JenisController@delete')->name('delete');
+       });
 });
 
 Route::get('/', function () {
