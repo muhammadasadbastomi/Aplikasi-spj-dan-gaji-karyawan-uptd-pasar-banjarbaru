@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
        Route::prefix('golongan')->name('golongan.')->group(function(){
                Route::get('', 'GolonganController@get')->name('get');
@@ -40,7 +29,7 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::get('', 'PegawaiController@get')->name('get');
               Route::get('{uuid}', 'PegawaiController@find')->name('find');
               Route::post('', 'PegawaiController@create')->name('create');
-              Route::put('{uuid}', 'PegawaiController@update')->name('update');
+              Route::post('update/{uuid}', 'PegawaiController@update')->name('update');
               Route::delete('{uuid}', 'PegawaiController@delete')->name('delete');
        });
 
@@ -91,8 +80,8 @@ Route::get('/pegawai', 'adminController@pegawaiIndex')
        ->name('pegawaiIndex');
 Route::get('/pegawai/detail', 'adminController@pegawaiDetail')
        ->name('pegawaiDetail');
-Route::get('/pegawai/edit', 'adminController@pegawaiEdit')
-       ->name('pegawaiEdit');
+Route::get('/pegawai/Cetak', 'adminController@pegawaiCetak')
+       ->name('pegawaiCetak');
 //akhir route pegawai
 
 //route keperluan

@@ -5,6 +5,7 @@ use App\Pajak;
 use App\golongan;
 use App\Jabatan;
 use App\Jenis_kendaraan;
+use App\Pegawai;
 use Carbon\Carbon;
 use PDF;
 
@@ -165,5 +166,11 @@ class adminController extends Controller
         return $pdf->stream('Laporan data jenis Kendaraan.pdf');
     }
 
-
+    public function pegawaiCetak(){
+        $pegawai=pegawai::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataPegawai', ['pegawai'=>$pegawai,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data Pegawai.pdf');
+    }
 }
