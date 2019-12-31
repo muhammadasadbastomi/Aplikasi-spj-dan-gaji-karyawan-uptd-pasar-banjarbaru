@@ -28,12 +28,6 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::delete('{uuid}', 'PajakController@delete')->name('delete');
        });
 
-       Route::prefix('keperluan')->name('keperluan.')->group(function(){
-              Route::get('', 'KeperluanController@get')->name('get');
-              Route::get('{uuid}', 'KeperluanController@find')->name('find');
-              Route::post('', 'KeperluanController@create')->name('create');
-       });
-
        Route::prefix('jabatan')->name('jabatan.')->group(function(){
               Route::get('', 'JabatanController@get')->name('get');
               Route::get('{uuid}', 'JabatanController@find')->name('find');
@@ -114,6 +108,13 @@ Route::get('/pajak', 'adminController@pajakIndex')
 Route::get('/pajak/cetak', 'adminController@pajakCetak')
        ->name('pajakCetak');
 //akhir route pajak
+
+//route jenisKendaraan
+Route::get('/jenisKendaraan', 'adminController@jenisKendaraanIndex')
+       ->name('jenisKendaraanIndex');
+Route::get('/jenisKendaraan/Cetak', 'adminController@jenisKendaraanCetak')
+       ->name('jenisKendaraanCetak');
+//akhir route kendaraan
 
 //route kendaraan
 Route::get('/kendaraan', 'adminController@kendaraanIndex')
