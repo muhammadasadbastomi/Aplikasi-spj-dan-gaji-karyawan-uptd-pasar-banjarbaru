@@ -4,7 +4,7 @@
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Pajak Pencairan</h4>
+                        <h4 class="page-title">Data Jabatan</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -19,16 +19,17 @@
             <div class="container-fluid">
             <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Tabel Data Pajak Pencairan</h5>
+                                <h5 class="card-title">Tabel Data Jabatan</h5>
                                 <div class="text-right">
                                 <a href="{{route('jabatanCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <button href="" class="btn btn-outline-primary pull-right" id="tambah" >+ tambah data</button>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="datatable" class="table table-striped table-bordered">
+                                    <table id="datatable" class=" text-center table table-striped table-bordered">
                                         <thead>
                                             <tr>
+                                                <th>Kode Jabatan</th>
                                                 <th>jabatan</th>
                                                 <th>Keterangan</th>
                                                 <th class="text-center">Aksi</th>
@@ -57,7 +58,8 @@
                             <div class="modal-body">
                             <form  method="post" action="">
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                                <div class="form-group"><label  class=" form-control-label">Nama jabatan</label><input type="text" id="jabatan" name="jabatan" placeholder="Uji ..." class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Kode jabatan</label><input type="text" id="kode_jabatan" name="kode_jabatan" placeholder="Kode Jabatan" class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Nama jabatan</label><input type="text" id="jabatan" name="jabatan" placeholder=" Jabatan " class="form-control"></div>
                                 <div class="form-group"><label  class=" form-control-label">Keterangan</label> <textarea id="keterangan" name="keterangan" placeholder="" class="form-control"></textarea></div>
                             <div class="modal-footer">
                                 <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
@@ -77,7 +79,7 @@
             let csrf_token=$('meta[name="csrf_token"]').attr('content');
             Swal.fire({
                         title: 'apa anda yakin?',
-                        text: " Menghapus Kecamatan data " + jabatan,
+                        text: " Menghapus Kecamatan jabatan " + jabatan,
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
@@ -114,6 +116,7 @@
             //event btn tambah klik
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
+                $('#kode_jabatan').val('');
                 $('#jabatan').val('');
                 $('#keterangan').val('');  
                 $('#btn-form').text('Simpan Data');
@@ -129,6 +132,7 @@
                     success : function(returnData) {
                         $('.modal-title').text('Edit Data');
                         $('#id').val(returnData.data.uuid);
+                        $('#kode_jabatan').val(returnData.data.kode_jabatan);
                         $('#jabatan').val(returnData.data.jabatan);
                         $('#keterangan').val(returnData.data.keterangan);  
                         $('#btn-form').text('Ubah Data');
@@ -153,13 +157,14 @@
                         "processData": true
                     },
                     columns: [
+                        {"data": "kode_jabatan" },
                         {"data": "jabatan"},
                         {"data": "keterangan"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let jabatan = row.jabatan;
                             return type === 'display'  ?
-                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + jabatan + '\')" class="btn btn-sm btn-outline-danger" > <i class="mdi mdi-trash"></i></button>':
+                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + jabatan + '\')" class="btn btn-sm btn-danger" > <i class="mdi mdi-popcorn"></i></button>':
                         data;
                         }}
                     ]
