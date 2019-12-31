@@ -165,7 +165,8 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data jenis Kendaraan.pdf');
     }
-
+ 
+    
     public function pegawaiCetak(){
         $pegawai=pegawai::all();
         $tgl= Carbon::now()->format('d-m-Y');
