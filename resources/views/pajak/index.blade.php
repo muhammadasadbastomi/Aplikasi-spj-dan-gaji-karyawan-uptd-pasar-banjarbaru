@@ -26,7 +26,7 @@
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="datatable" class="table table-striped table-bordered">
+                                    <table id="datatable" class="text-center table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Pajak</th>
@@ -120,7 +120,7 @@
             })
 
             //event btn edit klik        
-            edit(uuid){
+            edit = uuid =>{
                 $.ajax({
                     type: "GET",
                     url: "{{ url('/api/pajak')}}" + '/' + uuid,
@@ -158,7 +158,7 @@
                             let uuid = row.uuid;
                             let name = row.name;
                             return type === 'display'  ?
-                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + name + '\')" class="btn btn-sm btn-outline-danger" > <i class="mdi mdi-trash"></i></button>':
+                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + name + '\')" class="btn btn-sm btn-danger" > <i class="mdi mdi-popcorn"></i></button>':
                         data;
                         }}
                     ]

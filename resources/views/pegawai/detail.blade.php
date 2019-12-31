@@ -18,30 +18,78 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="card">
-                            <img src="{{asset('admin/assets/images/background/img4.jpg')}}" height="300" alt="">
+                            
+                            <img src="{{asset('/img/pegawai/'.$pegawai->foto)}}" height="300" alt="">
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="" class="btn btn-block btn-primary"> cetak profil pegawi</a>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-9">
                     <div class="card">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Tab1</span></a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Tab2</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Detail Pegawai</span></a> </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content tabcontent-border">
                                 <div class="tab-pane active" id="home" role="tabpanel">
                                     <div class="p-20">
-                                        <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment..</p>
-                                        <img src="../../assets/images/background/img4.jpg" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="tab-pane  p-20" id="profile" role="tabpanel">
-                                    <div class="p-20">
-                                        <img src="../../assets/images/background/img4.jpg" class="img-fluid">
-                                        <p class="m-t-10">And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment..</p>
+                                    <label for="">Biodata</label>
+                                        <div class="row">
+                                        <div class="col-xl-6">
+                                            <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                <th>Nama</th>
+                                                <td>: {{$pegawai->nama}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>NIP</th>
+                                                <td>: {{$pegawai->NIP}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>Tempat - tanggal Lahir</th>
+                                                <td>: {{$pegawai->tempat_lahir}} - {{$pegawai->tanggal_lahir}} </td>
+                                                </tr>                            
+                                                <tr>
+                                                <th>Alamat</th>
+                                                <td>: {{$pegawai->alamat}}</td>
+                                                </tr>
+                                                </tr>                            
+                                                <tr>
+                                                <th>Jenis kelamin</th>
+                                                <td>: {{$pegawai->jk}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>Agama</th>
+                                                <td>: {{$pegawai->agama}}</td>
+                                                </tr>                            <tr>
+                                                <th>golongan Darah</th>
+                                                <td>: {{$pegawai->golongan_darah}}</td>
+                                                </tr>
+                                                <tr>
+                                                <tr>
+                                                <th>Status Kepegawaian</th>
+                                                <td>: {{$pegawai->status_pegawai}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>golongan</th>
+                                                <td>: {{$pegawai->golongan->golongan}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>jabatan</th>
+                                                <td>: {{$pegawai->jabatan->jabatan}}</td>
+                                                </tr>                             
+                                                <tr>
+                                                <th>Status Pernikahan</th>
+                                                <td>: {{$pegawai->status_kawin}}</td>
+                                                </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

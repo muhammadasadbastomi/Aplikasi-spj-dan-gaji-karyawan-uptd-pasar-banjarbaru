@@ -8,6 +8,7 @@ use App\Jenis_kendaraan;
 use App\Pegawai;
 use Carbon\Carbon;
 use PDF;
+use HCrypt;
 
 use Illuminate\Http\Request;
 
@@ -39,9 +40,10 @@ class adminController extends Controller
         return view('pegawai.index');
     }
     //halaman Detail karyawan
-    public function pegawaiDetail(){
-
-        return view('pegawai.detail');
+    public function pegawaiDetail($uuid){
+        $id = HCrypt::decrypt($uuid);
+        $pegawai = pegawai::findOrFail($id);
+        return view('pegawai.detail', compact('pegawai'));
     }
 
     //Halaman Data Pegawai

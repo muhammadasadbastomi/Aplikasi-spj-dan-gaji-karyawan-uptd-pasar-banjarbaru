@@ -93,7 +93,7 @@ Route::get('/jabatan/cetak', 'adminController@jabatanCetak')
 //route pegawai
 Route::get('/pegawai', 'adminController@pegawaiIndex')
        ->name('pegawaiIndex');
-Route::get('/pegawai/detail', 'adminController@pegawaiDetail')
+Route::get('/pegawai/detail/{uuid}', 'adminController@pegawaiDetail')
        ->name('pegawaiDetail');
 Route::get('/pegawai/Cetak', 'adminController@pegawaiCetak')
        ->name('pegawaiCetak');

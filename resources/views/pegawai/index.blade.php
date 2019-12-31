@@ -287,7 +287,7 @@
                         let uuid = row.uuid;
                         let nama = row.nama;
                         return type === 'display'  ?
-                        ' <a href="/pegawai/detail/ '+uuid+'" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i><a> <button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="fas fa-edit"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="fas fa-trash"></i></button>':
+                        ' <a href="/pegawai/detail/ '+uuid+'" class="btn btn-sm btn-info"><i class="fas fa-eye"></i><a> <button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="fas fa-edit"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-danger" > <i class="fas fa-trash"></i></button>':
                     data;
                     }}
                 ]
