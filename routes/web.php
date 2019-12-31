@@ -72,6 +72,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::put('{uuid}', 'KendaraanController@update')->name('update');
               Route::delete('{uuid}', 'KendaraanController@delete')->name('delete');
        });
+
+       Route::prefix('item')->name('item.')->group(function(){
+              Route::get('', 'ItemController@get')->name('get');
+              Route::get('{uuid}', 'ItemController@find')->name('find');
+              Route::post('', 'ItemController@create')->name('create');
+              Route::put('{uuid}', 'ItemController@update')->name('update');
+              Route::delete('{uuid}', 'ItemController@delete')->name('delete');
+       });
 });
 
 Route::get('/', function () {
