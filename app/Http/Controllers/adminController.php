@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Pajak;
 use App\golongan;
+use App\Jabatan;
+use App\Jenis_kendaraan;
 use Carbon\Carbon;
 use PDF;
 
@@ -58,11 +60,6 @@ class adminController extends Controller
     
         return view('standardHarga.edit');
     }
-    //Halaman Data standard harga
-    public function keperluanIndex(){
-
-        return view('keperluan.index');
-    }
         
     //Halaman Data Keperluan
     public function keperluanEdit(){
@@ -87,11 +84,13 @@ class adminController extends Controller
     
         return view('kendaraan.index');
     }
+
     //Halaman Data kendaraan
-    public function kendaraanEdit(){
-    
-        return view('kendaraan.edit');
+    public function jenisKendaraanIndex(){
+
+        return view('jenisKendaraan.index');
     }
+
     //Halaman Data kendaraan
     public function pencairanIndex(){
     
@@ -148,6 +147,22 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataGolongan', ['golongan'=>$golongan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data golongan.pdf');
+    }
+
+    public function jabatanCetak(){
+        $jabatan=jabatan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataJabatan', ['jabatan'=>$jabatan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data jabatan.pdf');
+    }
+
+    public function jenisKendaraanCetak(){
+        $jenis_kendaraan=jenis_kendaraan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.datajenisKendaraan', ['jenis_kendaraan'=>$jenis_kendaraan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data jenis Kendaraan.pdf');
     }
 
 
