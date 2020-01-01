@@ -22,6 +22,7 @@
                                 <h5 class="card-title">Tabel Data Standard Harga</h5>
                                 <div class="text-right">
                                 <a href="{{route('itemCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <a href="{{route('itemFilter')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Filter</a>
                                 <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>

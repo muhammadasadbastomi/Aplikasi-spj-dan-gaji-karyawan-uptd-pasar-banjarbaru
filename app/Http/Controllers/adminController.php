@@ -60,9 +60,9 @@ class adminController extends Controller
     }
         
     //Halaman Data standard harga
-    public function standardHargaEdit(){
+    public function itemFilter(){
     
-        return view('standardHarga.edit');
+        return view('standardHarga.filter');
     }
         
     //Halaman Data Keperluan
@@ -184,5 +184,13 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataItem', ['item'=>$item,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data item.pdf');
+    }
+
+    public function itemFilterCetak(Request $req){
+        $item=Item::where('keperluan', $req->keperluan)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataFilterItem', ['item'=>$item,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data item Filter.pdf');
     }
 }

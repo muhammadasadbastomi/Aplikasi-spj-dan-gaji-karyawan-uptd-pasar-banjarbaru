@@ -132,6 +132,10 @@ Route::get('/standardHarga', 'adminController@standardHargaIndex')
        ->name('standardHargaIndex');
 Route::get('/item/Cetak', 'adminController@itemCetak')
        ->name('itemCetak');
+Route::get('/item/Filter', 'adminController@itemFilter')
+       ->name('itemFilter');
+Route::post('/item/Filter', 'adminController@itemFilterCetak')
+       ->name('itemFilterCetak');
 //akhir standard harga
 
 //pencairan
