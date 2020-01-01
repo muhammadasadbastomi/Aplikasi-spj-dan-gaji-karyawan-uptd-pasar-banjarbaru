@@ -130,8 +130,8 @@ Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
 //route standard harga
 Route::get('/standardHarga', 'adminController@standardHargaIndex')
        ->name('standardHargaIndex');
-Route::get('/standardHarga/edit', 'adminController@standardHargaEdit')
-       ->name('standardHargaEdit');
+Route::get('/item/Cetak', 'adminController@itemCetak')
+       ->name('itemCetak');
 //akhir standard harga
 
 //pencairan

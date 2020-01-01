@@ -6,6 +6,7 @@ use App\golongan;
 use App\Jabatan;
 use App\Jenis_kendaraan;
 use App\Pegawai;
+use App\Item;
 use Carbon\Carbon;
 use PDF;
 use HCrypt;
@@ -175,5 +176,13 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataPegawai', ['pegawai'=>$pegawai,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Pegawai.pdf');
+    }
+
+    public function itemCetak(){
+        $item=Item::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataItem', ['item'=>$item,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data item.pdf');
     }
 }
