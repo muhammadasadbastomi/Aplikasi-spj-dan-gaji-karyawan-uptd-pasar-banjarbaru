@@ -22,7 +22,7 @@
                                 <h5 class="card-title">Tabel Data Pegawai</h5>
                                 <div class="text-right">
                                 <a href="{{route('pegawaiCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
                                 <div class="table-responsive">

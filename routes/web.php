@@ -123,8 +123,8 @@ Route::get('/jenisKendaraan/Cetak', 'adminController@jenisKendaraanCetak')
 //route kendaraan
 Route::get('/kendaraan', 'adminController@kendaraanIndex')
        ->name('kendaraanIndex');
-Route::get('/kendaraan/edit', 'adminController@kendaraanEdit')
-       ->name('kendaraanEdit');
+Route::get('/kendaraan/Cetak', 'adminController@kendaraanCetak')
+       ->name('kendaraanCetak');
 //akhir route kendaraan
 
 //route standard harga

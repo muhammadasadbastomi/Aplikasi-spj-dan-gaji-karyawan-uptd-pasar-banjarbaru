@@ -21,43 +21,31 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data Kendaraan</h5>
                                 <div class="text-right">
-                                <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="{{Route('kendaraanCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <a href="" class="btn btn-outline-danger" data-toggle="modal" id="tambah"><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Nopol</th>
                                                 <th>Merk</th>
-                                                <th class="text-center">Jenis</th>
-                                                <th class="text-center">pemegang</th>
+                                                <th>Warna</th>
+                                                <th>Jenis Kendaraan</th>
+                                                <th>Pemegang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>DA.2315 PAR</td>
-                                                <td>Toyota</td>
-                                                <td class="text-center"><span class="badge badge-success">Roda 4</span></td>
-                                                <td>Tri Angga T. Utama</td>
-                                                <td class="text-center">
-                                                    <a href="#" class="btn btn-primary"><i class="mdi mdi-printer"></i> SK</a>
-                                                    <a href="{{Route('kendaraanEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> </a>
-                                                    <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i></a>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Nopol</th>
                                                 <th>Merk</th>
-                                                <th class="text-center">Jenis</th>
-                                                <th class="text-center">pemegang</th>
+                                                <th>Warna</th>
+                                                <th>Jenis Kendaraan</th>
+                                                <th>Pemegang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </tfoot>
@@ -85,34 +73,229 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class="form-group m-t-20">
-        <label> Nomor Polisi</label>
-        <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="">
-     </div>
-     <div class="form-group">
-        <label>Merek </label>
-        <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="">
-     </div>
-     <div class="form-group">
-        <label>Jenis </label>
-        <select name="" id="" class="form-control">
-            <option value="">Roda 2</option>
-            <option value="">roda 4</option>
-        </select>
-     </div>
-     <div class="form-group">
-        <label>Pemegang Aset </label>
-        <select name="" id="" class="form-control">
-            <option value="">Tri Angga t. Utama</option>
-            <option value="">Tomy</option>
-        </select>
-     </div>
+      <form action="" method="post">
+        <input type="hidden" id="id" name="id">
+        <div class="form-group m-t-20">
+            <label> Nomor Polisi</label>
+            <input type="text" class="form-control date-inputmask" id="nopol" name="nopol" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Merek </label>
+            <input type="text" class="form-control phone-inputmask" id="merk" name="merk" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Warna </label>
+            <input type="text" class="form-control phone-inputmask" id="warna" name="warna" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Jenis </label>
+            <select name="jenis_kendaraan_id" id="jenis_kendaraan_id" class="form-control">
+                <option value="">-- Pilih Jenis --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Pemegang Aset </label>
+            <select name="pegawai_id" id="pegawai_id" class="form-control">
+                <option value="">-- pilih pegawai --</option>
+            </select>
+        </div>
     </div>
       <div class="modal-footer">
         <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
-        <button type="button" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
+        <button type="submit" name="submit" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+@endsection
+@section('script')
+<script>
+    getPegawai = () => {
+        $.ajax({
+                type: "GET",
+                url: "{{ url('/api/pegawai')}}",
+                beforeSend: false,
+                success : function(returnData) {
+                    $.each(returnData.data, function (index, value) {
+                    $('#pegawai_id').append(
+                        '<option value="'+value.uuid+'">'+value.nama+'</option>'
+                    )
+                })
+            }
+        })
+    }
+    getJenis = () => {
+        $.ajax({
+                type: "GET",
+                url: "{{ url('/api/jenis-kendaraan')}}",
+                beforeSend: false,
+                success : function(returnData) {
+                    $.each(returnData.data, function (index, value) {
+                    $('#jenis_kendaraan_id').append(
+                        '<option value="'+value.uuid+'">'+value.jenis+'</option>'
+                    )
+                })
+            }
+        })
+    }
+    getPegawai();
+    getJenis();
+    //fungsi hapus
+
+    hapus = (uuid, nama)=>{
+        let csrf_token=$('meta[name="csrf_token"]').attr('content');
+        Swal.fire({
+                    title: 'apa anda yakin?',
+                    text: " Menghapus  Data diklat " + nama,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'hapus data',
+                    cancelButtonText: 'batal',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "{{ url('/api/kendaraan')}}" + '/' + uuid,
+                            type : "POST",
+                            data : {'_method' : 'DELETE', '_token' :csrf_token},
+                            success: function (response) {
+                                Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Data Berhasil Dihapus',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        $('#datatable').DataTable().ajax.reload(null, false);
+                    },
+                })
+                } else if (result.dismiss === swal.DismissReason.cancel) {
+                    Swal.fire(
+                    'Dibatalkan',
+                    'data batal dihapus',
+                    'error'
+                    )
+                }
+            })
+        }
+        
+        //event btn klikx   
+        $('#tambah').click(function(){
+            $('.modal-title').text('Tambah Data');
+            $('#pegawai_id').val('');
+            $('#jenis_kendaraan_id').val('');
+            $('#nopol').val('');
+            $('#merk').val('');
+            $('#warna').val('');                                    
+            $('#btn-form').text('Simpan Data');
+            $('#tambahData').modal('show');
+        })
+        //event btn edit klik
+        edit = uuid =>{
+            $.ajax({
+                type: "GET",
+                url: "{{ url('/api/kendaraan')}}" + '/' + uuid,
+                beforeSend: false,
+                success : function(returnData) {
+                    $('.modal-title').text('Edit Data');
+                    $('#id').val(returnData.data.uuid);
+                    $('#pegawai_id').val(returnData.data.pegawai.uuid);
+                    $('#jenis_kendaraan_id').val(returnData.data.jenis_kendaraan.uuid);
+                    $('#nopol').val(returnData.data.nopol);
+                    $('#merk').val(returnData.data.merk);
+                    $('#warna').val(returnData.data.warna);  
+                    $('#btn-form').text('Ubah Data');
+                    $('#tambahData').modal('show'); 
+                }
+            })
+        }
+        //fungsi render datatable        
+        $(document).ready(function() {
+            $('#datatable').DataTable( {
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                searching : true,
+                paging    : true,
+                ajax: {
+                    "type"          : "GET",
+                    "url"           : "{{route('API.kendaraan.get')}}",
+                    "dataSrc"       : "data",
+                    "contentType"   : "false",
+                    "enctype"       : 'multipart/form-data',
+                    "dataType"      : "json",
+                    "processData"   : true
+                },
+                columns: [
+                    {"data": "nopol"},
+                    {"data": "merk"},
+                    {"data": "warna"},
+                    {"data": "pegawai.nama"},
+                    {"data": "jenis_kendaraan.jenis"},
+                    {data: null , render : function ( data, type, row, meta ) {
+                        let uuid = row.uuid;
+                        let nama = row.nopol;
+                        return type === 'display'  ?
+                        ' <button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="fas fa-edit"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-danger" > <i class="fas fa-trash"></i></button>':
+                    data;
+                    }}
+                ]
+            });
+            //event form submit        
+            $("form").submit(function (e) {
+                e.preventDefault()
+                let form = $('#modal-body form');
+                if($('.modal-title').text() == 'Edit Data'){
+                    let url = '{{route("API.kendaraan.update", '')}}'
+                    let id = $('#id').val();
+                    $.ajax({
+                            url: url+'/'+id,
+                            type: "put",
+                            data: $(this).serialize(),
+                        success: function (response) {
+                            form.trigger('reset');
+                            $('#tambahData').modal('hide');
+                            $('#datatable').DataTable().ajax.reload();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Data Berhasil Tersimpan',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        },
+                        error:function(response){
+                            console.log(response);
+                        }
+                    })
+                }else{
+                    $.ajax({
+                        url: "{{Route('API.kendaraan.create')}}",
+                        type: "post",
+                        data: new FormData(this),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (response) {
+                            form.trigger('reset');
+                            $('#tambahData').modal('hide');
+                            $('#datatable').DataTable().ajax.reload();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Data Berhasil Disimpan',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        },
+                        error:function(response){
+                            console.log(response);
+                        }
+                    })
+                }
+            } );
+            } );
+    </script>
 @endsection

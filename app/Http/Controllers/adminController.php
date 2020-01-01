@@ -7,6 +7,7 @@ use App\Jabatan;
 use App\Jenis_kendaraan;
 use App\Pegawai;
 use App\Item;
+use App\Kendaraan;
 use Carbon\Carbon;
 use PDF;
 use HCrypt;
@@ -192,5 +193,13 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataFilterItem', ['item'=>$item,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data item Filter.pdf');
+    }
+
+    public function kendaraanCetak(){
+        $kendaraan=kendaraan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataKendaraan', ['kendaraan'=>$kendaraan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data kendaraan.pdf');
     }
 }

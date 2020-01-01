@@ -27,12 +27,12 @@
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="datatable" class="table table-striped table-bordered">
+                                    <table id="datatable" class="text-center table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
                                                 <th>Satuan</th>
-                                                <th>Harga satuan</th>
+                                                <th>Harga satuan (Rp.)</th>
                                                 <th>Keperluan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -44,7 +44,7 @@
                                             <tr>
                                                 <th>Nama</th>
                                                 <th>Satuan</th>
-                                                <th>Harga satuan</th>
+                                                <th>Harga satuan (Rp.)</th>
                                                 <th>Keperluan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
