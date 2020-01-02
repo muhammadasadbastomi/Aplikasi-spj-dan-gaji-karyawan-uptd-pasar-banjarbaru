@@ -20,11 +20,12 @@
             <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Input Data Pencairan</h5>
+                                <p></p>
                                 <br>
                                 <form  method="post" action="">
                                     <div class="form-group m-t-20">
-                                        <label> Bulan Pencairan</label>
-                                        <input type="Date" class="form-control date-inputmask" id="date-mask" placeholder="Masukan NIP/NRTK">
+                                        <label> Bulan Pencairan </label>
+                                        <input type="Date" class="form-control " id="date" value="{{$tgl}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Keperluan </label>

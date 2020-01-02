@@ -102,8 +102,8 @@ class adminController extends Controller
         return view('pencairan.index');
     }
     public function pencairanAdd(){
-    
-        return view('pencairan.add');
+        $tgl= Carbon::now()->format('d-m-Y');
+        return view('pencairan.add',compact('tgl'));
     }
 
     public function pencairanStore(Request $request){
@@ -111,7 +111,9 @@ class adminController extends Controller
 
         if($keperluan == "Belanja Alat Tulis kantor"){
             $no_rek = '1551.201.01.04';
-            return view('pencairan.inputKeterangan',compact('keperluan','no_rek'));
+            $tgl= Carbon::now()->format('M');
+            $item = item::where('keperluan','Belanja Alat Tulis kantor')->get();
+            return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl'));
         }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
             $no_rek = '1551.201.01.05';
             return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek'));
