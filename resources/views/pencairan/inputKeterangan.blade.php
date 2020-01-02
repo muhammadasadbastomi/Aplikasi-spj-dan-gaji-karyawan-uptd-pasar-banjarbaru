@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Item </label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="item_id" id="item_id" class="form-control">
                                             <option value="">-- Pilih Item --</option>
                                             @foreach($item as $p)
                                             <option value="{{$p->uuid}}">{{$p->nama}}</option>

@@ -116,7 +116,9 @@ class adminController extends Controller
             return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl'));
         }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
             $no_rek = '1551.201.01.05';
-            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek'));
+            $tgl= Carbon::now()->format('M');
+            $item = item::where('keperluan','Belanja Peralatan dan Perlengkapan komputer')->get();
+            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek','item','tgl'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
             $no_rek = '1551.201.01.06';
             return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek'));

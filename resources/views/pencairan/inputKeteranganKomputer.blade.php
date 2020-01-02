@@ -32,15 +32,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Item </label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Data ngambil dari Standard Harga</option>
-                                            <option value="">Mouse</option>
-                                            <option value="">flashdisk</option>
+                                        <select name="item_id" id="item_id" class="form-control">
+                                            <option value="">-- Pilih Item --</option>
+                                            @foreach($item as $p)
+                                            <option value="{{$p->uuid}}">{{$p->nama}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label> Jumlah</label>
-                                        <input type="number" class="form-control date-inputmask" id="date-mask" >
+                                        <input type="number" class="form-control date-inputmask" id="volume" name="volume" placeholder="Jumlah Item">
                                     </div>
                                 </form>
                                 <div class="text-right">
@@ -68,7 +69,7 @@
                                                 <td class="text-center">4</td>
                                                 <td class="text-center">Rp.12.000</td>
                                                 <td class="text-center">
-                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
+                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
                                             </tr>
@@ -80,7 +81,7 @@
                                                 <td class="text-center">2</td>
                                                 <td class="text-center">Rp.12.000</td>
                                                 <td class="text-center">
-                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
+                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
                                             </tr>
