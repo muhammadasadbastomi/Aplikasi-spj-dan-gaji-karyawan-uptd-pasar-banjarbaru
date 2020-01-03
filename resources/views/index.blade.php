@@ -22,40 +22,50 @@
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">pegawai</h6>
+                                <a href="{{Route('pegawaiIndex')}}">
+                                    <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
+                                    <h6 class="text-white">pegawai</h6>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-lead-pencil"></i></h1>
-                                <h6 class="text-white">Pencairan</h6>
+                                <a href="{{Route('pencairanIndex')}}">
+                                    <h1 class="font-light text-white"><i class="mdi mdi-lead-pencil"></i></h1>
+                                    <h6 class="text-white">Pencairan</h6>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-lightbulb-on-outline"></i></h1>
-                                <h6 class="text-white">Keperluan</h6>
+                                <a href="">
+                                    <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
+                                    <h6 class="text-white">Admin</h6>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-tag-outline"></i></h1>
-                                <h6 class="text-white">Satuan Harga</h6>
+                                <a href="{{Route('standardHargaIndex')}}">
+                                    <h1 class="font-light text-white"><i class="mdi mdi-tag-outline"></i></h1>
+                                    <h6 class="text-white">Satuan Harga</h6>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-info text-center">
+                            <a href="{{Route('kendaraanIndex')}}">
                                 <h1 class="font-light text-white"><i class="mdi mdi-car"></i></h1>
                                 <h6 class="text-white">Aset Kendaraan</h6>
+                            </a>
                             </div>
                         </div>
                     </div>

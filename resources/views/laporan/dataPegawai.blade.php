@@ -37,7 +37,7 @@
             padding: 0px;
         }
         .pemko {
-            width: 100px;
+            width: 75px;
         }
         .logo {
             float: left;
@@ -72,7 +72,7 @@
 <body>
     <div class="header">
         <div class="logo">
-            <img class="pemko" src="img/logo-balitra.png">
+            <img class="pemko" src="img/logo.png">
         </div>
         <div class="headtext">
             <h2 style="margin:0px;">PEMERINTAH KOTA BANJARBARU</h2>

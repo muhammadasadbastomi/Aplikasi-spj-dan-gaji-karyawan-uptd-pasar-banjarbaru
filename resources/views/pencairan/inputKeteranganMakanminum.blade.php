@@ -37,7 +37,7 @@
                                          <input type="hidden" class="form-control" name="keperluan" id="keperluan" value="{{$pegawai->count()}}">
                                     </div>
                                     <div class="card-footer text-right">
-                                        <a href="{{Route('inputKeterangan')}}" class="btn btn-success">Selesai, buat pencairan</a>
+                                        <button  class="btn btn-success">Selesai, buat pencairan</a>
                                     </form>                               
                                     </div>
                             </div>

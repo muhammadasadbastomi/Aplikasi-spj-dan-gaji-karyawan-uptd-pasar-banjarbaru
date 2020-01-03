@@ -30,7 +30,7 @@
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                     <a class="navbar-brand" href="{{Route('beranda')}}">
                         <b class="logo-icon p-l-10">
-                            <img src="{{asset('admin/assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                            <img src="{{asset('img/logo.png')}}"  width="30" style="margin-top:0px;" alt="homepage" class="light-logo" />
                         </b>
                         <span class="logo-text">
                              UPT Pasar
