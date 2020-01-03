@@ -124,10 +124,12 @@ class adminController extends Controller
             return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $no_rek = '1551.201.01.08';
-            return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek'));
+            $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
+            return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek','pegawai'));
         }elseif($keperluan == "Belanja Makan Minum Harian"){
             $no_rek = '1551.201.01.09';
-            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek'));
+            $pegawai = Pegawai::all();
+            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek','pegawai'));
         }
 
     }

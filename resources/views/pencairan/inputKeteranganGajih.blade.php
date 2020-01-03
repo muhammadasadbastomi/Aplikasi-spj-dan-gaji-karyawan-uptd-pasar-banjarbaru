@@ -25,6 +25,7 @@
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label> input {{$keperluan}} - {{$no_rek}}</label>
+                                        <input type="hidden" name="keperluan" id="keperluan" value="{{$keperluan}}">
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Pencairan Bulan :</label>
@@ -32,11 +33,12 @@
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label> Jumlah Karyawan Kontrak</label>
-                                         : <label for="" class="badge badge-success"> 30 Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
+                                         : <label for="" class="badge badge-success"> {{$pegawai->count()}} Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
+                                         <input type="hidden" name="keperluan" id="keperluan" value="{{$pegawai->count()}}">
                                     </div>
-                                </form>                               
                                     <div class="card-footer text-right">
-                                    <a href="{{Route('inputKeterangan')}}" class="btn btn-success">Selesai, buat pencairan</a>
+                                    <button type="submit" class="btn btn-success">Selesai, buat pencairan</button>
+                                    </form>                               
                                     </div>
                             </div>
                             </div>
