@@ -133,18 +133,19 @@ class adminController extends Controller
             $no_rek = '1551.201.01.05';
             $tgl= Carbon::now()->format('M');
             $item = item::where('keperluan','Belanja Peralatan dan Perlengkapan komputer')->get();
-            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek','item','tgl'));
+            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
+            $kendaraan = Kendaraan::all();
             $no_rek = '1551.201.01.06';
-            return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek'));
+            return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $no_rek = '1551.201.01.08';
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
-            return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek','pegawai'));
+            return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek','pegawai','pencairan_id'));
         }elseif($keperluan == "Belanja Makan Minum Harian"){
             $no_rek = '1551.201.01.09';
             $pegawai = Pegawai::all();
-            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek','pegawai'));
+            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek','pegawai','pencairan_id'));
         }
 
     }

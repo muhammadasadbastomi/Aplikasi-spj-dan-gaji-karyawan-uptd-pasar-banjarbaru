@@ -67,7 +67,7 @@
                                                 <td class="text-center">5</td>
                                                 <td class="text-center">Rp.100.000</td>
                                                 <td class="text-center">
-                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
+                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
                                             </tr>
@@ -79,7 +79,7 @@
                                                 <td class="text-center">6</td>
                                                 <td class="text-center">Rp.120.000</td>
                                                 <td class="text-center">
-                                                <a href="{{Route('pegawaiEdit')}}" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
+                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
                                                 <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
                                                 </td>
                                             </tr>

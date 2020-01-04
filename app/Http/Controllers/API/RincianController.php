@@ -63,6 +63,7 @@ class RincianController extends APIController
             return $this->returnController("error", "failed create data rincian");
         }
         Redis::del("rincian:all");
+        Redis::set("rincian:all",$rincian);
         return $this->returnController("ok", $rincian);
     }
 

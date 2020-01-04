@@ -52,6 +52,7 @@ class PajakController extends APIController
             return $this->returnController("error", "failed create data pajak");
         }
         Redis::del("pajak:all");
+        Redis::set("pajak:all",$pajak);
         return $this->returnController("ok", $pajak);
     }
 
