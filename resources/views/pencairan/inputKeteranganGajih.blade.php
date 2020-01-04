@@ -26,15 +26,17 @@
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label> input {{$keperluan}} - {{$no_rek}}</label>
                                         <input type="hidden" name="keperluan" id="keperluan" value="{{$keperluan}}">
+                                        <input type="hidden" name="item_id" id="item_id" value="{{$item_id}}">
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Pencairan Bulan :</label>
                                         <label> Agustus</label>
                                     </div>
+                        
                                     <div class="form-group m-t-20">
                                         <label> Jumlah Karyawan Kontrak</label>
                                          : <label for="" class="badge badge-success"> {{$pegawai->count()}} Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
-                                         <input type="hidden" name="keperluan" id="keperluan" value="{{$pegawai->count()}}">
+                                         <input type="hidden" name="volume" id="volume" value="{{$pegawai->count()}}">
                                     </div>
                                     <div class="card-footer text-right">
                                     <button type="submit" class="btn btn-success">Selesai, buat pencairan</button>

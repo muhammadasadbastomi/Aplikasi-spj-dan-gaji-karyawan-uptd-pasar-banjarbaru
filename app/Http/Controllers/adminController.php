@@ -139,6 +139,7 @@ class adminController extends Controller
             $no_rek = '1551.201.01.06';
             return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
+            $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak')->get();
             $no_rek = '1551.201.01.08';
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
             return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek','pegawai','pencairan_id'));

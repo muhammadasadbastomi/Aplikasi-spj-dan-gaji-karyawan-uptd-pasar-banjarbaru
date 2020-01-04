@@ -20,7 +20,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Input Data Pencairan</h5>
                                 <br>
-                                <form action="" method="post">
+                                <form id="form1" action="" method="post">
                                     <input type="hidden" name="pencairan_id" id="pencairan_id" value="{{$pencairan_id}}">
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
@@ -75,7 +75,10 @@
                                         </tfoot>
                                     </table>
                                     <div class="card-footer text-right">
-                                    <a href="{{Route('inputKeterangan')}}" class="btn btn-success">Selesai, buat pencairan</a>
+                                    <form  id="form2" action="post">
+                                        <input type="hidden" name="id_pencairan" value="{{$pencairan_id}}">
+                                        <button type="submit" name="submit" class="btn btn-success">Selesai, buat pencairan</button>
+                                    </form>
                                     </div>
                             </div>
                             </div>
@@ -89,6 +92,7 @@
     <script>
              //fungsi render datatable            
              $(document).ready(function() {
+                let id = $('#pencairan_id').val();
                 $('#datatable').DataTable( {
                     responsive: true,
                     processing: true,
@@ -96,7 +100,7 @@
                     searching: true,
                     ajax: {
                         "type": "GET",
-                        "url": "{{route('API.rincian.get')}}",
+                        "url": "{{ url('/api/rincian/get')}}" + '/' + id,
                         "dataSrc": "data",
                         "contentType": "application/json; charset=utf-8",
                         "dataType": "json",
@@ -118,8 +122,8 @@
                     ]
                 });
             });
-                                //event form submit            
-                $("form").submit(function (e) {
+            //event form submit            
+                $("#form1").submit(function (e) {
                     e.preventDefault()
                     let form = $('#modal-body form');
                         let url = '{{route("API.rincian.create")}}'
@@ -145,6 +149,33 @@
                             }
                         })
                 } );
-        
+            
+        //event form submit            
+        $("#form2").submit(function (e) {
+                    e.preventDefault()
+                    let form = $('#modal-body form');
+                        let url = '{{route("API.pencairan.create")}}'
+                        let id = $('#id').val();
+                        $.ajax({
+                            url: url,
+                            type: "post",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                form.trigger('reset');
+                                $('#mediumModal').modal('hide');
+                                $('#datatable').DataTable().ajax.reload();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Tersimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                } );
     </script>
 @endsection
