@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pencairan;
-use App\Item;
+use App\Rincian;
 use HCrypt;
 use Illuminate\Support\Facades\Redis;
 
