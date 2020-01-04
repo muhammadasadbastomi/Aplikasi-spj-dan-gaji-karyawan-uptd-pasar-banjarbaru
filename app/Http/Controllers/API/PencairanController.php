@@ -42,7 +42,8 @@ class PencairanController extends APIController
         return $this->returnController("ok", $rincian);
     }
 
-    public function create($id){
+    public function create(Request $req){
+        $id = $req->id_pencairan;
         $total_harga = rincian::where('pencairan_id',$id)->get()->sum('total_harga_item');
         $pencairan = pencairan::findOrFail($id);
 
