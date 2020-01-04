@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Redis;
 
 class RincianController extends APIController
 {
-    public function get($uuid){
-        $id = HCrypt::decrypt($uuid);
+    public function get($id){
         $rincian = json_decode(redis::get("rincian::all"));
         if (!$rincian) {
             $rincian = rincian::with('item')->where('pencairan_id',$id)->get();
