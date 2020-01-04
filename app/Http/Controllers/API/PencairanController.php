@@ -45,9 +45,9 @@ class PencairanController extends APIController
     public function create($uuid){
         $id = HCrypt::decrypt($uuid);
         $total_harga = rincian::where->('pencairan_id',$id)->get()->sum('total_harga_item');
-        $pencarian = pencarian::findOrFail($id);
+        $pencairan = pencairan::findOrFail($id);
 
-        $pencarian->total = $total_harga;
+        $pencairan->total = $total_harga;
         
         $pencairan->update();
 
@@ -55,7 +55,7 @@ class PencairanController extends APIController
             return $this->returnController("error", "failed update data pencairan");
         }
         Redis::del("pencairan:all");
-        Redis::set("pencairan:$id", $pencarian);
+        Redis::set("pencairan:$id", $pencairan);
         return $this->returnController("ok", $rincian);
     }
 
