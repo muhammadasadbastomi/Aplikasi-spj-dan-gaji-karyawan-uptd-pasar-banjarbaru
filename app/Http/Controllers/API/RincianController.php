@@ -45,7 +45,7 @@ class RincianController extends APIController
     public function create(Request $req){
         $item_id = HCrypt::decrypt($req->item_id);
         $item = item::findOrFail($item_id);
-        $total_harga_item = $req->volume * $item->price;
+        $total_harga_item = $req->volume * $item->harga;
 
         $rincian = new rincian;
         $rincian->pencairan_id = $req->pencairan_id;
