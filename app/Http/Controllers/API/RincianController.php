@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Rincian;
+use App\Item;
 use HCrypt;
 use Illuminate\Support\Facades\Redis;
 
@@ -13,7 +14,7 @@ class RincianController extends APIController
     public function get(){
         $rincian = json_decode(redis::get("rincian::all"));
         if (!$rincian) {
-            $rincian = rincian::all();
+            $rincian = rincian::with('item')->get();
             if (!$rincian) {
                 return $this->returnController("error", "failed get rincian data");
             }
@@ -43,14 +44,14 @@ class RincianController extends APIController
 
     public function create(Request $req){
         $item_id = HCrypt::decrypt($req->item_id);
-        $item = findOrFail($item_id);
+        $item = item::findOrFail($item_id);
         $total_harga_item = $req->volume * $item->price;
 
         $rincian = new rincian;
         $rincian->pencairan_id = $req->pencairan_id;
         $rincian->item_id = $item_id;
         $rincian->volume = $req->volume;
-        $rincian->total_harga_iten = $total_harga_iten;
+        $rincian->total_harga_item = $total_harga_item;
         $rincian->save();
 
         $rincian_id= $rincian->id;
