@@ -128,7 +128,7 @@ class adminController extends Controller
             $no_rek = '1551.201.01.04';
             $tgl= Carbon::now()->format('M');
             $item = item::where('keperluan','Belanja Alat Tulis kantor')->get();
-            return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl'));
+            return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
             $no_rek = '1551.201.01.05';
             $tgl= Carbon::now()->format('M');
