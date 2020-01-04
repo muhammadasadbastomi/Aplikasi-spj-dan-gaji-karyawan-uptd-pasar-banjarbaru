@@ -22,6 +22,7 @@
                                 <h5 class="card-title">Input Data Pencairan</h5>
                                 <br>
                                 <form action="" method="post">
+                                    <input type="hidden" name="pencairan_id" id="pencairan_id" value="{{$pencairan_id}}">
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label> input {{$keperluan}} - {{$no_rek}}</label>
