@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Redis;
 class PencairanController extends APIController
 {
     public function get($id){
-        $rincian = json_decode(redis::get("rincian::all"));
-        if (!$rincian) {
-            $rincian = rincian::all();
-            if (!$rincian) {
-                return $this->returnController("error", "failed get rincian data");
+        $pencairan = json_decode(redis::get("pencairan::all"));
+        if (!$pencairan) {
+            $pencairan = pencairan::all();
+            if (!$pencairan) {
+                return $this->returnController("error", "failed get pencairan data");
             }
-            Redis::set("rincian:all", $rincian);            
+            Redis::set("pencairan:all", $pencairan);            
 
         }
-        return $this->returnController("ok", $rincian);
+        return $this->returnController("ok", $pencairan);
     }
 
     public function find($uuid){
@@ -30,16 +30,16 @@ class PencairanController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
 
-        $rincian = Redis::get("rincian:$id");
-        if (!$rincian) {
-            $rincian = rincian::find($id);
-            if (!$rincian){
-                return $this->returnController("error", "failed find data rincian");
+        $pencairan = Redis::get("pencairan:$id");
+        if (!$pencairan) {
+            $pencairan = pencairan::find($id);
+            if (!$pencairan){
+                return $this->returnController("error", "failed find data pencairan");
             }
-            Redis::set("rincian:$id", $rincian);
+            Redis::set("pencairan:$id", $pencairan);
         }
 
-        return $this->returnController("ok", $rincian);
+        return $this->returnController("ok", $pencairan);
     }
 
     public function create(Request $req){
@@ -56,7 +56,7 @@ class PencairanController extends APIController
         }
         Redis::del("pencairan:all");
         Redis::set("pencairan:$id", $pencairan);
-        return $this->returnController("ok", $rincian);
+        return $this->returnController("ok", $pencairan);
     }
 
     
@@ -67,22 +67,22 @@ class PencairanController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
 
-        $rincian = rincian::findOrFail($id);
-        if (!$rincian) {
-            return $this->returnController("error", "failed find data rincian");
+        $pencairan = pencairan::findOrFail($id);
+        if (!$pencairan) {
+            return $this->returnController("error", "failed find data pencairan");
         }
 
-        $rincian->rincian     = $req->rincian;
-        $rincian->keterangan    = $req->keterangan;
-        $rincian->update();
-        if (!$rincian) {
-            return $this->returnController("error", "failed find data rincian");
+        $pencairan->pencairan     = $req->pencairan;
+        $pencairan->keterangan    = $req->keterangan;
+        $pencairan->update();
+        if (!$pencairan) {
+            return $this->returnController("error", "failed find data pencairan");
         }
 
-        Redis::del("rincian:all");
-        Redis::set("rincian:$id", $rincian);
+        Redis::del("pencairan:all");
+        Redis::set("pencairan:$id", $pencairan);
 
-        return $this->returnController("ok", $rincian);
+        return $this->returnController("ok", $pencairan);
     }
 
     public function delete($uuid){
@@ -91,21 +91,21 @@ class PencairanController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
 
-        $rincian = rincian::find($id);
-        if (!$rincian) {
-            return $this->returnController("error", "failed find data rincian");
+        $pencairan = pencairan::find($id);
+        if (!$pencairan) {
+            return $this->returnController("error", "failed find data pencairan");
         }
 
         // Need to check realational
         // If there relation to other data, return error with message, this data has relation to other table(s)
 
-        $delete = $rincian->delete();
+        $delete = $pencairan->delete();
         if (!$delete) {
-            return $this->returnController("error", "failed delete data rincian");
+            return $this->returnController("error", "failed delete data pencairan");
         }
 
-        Redis::del("rincian:all");
-        Redis::del("rincian:$id");
-        return $this->returnController("ok", "success delete data rincian");
+        Redis::del("pencairan:all");
+        Redis::del("pencairan:$id");
+        return $this->returnController("ok", "success delete data pencairan");
     }
 }
