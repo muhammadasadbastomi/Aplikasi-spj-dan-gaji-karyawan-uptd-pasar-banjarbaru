@@ -11,6 +11,7 @@ use App\Kendaraan;
 use Carbon\Carbon;
 use PDF;
 use HCrypt;
+use Auth;
 
 use Illuminate\Http\Request;
 
