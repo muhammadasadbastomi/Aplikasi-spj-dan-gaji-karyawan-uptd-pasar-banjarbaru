@@ -44,7 +44,7 @@ class PencairanController extends APIController
 
     public function create($uuid){
         $id = HCrypt::decrypt($uuid);
-        $total_harga = rincian::where->('pencairan_id',$id)->get()->sum('total_harga_item');
+        $total_harga = rincian::where('pencairan_id',$id)->get()->sum('total_harga_item');
         $pencairan = pencairan::findOrFail($id);
 
         $pencairan->total = $total_harga;
