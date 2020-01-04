@@ -63,6 +63,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::put('{uuid}', 'ItemController@update')->name('update');
               Route::delete('{uuid}', 'ItemController@delete')->name('delete');
        });
+
+       Route::prefix('pencairan')->name('pencairan.')->group(function(){
+              Route::get('', 'PencairanController@get')->name('get');
+              Route::get('{uuid}', 'PencairanController@find')->name('find');
+              Route::post('', 'PencairanController@create')->name('create');
+              Route::put('{uuid}', 'PencairanController@update')->name('update');
+              Route::delete('{uuid}', 'PencairanController@delete')->name('delete');
+       });
 });
 
 Route::get('/', function () {

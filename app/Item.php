@@ -13,4 +13,9 @@ class Item extends Model
     // {
     //     return $this->HasOne('App\Kendaraan');
     // }
+
+    public function rincian()
+    {
+    	return $this->belongsToMany('App\Rincian');
+    }
 }
