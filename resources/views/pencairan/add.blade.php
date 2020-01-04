@@ -23,10 +23,6 @@
                                 <p></p>
                                 <br>
                                 <form  method="post" action="">
-                                    <div class="form-group m-t-20">
-                                        <label> Bulan Pencairan </label>
-                                        <input type="Date" class="form-control " id="date" value="{{$tgl}}">
-                                    </div>
                                     <div class="form-group">
                                         <label>Keperluan </label>
                                         <select name="keperluan" id="keperluan" class="form-control">
