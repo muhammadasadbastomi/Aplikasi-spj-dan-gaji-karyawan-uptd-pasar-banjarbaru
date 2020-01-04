@@ -109,6 +109,18 @@ class adminController extends Controller
     public function pencairanStore(Request $request){
         $keperluan = $request->keperluan;
 
+        $user_id = Auth::id();
+        $pencairan = new pencairan;
+        $pencairan->user_id = $user_id;
+        $pencairan->keperluan = $keperluan;
+        $pencairan->save();
+
+        $pencairan_id= $pencairan->id;
+        $uuid = HCrypt::encrypt($pencairan_id);
+        $setuuid = pencairan::findOrFail($pencairan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+
         if($keperluan == "Belanja Alat Tulis kantor"){
             $no_rek = '1551.201.01.04';
             $tgl= Carbon::now()->format('M');

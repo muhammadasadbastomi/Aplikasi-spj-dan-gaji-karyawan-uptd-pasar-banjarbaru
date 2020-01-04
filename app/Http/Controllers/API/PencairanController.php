@@ -46,7 +46,7 @@ class PencairanController extends APIController
         $pencairan = new pencairan;
         $pencairan->user_id = $user_id;
         $pencairan->save();
-        
+
         $pencairan_id= $pencairan->id;
         $uuid = HCrypt::encrypt($pencairan_id);
         $setuuid = pencairan::findOrFail($pencairan_id);
@@ -58,6 +58,8 @@ class PencairanController extends APIController
         Redis::del("pencairan:all");
         return $this->returnController("ok", $pencairan);
     }
+
+    
 
     public function update($uuid, Request $req){
         $id = HCrypt::decrypt($uuid);

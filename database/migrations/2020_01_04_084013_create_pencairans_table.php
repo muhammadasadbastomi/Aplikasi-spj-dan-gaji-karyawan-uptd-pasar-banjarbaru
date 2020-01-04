@@ -18,6 +18,7 @@ class CreatePencairansTable extends Migration
             $table->unsignedbigInteger('user_id');
             // $table->unsignedbigInteger('pajak_id');
             $table->text('uuid')->nullable();
+            $table->string('keperluan');
             $table->double('total')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
