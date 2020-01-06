@@ -161,16 +161,7 @@
                             type: "post",
                             data: $(this).serialize(),
                             success: function (response) {
-                                form.trigger('reset');
-                                $('#mediumModal').modal('hide');
-                                $('#datatable').DataTable().ajax.reload();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Data Berhasil Tersimpan',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
+                                window.location.replace("/pencairanIndex");
                             },
                             error:function(response){
                                 console.log(response);

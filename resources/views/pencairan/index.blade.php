@@ -26,48 +26,38 @@
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Pencairan Bulan</th>
                                                 <th>Keperluan</th>
+                                                <th>Bulan</th>
                                                 <th>Total (Rp.)</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>12/UPTD/PASAR/2019</td>
-                                                <td>Agustus</td>
-                                                <td>Belanja Alat Tulis Kantor</td>
-                                                <td>2.340.000</td>
-                                                <td class="text-center">
-                                                <a href="{{Route('pegawaiDetail')}}" class="btn btn-primary"><i class="mdi mdi-eye"></i> Detail</a>
-                                                <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
-                                                </td>
-                                            </tr>
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Pencairan Bulan</th>
                                                 <th>Keperluan</th>
+                                                <th>Bulan</th>
                                                 <th>Total (Rp.)</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </tfoot>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-             
-
             </div>
-           
         </div>
+@endsection
+@section('script')
+    <script>
 
+
+    </script>
 @endsection
