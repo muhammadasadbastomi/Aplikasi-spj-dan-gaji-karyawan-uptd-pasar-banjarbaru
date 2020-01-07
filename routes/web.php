@@ -161,6 +161,8 @@ Route::get('/pencairanAdd', 'adminController@pencairanAdd')
        ->name('pencairanAdd');
 Route::post('/pencairanAdd', 'adminController@pencairanStore')
        ->name('pencairanStore');
+Route::get('/pencairan/detail/{uuid}', 'adminController@pencairanDetail')
+       ->name('pencairanDetail');
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
 
