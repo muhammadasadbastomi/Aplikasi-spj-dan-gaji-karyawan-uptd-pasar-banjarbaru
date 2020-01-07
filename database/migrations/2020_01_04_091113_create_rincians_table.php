@@ -21,6 +21,7 @@ class CreateRinciansTable extends Migration
             $table->text('uuid')->nullable();
             $table->double('volume');
             $table->double('total_harga_item')->nullable();
+            $table->date('tanggal_pengisian')->nullable();
             $table->foreign('pencairan_id')->references('id')->on('pencairans')->onDelete('cascade');
             $table->foreign('kendaraan_id')->references('id')->on('kendaraans')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
