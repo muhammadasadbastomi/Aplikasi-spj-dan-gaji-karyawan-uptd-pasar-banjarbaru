@@ -48,6 +48,10 @@ class RincianController extends APIController
         $total_harga_item = $req->volume * $item->harga;
 
         $rincian = new rincian;
+        if ($item->keperluan == "Belanja Oprasional Transport Roda 2" || "Belanja Oprasional Transport Roda 4") 
+        {
+            $rincian->kendaraan_id = $req->kendaraan_id;    
+        }
         $rincian->pencairan_id = $req->pencairan_id;
         $rincian->item_id = $item_id;
         $rincian->volume = $req->volume;
