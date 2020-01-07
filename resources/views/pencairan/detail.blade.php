@@ -54,7 +54,7 @@
                                                 <th>Satuan</th>
                                                 <th>Harga Satuan</th>
                                                 <th>Jumlah</th>
-                                                <th>total</th>
+                                                <th>total</th> 
                                             </tr>
                                         </tfoot>
                                     </table>
