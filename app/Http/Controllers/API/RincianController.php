@@ -51,6 +51,7 @@ class RincianController extends APIController
         if ($item->keperluan == "Belanja Oprasional Transport Roda 2" || "Belanja Oprasional Transport Roda 4") 
         {
             $rincian->kendaraan_id = $req->kendaraan_id;    
+            $rincian->tanggal_pengisian = $req->tanggal_pengisian;  
         }
         $rincian->pencairan_id = $req->pencairan_id;
         $rincian->item_id = $item_id;
