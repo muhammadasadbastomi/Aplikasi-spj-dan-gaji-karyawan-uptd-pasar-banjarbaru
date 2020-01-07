@@ -79,6 +79,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::put('{uuid}', 'RincianController@update')->name('update');
               Route::delete('{uuid}', 'RincianController@delete')->name('delete');
        });
+
+       Route::prefix('pptk')->name('pptk.')->group(function(){
+              Route::get('get/{uuid}', 'PptkController@get')->name('get');
+              Route::get('{uuid}', 'PptkController@find')->name('find');
+              Route::post('', 'PptkController@create')->name('create');
+              Route::put('{uuid}', 'PptkController@update')->name('update');
+              Route::delete('{uuid}', 'PptkController@delete')->name('delete');
+       });
 });
 
 Route::get('/', function () {
