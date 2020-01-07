@@ -165,5 +165,9 @@ Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
 
 //user
+Route::get('/pptkIndex', 'adminController@pptkIndex')
+       ->name('pptkIndex');
+
+//user
 Route::get('/userIndex', 'adminController@userIndex')
        ->name('userIndex');

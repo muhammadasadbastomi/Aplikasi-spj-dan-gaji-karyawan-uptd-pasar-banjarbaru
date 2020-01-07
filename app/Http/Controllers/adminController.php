@@ -133,13 +133,14 @@ class adminController extends Controller
             $no_rek = '1551.201.01.05';
             $tgl= Carbon::now()->format('M');
             $item = item::where('keperluan','Belanja Peralatan dan Perlengkapan komputer')->get();
-            return view('pencairan.inputKeteranganKomputer',compact('keperluan','no_rek','item','tgl','pencairan_id'));
+            return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
             $kendaraan = Kendaraan::all();
             $no_rek = '1551.201.01.06';
             return view('pencairan.inputKeteranganRoda',compact('keperluan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
-            $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak')->get();
+            $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak
+            ')->get();
             $no_rek = '1551.201.01.08';
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
             return view('pencairan.inputKeteranganGajih',compact('keperluan','no_rek','pegawai','pencairan_id'));
@@ -159,6 +160,12 @@ class adminController extends Controller
     public function pencairanEdit(){
     
         return view('pencairan.edit');
+    }
+
+    //Halaman Data kendaraan
+    public function pptkIndex(){
+    
+        return view('pptk.index');
     }
 
     public function pajakCetak(){
