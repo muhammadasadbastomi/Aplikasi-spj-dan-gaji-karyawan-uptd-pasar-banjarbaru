@@ -18,4 +18,16 @@ class Jabatan extends Model
     {
         return $this->HasMany('App\Pegawai');
     }
+
+    public function getCreatedAtAttribute()
+    {
+    return \Carbon\Carbon::parse($this->attributes['created_at'])
+       ->format('d, M Y');
+    }
+
+    public function getUpdatedAtAttribute()
+    {
+    return \Carbon\Carbon::parse($this->attributes['updated_at'])
+       ->diffForHumans();
+    }
 }
