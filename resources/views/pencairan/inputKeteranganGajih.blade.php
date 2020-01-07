@@ -26,13 +26,21 @@
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label> input {{$keperluan}} - {{$no_rek}}</label>
                                         <input type="hidden" name="keperluan" id="keperluan" value="{{$keperluan}}">
-                                        <input type="hidden" name="item_id" id="item_id" value="{{$item_id}}">
+                                        {{-- <input type="hidden" name="item_id" id="item_id" value="{{$item_id}}"> --}}
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Pencairan Bulan :</label>
-                                        <label> Agustus</label>
+                                        <label>{{$tgl}}</label>
                                     </div>
-                        
+                                    <div class="form-group">
+                                        <label>Item </label>
+                                        <select name="item_id" id="item_id" class="form-control">
+                                            <option value="">-- Pilih Item --</option>
+                                            @foreach($item as $p)
+                                            <option value="{{$p->uuid}}">{{$p->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group m-t-20">
                                         <label> Jumlah Karyawan Kontrak</label>
                                          : <label for="" class="badge badge-success"> {{$pegawai->count()}} Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
