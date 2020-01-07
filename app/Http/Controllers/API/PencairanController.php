@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redis;
 
 class PencairanController extends APIController
 {
-    public function get($id){
+    public function get(){
         $pencairan = json_decode(redis::get("pencairan::all"));
         if (!$pencairan) {
             $pencairan = pencairan::all();

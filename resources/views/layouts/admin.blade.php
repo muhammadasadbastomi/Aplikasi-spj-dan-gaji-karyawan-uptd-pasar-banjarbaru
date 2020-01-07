@@ -112,7 +112,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">Manajemen PPTK </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{Route('pencairanIndex')}}" class="sidebar-link"><i class="mdi mdi-account-card-details"></i><span class="hide-menu"> Data PPTK </span></a></li>
+                                <li class="sidebar-item"><a href="{{Route('pptkIndex')}}" class="sidebar-link"><i class="mdi mdi-account-card-details"></i><span class="hide-menu"> Data PPTK </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('userIndex')}}" class="sidebar-link"><i class="mdi mdi-account-card-details"></i><span class="hide-menu"> Data User </span></a></li>
                             </ul>
                         </li>
