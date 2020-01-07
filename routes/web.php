@@ -81,7 +81,7 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
        });
 
        Route::prefix('pptk')->name('pptk.')->group(function(){
-              Route::get('get/{uuid}', 'PptkController@get')->name('get');
+              Route::get('', 'PptkController@get')->name('get');
               Route::get('{uuid}', 'PptkController@find')->name('find');
               Route::post('', 'PptkController@create')->name('create');
               Route::put('{uuid}', 'PptkController@update')->name('update');

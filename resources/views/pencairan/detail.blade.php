@@ -20,6 +20,7 @@
                             <div class="card-body">
                             <br>
                                 <h3 class="card-title text-center">Detail Pencairan</h3>
+                                <hr>
                                 <br>
                                     <input type="hidden" name="pencairan_id" id="pencairan_id" value="{{$pencairan->id}}">
                                     <div class="form-group m-t-20">
@@ -43,10 +44,9 @@
                                                 <th>Satuan</th>
                                                 <th>Harga Satuan</th>
                                                 <th>Jumlah</th>
-                                                <th>total</th>
+                                                <th>total (Rp.) </th>
                                             </tr>
                                         </thead>
-                                      
                                         </tbody>
                                         <tfoot>
                                             <tr>
