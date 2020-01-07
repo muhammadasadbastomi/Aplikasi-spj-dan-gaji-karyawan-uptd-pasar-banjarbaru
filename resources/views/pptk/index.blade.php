@@ -145,7 +145,7 @@
                 }
             })
         }
-        //fungsi render datatable        
+        //fungsi render datatable         
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 responsive: true,
