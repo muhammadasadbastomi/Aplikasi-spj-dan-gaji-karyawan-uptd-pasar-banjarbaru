@@ -108,6 +108,11 @@ class adminController extends Controller
         $tgl= Carbon::now()->format('d-m-Y');
         return view('pencairan.add',compact('tgl'));
     }
+    public function pencairanDetail($uuid){
+        $id = HCrypt::Decrypt($uuid);
+        $pencairan = pencairan::findOrfail($id);
+        return view('pencairan.detail',compact('pencairan'));
+    }
 
     public function pencairanStore(Request $request){
         $keperluan = $request->keperluan;
