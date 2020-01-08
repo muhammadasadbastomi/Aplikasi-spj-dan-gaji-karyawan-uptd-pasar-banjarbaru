@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data PPTK</h5>
                                 <div class="text-right">
-                                <a href="{{Route('pajakCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <a href="{{Route('pptkCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <button href="" class="btn btn-outline-primary pull-right" id="tambah" >+ tambah data</button>
                                 </div>
                                 <br>

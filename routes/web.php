@@ -177,6 +177,8 @@ Route::get('/inputKeterangan', 'adminController@inputKeterangan')
 //user
 Route::get('/pptkIndex', 'adminController@pptkIndex')
        ->name('pptkIndex');
+Route::get('/pptk/cetak', 'adminController@pptkCetak')
+       ->name('pptkCetak');
 
 //user
 Route::get('/userIndex', 'adminController@userIndex')

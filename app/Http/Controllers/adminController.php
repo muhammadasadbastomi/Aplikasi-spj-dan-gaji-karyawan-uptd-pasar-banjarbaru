@@ -11,6 +11,7 @@ use App\Pegawai;
 use App\Jabatan;
 use App\Pajak;
 use App\Item;
+use App\pptk;
 use HCrypt;
 use Auth;
 use PDF;
@@ -255,5 +256,13 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataKendaraan', ['kendaraan'=>$kendaraan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data kendaraan.pdf');
+    }
+
+    public function pptkCetak(){
+        $pptk=pptk::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.dataPptk', ['pptk'=>$pptk,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data pptk.pdf');
     }
 }
