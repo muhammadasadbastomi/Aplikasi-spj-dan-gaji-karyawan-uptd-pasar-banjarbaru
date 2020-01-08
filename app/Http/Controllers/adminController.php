@@ -155,8 +155,7 @@ class adminController extends Controller
             $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
             return view('pencairan.inputKeteranganRoda',compact('item','tgl','keperluan','kendaraan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
-            $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak
-            ')->get();
+            $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak')->get();
             $no_rek = '1551.201.01.08';
             $tgl= Carbon::now()->formatLocalized("%B");
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();

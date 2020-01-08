@@ -22,7 +22,8 @@
                                 <h5 class="card-title">Input Data Pencairan</h5>
                                 <br>
                                 <form action="" method="post">
-                                    <div class="form-group m-t-20">
+                                <input type="hidden" name="pencairan_id" id="pencairan_id" value="{{$pencairan_id}}">
+                                    <div class="form-group m-t-20"> 
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label> input {{$keperluan}} - {{$no_rek}}</label>
                                         <input type="hidden" name="keperluan" id="keperluan" value="{{$keperluan}}">
@@ -35,7 +36,6 @@
                                     <div class="form-group">
                                         <label>Item </label>
                                         <select name="item_id" id="item_id" class="form-control">
-                                            <option value="">-- Pilih Item --</option>
                                             @foreach($item as $p)
                                             <option value="{{$p->uuid}}">{{$p->nama}}</option>
                                             @endforeach
@@ -57,4 +57,26 @@
                 </div>
             </div>
         </div>
+@endsection
+@section('script')
+    <script>
+          //event form submit            
+          $("form").submit(function (e) {
+                    e.preventDefault()
+                    let form = $('#modal-body form');
+                        let url = '{{route("API.pencairan.create")}}'
+                        let id = $('#id').val();
+                        $.ajax({
+                            url: url,
+                            type: "post",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                window.location.replace("/pencairanIndex");
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                } );
+    </script>
 @endsection
