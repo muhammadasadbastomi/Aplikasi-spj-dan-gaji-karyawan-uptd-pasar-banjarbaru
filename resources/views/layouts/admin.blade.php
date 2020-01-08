@@ -13,7 +13,7 @@
     <link href="{{asset('admin/assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <link href="{{asset('admin/dist/css/style.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
-   
+    <link href="{{asset('admin/assets/chosen/chosen.min.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -146,6 +146,7 @@
     <script src="{{asset('admin/assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
     <script src="{{asset('admin/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
     <script src="{{asset('js/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{asset('admin/assets/chosen/chosen.min.js') }}"></script>
 @yield('script')   
 </body>
 

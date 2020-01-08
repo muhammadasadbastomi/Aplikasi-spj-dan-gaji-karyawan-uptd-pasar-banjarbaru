@@ -154,6 +154,12 @@ class adminController extends Controller
             $tgl= Carbon::now()->formatLocalized("%B");
             $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
             return view('pencairan.inputKeteranganRoda',compact('item','tgl','keperluan','kendaraan','no_rek','pencairan_id'));
+        }elseif($keperluan == "Belanja Oprasional Transport Roda 4"){
+            $kendaraan = Kendaraan::all();
+            $no_rek = '1551.201.01.06';
+            $tgl= Carbon::now()->formatLocalized("%B");
+            $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
+            return view('pencairan.inputKeteranganRoda',compact('item','tgl','keperluan','kendaraan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak')->get();
             $no_rek = '1551.201.01.08';

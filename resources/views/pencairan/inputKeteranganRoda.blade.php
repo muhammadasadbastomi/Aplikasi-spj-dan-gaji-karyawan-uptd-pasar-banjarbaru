@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>item </label>
-                                        <select name="item_id" id="item_id" class="form-control">
+                                        <select name="item_id" id="item_id" class="selectpicker" data-live-search="true">
                                             @foreach($item as $p)
                                             <option value="{{$p->uuid}}">{{$p->nama}}</option>
                                             @endforeach

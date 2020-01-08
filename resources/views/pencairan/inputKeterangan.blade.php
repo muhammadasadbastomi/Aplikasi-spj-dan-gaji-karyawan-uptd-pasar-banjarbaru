@@ -33,10 +33,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Item </label>
-                                        <select name="item_id" id="item_id" class="form-control">
+                                        <select name="item_id" id="item_id" class="form-control selectpicker" data-live-search="true">
                                             <option value="">-- Pilih Item --</option>
                                             @foreach($item as $p)
-                                            <option value="{{$p->uuid}}">{{$p->nama}}</option>
+                                            <option data-tokens="{{$p->nama}}" value="{{$p->uuid}}">{{$p->nama}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -168,5 +168,6 @@
                             }
                         })
                 } );
+
     </script>
 @endsection
