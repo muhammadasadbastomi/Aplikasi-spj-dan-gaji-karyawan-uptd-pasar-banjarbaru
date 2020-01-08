@@ -53,13 +53,15 @@ class RincianController extends APIController
         {
             $rincian->kendaraan_id = $req->kendaraan_id;    
             $rincian->tanggal_pengisian = $req->tanggal_pengisian;  
-
+            
+        }else if($item->keperluan == "Belanja Gajih Pegawai Kontrak")
+        {
             //create sum total pencairan 
             $pencairan = Pencairan::findOrFail($req->id_pencairan);
             $pencairan = $total_harga_item;
             $pencairan->update();
-            
         }
+        
         $rincian->pencairan_id = $req->pencairan_id;
         $rincian->item_id = $item_id;
         $rincian->volume = $req->volume;
