@@ -15,7 +15,6 @@
     <link href="{{asset('admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/chosen/chosen.min.css')}}" rel="stylesheet">
 </head>
-
 <body>
     <div class="preloader">
         <div class="lds-ripple">
@@ -100,7 +99,6 @@
                                 <li class="sidebar-item"><a href="{{Route('pajakIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Pajak </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('pegawaiIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Pegawai </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('standardHargaIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Standard Harga </span></a></li>
-                                <li class="sidebar-item"><a href="{{Route('jenisKendaraanIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Jenis Kendaraan </span></a></li>
                                 <li class="sidebar-item"><a href="{{Route('kendaraanIndex')}}" class="sidebar-link"><i class="mdi mdi-table-edit"></i><span class="hide-menu"> Data Kendaraan </span></a></li>
                             </ul>
                         </li>
@@ -149,5 +147,4 @@
     <script src="{{asset('admin/assets/chosen/chosen.min.js') }}"></script>
 @yield('script')   
 </body>
-
 </html>

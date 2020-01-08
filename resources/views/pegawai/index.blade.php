@@ -33,7 +33,6 @@
                                                 <th>NIP</th>
                                                 <th>Golongan</th>
                                                 <th>Jabatan</th>
-                                                <th>Jenis Kelamin</th>
                                                 <th>Status Kepegawaian</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -61,7 +60,7 @@
       </div>
       <div class="modal-body">
       <form action="" method="post">
-      <input type="hidden" class="form-control date-inputmask" name="id" id="id" placeholder="Masukan NIP/NRTK">
+      <input type="hidden" class="form-control date-inputmask" name="id" id="id" >
       <div class="form-group m-t-20">
         <label> NIP/NRTK</label>
         <input type="text" class="form-control date-inputmask" name="NIP" id="NIP" placeholder="Masukan NIP/NRTK">
@@ -84,11 +83,11 @@
      </div>
      <div class="form-group m-t-20">
         <label> Tempat Lahir</label>
-        <input type="text" class="form-control date-inputmask" name="tempat_lahir" id="tempat_lahir" placeholder="Masukan NIP/NRTK">
+        <input type="text" class="form-control date-inputmask" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Kelahiran">
      </div>
      <div class="form-group">
         <label>Tanggal Lahir </label>
-        <input type="date" class="form-control international-inputmask" name="tanggal_lahir" id="tanggal_lahir" placeholder="Pangkat/Golongan">
+        <input type="date" class="form-control international-inputmask" name="tanggal_lahir" id="tanggal_lahir" >
      </div>
      <div class="form-group">
         <label>Alamat</label>
@@ -112,7 +111,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group"><label  class=" form-control-label">Agama</label><input type="text" id="agama" name="agama" placeholder="" class="form-control"></div>
+    <div class="form-group"><label  class=" form-control-label">Agama</label><input type="text" id="agama" name="agama" placeholder="Agama" class="form-control"></div>
         <div class="form-group"><label  class=" form-control-label">Status Kepegawaian</label>
             <select name="status_pegawai" id="status_pegawai" class="form-control">
                 <option value="">-- pilih Status Kepegawaian --</option>
@@ -129,7 +128,7 @@
                 <option value="janda/Duda"> janda / Duda </option>
             </select>
         </div>
-        <div class="form-group"><label  class=" form-control-label">golongan Darah</label><input type="text" id="golongan_darah" name="golongan_darah" placeholder="" class="form-control"></div>
+        <div class="form-group"><label  class=" form-control-label">golongan Darah</label><input type="text" id="golongan_darah" name="golongan_darah" placeholder="Golongan Darah" class="form-control"></div>
         <div class="form-group"><label  class=" form-control-label">Foto</label><input type="file" id="foto" name="foto" placeholder="" class="form-control"></div>
     </div>
       <div class="modal-footer">
@@ -281,7 +280,6 @@
                     {"data": "NIP"},
                     {"data": "golongan.golongan"},
                     {"data": "jabatan.jabatan"},
-                    {"data": "jk"},
                     {"data": "status_pegawai"},
                     {data: null , render : function ( data, type, row, meta ) {
                         let uuid = row.uuid;

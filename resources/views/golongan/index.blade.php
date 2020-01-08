@@ -57,7 +57,7 @@
                             <div class="modal-body">
                             <form  method="post" action="">
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                                <div class="form-group"><label  class=" form-control-label">Nama golongan</label><input type="text" id="golongan" name="golongan" placeholder="Uji ..." class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Nama golongan</label><input type="text" id="golongan" name="golongan" placeholder="Pangkat / Golongan" class="form-control"></div>
                                 <div class="form-group"><label  class=" form-control-label">Keterangan</label> <textarea id="keterangan" name="keterangan" placeholder="" class="form-control"></textarea></div>
                             <div class="modal-footer">
                                 <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>

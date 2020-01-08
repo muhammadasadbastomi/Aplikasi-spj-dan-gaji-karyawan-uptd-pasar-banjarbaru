@@ -56,7 +56,7 @@
                             <div class="modal-body">
                             <form  method="post" action="">
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                                <div class="form-group"><label  class=" form-control-label">Nama Pajak</label><input type="text" id="nama" name="nama" placeholder="Uji ..." class="form-control"></div>
+                                <div class="form-group"><label  class=" form-control-label">Nama Pajak</label><input type="text" id="nama" name="nama" placeholder="Pajak" class="form-control"></div>
                                 <div class="form-group"><label  class=" form-control-label">Besaran</label><input type="text" id="besaran" name="besaran" placeholder="" class="form-control"></div>
                             <div class="modal-footer">
                                 <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>

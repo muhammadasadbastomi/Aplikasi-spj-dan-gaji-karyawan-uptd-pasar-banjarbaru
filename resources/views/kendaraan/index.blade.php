@@ -26,7 +26,7 @@
                                 </div>
                                 <br>
                                 <div class="table-responsive">
-                                    <table id="datatable" class="table table-striped table-bordered">
+                                    <table id="datatable" class="text-center table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Nopol</th>
@@ -89,8 +89,11 @@
         </div>
         <div class="form-group">
             <label>Jenis </label>
-            <select name="jenis_kendaraan_id" id="jenis_kendaraan_id" class="form-control">
+            <select name="jenis_kendaraan" id="jenis_kendaraan" class="form-control">
                 <option value="">-- Pilih Jenis --</option>
+                <option value=" Oprasional Transport Roda 2"> Oprasional Transport Roda 2</option>
+                <option value=" Oprasional Transport Roda 2"> Oprasional Transport Roda 3</option>
+                <option value=" Oprasional Transport Roda 4"> Oprasional Transport Roda 4</option> 
             </select>
         </div>
         <div class="form-group">
@@ -125,22 +128,7 @@
             }
         })
     }
-    getJenis = () => {
-        $.ajax({
-                type: "GET",
-                url: "{{ url('/api/jenis-kendaraan')}}",
-                beforeSend: false,
-                success : function(returnData) {
-                    $.each(returnData.data, function (index, value) {
-                    $('#jenis_kendaraan_id').append(
-                        '<option value="'+value.uuid+'">'+value.jenis+'</option>'
-                    )
-                })
-            }
-        })
-    }
     getPegawai();
-    getJenis();
     //fungsi hapus
 
     hapus = (uuid, nama)=>{
@@ -185,7 +173,7 @@
         $('#tambah').click(function(){
             $('.modal-title').text('Tambah Data');
             $('#pegawai_id').val('');
-            $('#jenis_kendaraan_id').val('');
+            $('#jenis_kendaraan').val('');
             $('#nopol').val('');
             $('#merk').val('');
             $('#warna').val('');                                    
@@ -202,7 +190,7 @@
                     $('.modal-title').text('Edit Data');
                     $('#id').val(returnData.data.uuid);
                     $('#pegawai_id').val(returnData.data.pegawai.uuid);
-                    $('#jenis_kendaraan_id').val(returnData.data.jenis_kendaraan.uuid);
+                    $('#jenis_kendaraan').val(returnData.data.jenis_kendaraan);
                     $('#nopol').val(returnData.data.nopol);
                     $('#merk').val(returnData.data.merk);
                     $('#warna').val(returnData.data.warna);  
@@ -233,7 +221,7 @@
                     {"data": "merk"},
                     {"data": "warna"},
                     {"data": "pegawai.nama"},
-                    {"data": "jenis_kendaraan.jenis"},
+                    {"data": "jenis_kendaraan"},
                     {data: null , render : function ( data, type, row, meta ) {
                         let uuid = row.uuid;
                         let nama = row.nopol;
