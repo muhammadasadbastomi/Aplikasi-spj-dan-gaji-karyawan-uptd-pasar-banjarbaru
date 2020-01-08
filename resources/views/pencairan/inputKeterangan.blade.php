@@ -25,7 +25,7 @@
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
                                         <label for="">{{$keperluan}} - {{$no_rek}}</label>
-                                        <input type="text" name="keperluan" id="keperluan" value="{{$keperluan}}">
+                                        <input type="hidden" name="keperluan" id="keperluan" value="{{$keperluan}}">
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Pencairan Bulan :</label>

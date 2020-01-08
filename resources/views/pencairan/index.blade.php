@@ -119,6 +119,7 @@
                             let uuid = row.uuid;
                             let name = row.name;
                             return type === 'display'  ?
+                            
                             '<a href="/pencairan/detail/'+uuid+'" class="text-light btn btn-sm btn-primary"><i class="mdi mdi-eye"></i></a> <button onClick="hapus(\'' + uuid + '\',\'' + name + '\')" class="btn btn-sm btn-danger" > <i class="mdi mdi-popcorn"></i></button>':
                         data;
                         }}
