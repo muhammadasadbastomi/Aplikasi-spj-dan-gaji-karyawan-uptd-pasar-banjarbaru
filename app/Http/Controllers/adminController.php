@@ -273,4 +273,14 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data user.pdf');
     }
+
+    public function notaPencairan($id){
+        $pencairan=pencairan::findOrFail($id);
+        $tgl= Carbon::now()->format('d-m-Y');
+        $bendahara = pptk::where('jabatan','Bendahara Pengeluaran')->first();
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.notaPencairan', ['bendahara'=>$bendahara,'pptk'=>$pptk,'pencairan'=>$pencairan,'tgl'=>$tgl]);
+        return $pdf->stream('Laporan notaPencairan.pdf');
+    }
+
 }

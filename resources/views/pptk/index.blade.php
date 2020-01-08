@@ -64,6 +64,7 @@
                                         <option value=""> -- pilih jabatan --</option>
                                         <option value="Kepala UPT"> Kepala UPT</option>
                                         <option value="Kasubag Tata usaha"> Kasubag Tata usaha</option>
+                                        <option value="Bendahara Pengeluaran"> Bendahara Pengeluaran</option>
                                     </select>
                                 </div>
                             <div class="modal-footer">

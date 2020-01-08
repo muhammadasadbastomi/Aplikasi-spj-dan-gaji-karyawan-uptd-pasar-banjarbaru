@@ -159,6 +159,8 @@ Route::get('/pencairan/detail/{uuid}', 'adminController@pencairanDetail')
        ->name('pencairanDetail');
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
+Route::get('/notaPencairan/cetak/{id}', 'adminController@notaPencairan')
+       ->name('notaPencairan');
 
 //user
 Route::get('/pptkIndex', 'adminController@pptkIndex')

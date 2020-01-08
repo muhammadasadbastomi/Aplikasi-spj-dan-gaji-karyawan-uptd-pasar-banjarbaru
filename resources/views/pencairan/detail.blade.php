@@ -59,8 +59,8 @@
                                         </tfoot>
                                     </table>
                             </div>
-                            <div class="card-footer">
-                                <a href="" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak Nota Dinas</a>
+                            <div class="card-footer text-right">
+                                <a href="{{Route('notaPencairan',$pencairan->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak Nota Dinas</a>
                             </div>
                             </div>
                         </div>
