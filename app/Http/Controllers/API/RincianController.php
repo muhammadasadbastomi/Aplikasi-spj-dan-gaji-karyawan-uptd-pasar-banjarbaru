@@ -54,12 +54,6 @@ class RincianController extends APIController
             $rincian->kendaraan_id = $req->kendaraan_id;    
             $rincian->tanggal_pengisian = $req->tanggal_pengisian;  
             
-        }else if($item->keperluan == "Belanja Gajih Pegawai Kontrak")
-        {
-            //create sum total pencairan 
-            $pencairan = Pencairan::findOrFail($req->pencairan_id);
-            $pencairan->total = $total_harga_item;
-            $pencairan->update();
         }
         
         $rincian->pencairan_id = $req->pencairan_id;
@@ -67,6 +61,14 @@ class RincianController extends APIController
         $rincian->volume = $req->volume;
         $rincian->total_harga_item = $total_harga_item;
         $rincian->save();
+
+        if($item->keperluan == "Belanja Gajih Pegawai Kontrak")
+        {
+            //create sum total pencairan 
+            $pencairan = Pencairan::findOrFail($rincian->pencairan_id);
+            $pencairan->total = $rincian->total_harga_item;
+            $pencairan->update();
+        }
 
         $rincian_id= $rincian->id;
         $uuid = HCrypt::encrypt($rincian_id);
