@@ -43,10 +43,8 @@ class KendaraanController extends APIController
         $kendaraan = New kendaraan;
         
         // decrypt uuid from $req
-        $jenis_kendaraan_id = HCrypt::decrypt($req->jenis_kendaraan_id);
         $pegawai_id = HCrypt::decrypt($req->pegawai_id);
 
-        $kendaraan->jenis_kendaraan_id      =  $jenis_kendaraan_id;
         $kendaraan->pegawai_id       =  $pegawai_id;
         $kendaraan->nopol            =  $req->nopol;
         $kendaraan->merk             =  $req->merk;
@@ -84,10 +82,8 @@ class KendaraanController extends APIController
                 return $this->returnController("error", "failed find data pelanggan");
             }
         // decrypt uuid from $req
-        $jenis_kendaraan_id = HCrypt::decrypt($req->jenis_kendaraan_id);
         $pegawai_id = HCrypt::decrypt($req->pegawai_id);
 
-        $kendaraan->jenis_kendaraan_id  =  $jenis_kendaraan_id;
         $kendaraan->pegawai_id          =  $pegawai_id;
         $kendaraan->nopol               =  $req->nopol;
         $kendaraan->merk                =  $req->merk;
