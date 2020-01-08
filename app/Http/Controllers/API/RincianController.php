@@ -57,7 +57,7 @@ class RincianController extends APIController
         }else if($item->keperluan == "Belanja Gajih Pegawai Kontrak")
         {
             //create sum total pencairan 
-            $pencairan = Pencairan::findOrFail($req->id_pencairan);
+            $pencairan = Pencairan::findOrFail($req->pencairan_id);
             $pencairan = $total_harga_item;
             $pencairan->update();
         }
