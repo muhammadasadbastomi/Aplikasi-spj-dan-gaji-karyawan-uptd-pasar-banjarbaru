@@ -58,7 +58,7 @@ class RincianController extends APIController
         {
             //create sum total pencairan 
             $pencairan = Pencairan::findOrFail($req->pencairan_id);
-            $pencairan = $total_harga_item;
+            $pencairan->total = $total_harga_item;
             $pencairan->update();
         }
         
