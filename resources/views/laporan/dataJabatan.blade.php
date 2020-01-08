@@ -110,11 +110,11 @@
                 <h5>
                     <p>Banjarbaru, {{$tgl}}</p>
                 </h5>
-                <h5>Jabatan</h5>
+                <h5>{{$pptk->jabatan}}</h5>
                 <br>
                 <br>
-                <h5 style="text-decoration:underline;">Nama Pejabat</h5>
-                <h5>NIP</h5>
+                <h5 style="text-decoration:underline;">{{$pptk->nama}}</h5>
+                <h5>NIP.{{$pptk->NIP}}</h5>
             </div>
         </div>
     </div>

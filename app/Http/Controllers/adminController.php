@@ -12,6 +12,7 @@ use App\Jabatan;
 use App\Pajak;
 use App\Item;
 use App\pptk;
+use App\User;
 use HCrypt;
 use Auth;
 use PDF;
@@ -196,7 +197,8 @@ class adminController extends Controller
     public function pajakCetak(){
         $pajak=pajak::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataPajak', ['pajak'=>$pajak,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataPajak', ['pptk'=>$pptk,'pajak'=>$pajak,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Pajak.pdf');
     }
@@ -204,7 +206,8 @@ class adminController extends Controller
     public function golonganCetak(){
         $golongan=golongan::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataGolongan', ['golongan'=>$golongan,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataGolongan', ['pptk'=>$pptk,'golongan'=>$golongan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data golongan.pdf');
     }
@@ -212,24 +215,17 @@ class adminController extends Controller
     public function jabatanCetak(){
         $jabatan=jabatan::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataJabatan', ['jabatan'=>$jabatan,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataJabatan', ['pptk'=>$pptk,'jabatan'=>$jabatan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data jabatan.pdf');
     }
-
-    public function jenisKendaraanCetak(){
-        $jenis_kendaraan=jenis_kendaraan::all();
-        $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.datajenisKendaraan', ['jenis_kendaraan'=>$jenis_kendaraan,'tgl'=>$tgl]);
-        $pdf->setPaper('a4', 'potrait');
-        return $pdf->stream('Laporan data jenis Kendaraan.pdf');
-    }
  
-    
     public function pegawaiCetak(){
         $pegawai=pegawai::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataPegawai', ['pegawai'=>$pegawai,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataPegawai', ['pptk'=>$pptk,'pegawai'=>$pegawai,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Pegawai.pdf');
     }
@@ -237,7 +233,8 @@ class adminController extends Controller
     public function itemCetak(){
         $item=Item::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataItem', ['item'=>$item,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataItem', ['pptk'=>$pptk,'item'=>$item,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data item.pdf');
     }
@@ -245,7 +242,8 @@ class adminController extends Controller
     public function itemFilterCetak(Request $req){
         $item=Item::where('keperluan', $req->keperluan)->get();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataFilterItem', ['item'=>$item,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataFilterItem', ['pptk'=>$pptk,'item'=>$item,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data item Filter.pdf');
     }
@@ -253,7 +251,8 @@ class adminController extends Controller
     public function kendaraanCetak(){
         $kendaraan=kendaraan::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataKendaraan', ['kendaraan'=>$kendaraan,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataKendaraan', ['pptk'=>$pptk,'kendaraan'=>$kendaraan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data kendaraan.pdf');
     }
@@ -264,5 +263,14 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataPptk', ['pptk'=>$pptk,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data pptk.pdf');
+    }
+
+    public function userCetak(){
+        $user=user::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.datauser', ['pptk'=>$pptk,'user'=>$user,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data user.pdf');
     }
 }

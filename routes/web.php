@@ -40,14 +40,6 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
               Route::delete('{uuid}', 'PegawaiController@delete')->name('delete');
        });
 
-       Route::prefix('jenis-kendaraan')->name('jenis-kendaraan.')->group(function(){
-              Route::get('', 'JenisController@get')->name('get');
-              Route::get('{uuid}', 'JenisController@find')->name('find');
-              Route::post('', 'JenisController@create')->name('create');
-              Route::put('{uuid}', 'JenisController@update')->name('update');
-              Route::delete('{uuid}', 'JenisController@delete')->name('delete');
-       });
-
        Route::prefix('kendaraan')->name('kendaraan.')->group(function(){
               Route::get('', 'KendaraanController@get')->name('get');
               Route::get('{uuid}', 'KendaraanController@find')->name('find');
@@ -137,12 +129,6 @@ Route::get('/pajak/cetak', 'adminController@pajakCetak')
        ->name('pajakCetak');
 //akhir route pajak
 
-//route jenisKendaraan
-Route::get('/jenisKendaraan', 'adminController@jenisKendaraanIndex')
-       ->name('jenisKendaraanIndex');
-Route::get('/jenisKendaraan/Cetak', 'adminController@jenisKendaraanCetak')
-       ->name('jenisKendaraanCetak');
-//akhir route kendaraan
 
 //route kendaraan
 Route::get('/kendaraan', 'adminController@kendaraanIndex')
@@ -183,3 +169,5 @@ Route::get('/pptk/cetak', 'adminController@pptkCetak')
 //user
 Route::get('/userIndex', 'adminController@userIndex')
        ->name('userIndex');
+Route::get('/user/cetak', 'adminController@userCetak')
+       ->name('userCetak');
