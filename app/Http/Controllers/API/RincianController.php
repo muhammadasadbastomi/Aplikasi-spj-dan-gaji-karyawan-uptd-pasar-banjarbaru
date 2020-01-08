@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Pencairan;
 use App\Rincian;
 use App\Item;
 use HCrypt;
@@ -52,6 +53,12 @@ class RincianController extends APIController
         {
             $rincian->kendaraan_id = $req->kendaraan_id;    
             $rincian->tanggal_pengisian = $req->tanggal_pengisian;  
+
+            //create sum total pencairan 
+            $pencairan = Pencairan::findOrFail($req->id_pencairan);
+            $pencairan = $total_harga_item;
+            $pencairan->update();
+            
         }
         $rincian->pencairan_id = $req->pencairan_id;
         $rincian->item_id = $item_id;
