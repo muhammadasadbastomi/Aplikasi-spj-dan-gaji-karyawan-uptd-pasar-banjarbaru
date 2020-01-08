@@ -89,6 +89,7 @@ class KendaraanController extends APIController
         $kendaraan->nopol               =  $req->nopol;
         $kendaraan->merk                =  $req->merk;
         $kendaraan->warna               =  $req->warna;
+        $kendaraan->jenis_kendaraan     =  $req->jenis_kendaraan;
 
         $kendaraan->update();
     
