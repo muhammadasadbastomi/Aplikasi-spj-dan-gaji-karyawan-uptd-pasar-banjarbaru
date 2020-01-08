@@ -14,7 +14,7 @@ class RincianController extends APIController
     public function get($id){
         $rincian = json_decode(redis::get("rincian::all"));
         if (!$rincian) {
-            $rincian = rincian::with('item')->where('pencairan_id',$id)->get();
+            $rincian = rincian::with('item','kendaraan')->where('pencairan_id',$id)->get();
             if (!$rincian) {
                 return $this->returnController("error", "failed get rincian data");
             }

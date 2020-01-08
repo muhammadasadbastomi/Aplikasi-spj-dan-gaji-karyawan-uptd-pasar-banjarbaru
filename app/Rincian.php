@@ -15,6 +15,11 @@ class Rincian extends Model
         return $this->belongsTo('App\Item');
     }
 
+    public function kendaraan()
+    {
+        return $this->belongsTo('App\Kendaraan');
+    }
+
     public function getCreatedAtAttribute()
     {
     return \Carbon\Carbon::parse($this->attributes['created_at'])

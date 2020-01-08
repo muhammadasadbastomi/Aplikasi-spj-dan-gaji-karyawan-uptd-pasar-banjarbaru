@@ -4,7 +4,6 @@
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">input {{$keperluan}} - {{$no_rek}}</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -21,72 +20,60 @@
                             <div class="card-body">
                                 <h5 class="card-title">Input Data Pencairan</h5>
                                 <br>
-                                <form action="" method="post">
+                                <form id="form1" action="" method="post">
+                                    <input type="hidden" name="pencairan_id" id="pencairan_id" value="{{$pencairan_id}}">
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Keperluan Pencairan :</label>
-                                        <label> input {{$keperluan}} - {{$no_rek}}</label>
+                                        <label for="">{{$keperluan}} - {{$no_rek}}</label>
+                                        <input type="text" name="keperluan" id="keperluan" value="{{$keperluan}}">
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label style="margin-right:30px;"> Pencairan Bulan :</label>
-                                        <label> Agustus</label>
+                                        <label>{{$tgl}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>item </label>
+                                        <select name="item_id" id="item_id" class="form-control">
+                                            @foreach($item as $p)
+                                            <option value="{{$p->uuid}}">{{$p->nama}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Kendaraan </label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Data ngambil dari data kendaraan (Roda 2)</option>
-                                            <option value="">DA.6402.PAD</option>
+                                        <select name="kendaraan_id" id="kendaraan_id" class="form-control">
+                                            <option value="">-- Pilih Item --</option>
+                                            @foreach($kendaraan as $p)
+                                            <option value="{{$p->id}}">{{$p->nopol}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group m-t-20">
-                                        <label> Jumlah Pencairan</label>
-                                        <input type="number" class="form-control date-inputmask" id="date-mask" >
+                                        <label> Banyak Pengisian</label>
+                                        <input type="number" class="form-control date-inputmask" id="volume" name="volume" placeholder="Jumlah Item">
                                     </div>
-                                </form>
                                 <div class="text-right">
-                                <a href="{{Route('inputKeterangan')}}" class="btn btn-primary">Input Item</a>
+                                <button type="submit" name="submit"id="btn-form" class="btn btn-primary">Input Item</button>
+                                {{csrf_field() }}
+                                </form>
+                                </div>
                                 <br>
                                 <br>
-                                <table  class="table table-striped table-bordered text-center">
+                                <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Kendaraan</th>
+                                                <th>Item</th>
                                                 <th>Satuan</th>
                                                 <th>Harga Satuan</th>
-                                                <th>Jumlah Pencairan</th>
+                                                <th>Jumlah</th>
                                                 <th>total</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>DA.6402 PAD</td>
-                                                <td>Buah </td>
-                                                <td class="text-center">Rp.20.000</td>
-                                                <td class="text-center">5</td>
-                                                <td class="text-center">Rp.100.000</td>
-                                                <td class="text-center">
-                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
-                                                <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>DA.6403 PAD</td>
-                                                <td>Buah </td>
-                                                <td class="text-center">Rp.20.000</td>
-                                                <td class="text-center">6</td>
-                                                <td class="text-center">Rp.120.000</td>
-                                                <td class="text-center">
-                                                <a href="" class="btn btn-info"><i class="mdi mdi-pencil"></i> edit</a>
-                                                <a href="" class="btn btn-danger"><i class="mdi mdi-popcorn"></i> hapus</a>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
                                                 <th>Item</th>
                                                 <th>Satuan</th>
                                                 <th>Harga Satuan</th>
@@ -97,13 +84,98 @@
                                         </tfoot>
                                     </table>
                                     <div class="card-footer text-right">
-                                    <a href="{{Route('inputKeterangan')}}" class="btn btn-success">Selesai, buat pencairan</a>
+                                    <form  id="form2" action="post">
+                                        <input type="hidden" name="id_pencairan" value="{{$pencairan_id}}">
+                                        <button type="submit" name="submit" class="btn btn-success">Selesai, buat pencairan</button>
+                                    </form>
                                     </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+@endsection
+@section('script')
+    <script>
+             //fungsi render datatable            
+             $(document).ready(function() {
+                let id = $('#pencairan_id').val();
+                $('#datatable').DataTable( {
+                    responsive: true,
+                    processing: true,
+                    serverSide: false,
+                    searching: true,
+                    ajax: {
+                        "type": "GET",
+                        "url": "{{ url('/api/rincian/get')}}" + '/' + id,
+                        "dataSrc": "data",
+                        "contentType": "application/json; charset=utf-8",
+                        "dataType": "json",
+                        "processData": true
+                    },
+                    columns: [
+                        {"data": "item.nama" },
+                        {"data": "item.satuan"},
+                        {"data": "item.harga"},
+                        {"data": "volume"},
+                        {"data": "total_harga_item"},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            let uuid = row.uuid;
+                            let jabatan = row.jabatan;
+                            return type === 'display'  ?
+                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + jabatan + '\')" class="btn btn-sm btn-danger" > <i class="mdi mdi-popcorn"></i></button>':
+                        data;
+                        }}
+                    ]
+                });
+            });
+            //event form submit            
+                $("#form1").submit(function (e) {
+                    e.preventDefault()
+                    let form = $('#modal-body form');
+                        let url = '{{route("API.rincian.create")}}'
+                        let id = $('#id').val();
+                        $.ajax({
+                            url: url,
+                            type: "post",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                form.trigger('reset');
+                                $('#mediumModal').modal('hide');
+                                $('#datatable').DataTable().ajax.reload();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Tersimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                } );
+            
+        //event form submit            
+        $("#form2").submit(function (e) {
+                    e.preventDefault()
+                    let form = $('#modal-body form');
+                        let url = '{{route("API.pencairan.create")}}'
+                        let id = $('#id').val();
+                        $.ajax({
+                            url: url,
+                            type: "post",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                window.location.replace("/pencairanIndex");
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                } );
+    </script>
 @endsection

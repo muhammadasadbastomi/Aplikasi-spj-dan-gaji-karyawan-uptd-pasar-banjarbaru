@@ -111,7 +111,16 @@ class adminController extends Controller
     public function pencairanDetail($uuid){
         $id = HCrypt::Decrypt($uuid);
         $pencairan = pencairan::findOrfail($id);
-        return view('pencairan.detail',compact('pencairan'));
+        $keperluan = $pencairan->keperluan;
+
+        if($keperluan == "Belanja Oprasional Transport Roda 2"){
+
+            return view('pencairan.detailBBM',compact('pencairan'));
+        }else{
+            
+            return view('pencairan.detail',compact('pencairan'));
+        }
+        // return view('pencairan.detail',compact('pencairan'));
     }
 
     public function pencairanStore(Request $request){
@@ -143,7 +152,8 @@ class adminController extends Controller
             $kendaraan = Kendaraan::all();
             $no_rek = '1551.201.01.06';
             $tgl= Carbon::now()->format('M');
-            return view('pencairan.inputKeteranganRoda',compact('keperluan','kendaraan','no_rek','pencairan_id'));
+            $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
+            return view('pencairan.inputKeteranganRoda',compact('item','tgl','keperluan','kendaraan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak
             ')->get();
