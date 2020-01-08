@@ -220,8 +220,8 @@
                     {"data": "nopol"},
                     {"data": "merk"},
                     {"data": "warna"},
-                    {"data": "pegawai.nama"},
                     {"data": "jenis_kendaraan"},
+                    {"data": "pegawai.nama"},
                     {data: null , render : function ( data, type, row, meta ) {
                         let uuid = row.uuid;
                         let nama = row.nopol;

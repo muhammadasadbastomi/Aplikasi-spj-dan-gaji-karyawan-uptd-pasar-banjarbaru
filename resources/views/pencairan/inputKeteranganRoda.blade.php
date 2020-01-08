@@ -33,16 +33,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label>item </label>
-                                        <select name="item_id" id="item_id" class="selectpicker" data-live-search="true">
+                                        <select name="item_id" id="item_id" class="form-control">
                                             @foreach($item as $p)
-                                            <option value="{{$p->uuid}}">{{$p->nama}}</option>
+                                            <option value="{{$p->uuid}}">{{$p->nama}} </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Kendaraan </label>
-                                        <select name="kendaraan_id" id="kendaraan_id" class="form-control">
-                                            <option value="">-- Pilih Item --</option>
+                                        <select name="kendaraan_id" id="kendaraan_id"  class="selectpicker" data-live-search="true">
+                                            <option value="">-- Pilih Kendaraan --</option>
                                             @foreach($kendaraan as $p)
                                             <option value="{{$p->id}}">{{$p->nopol}}</option>
                                             @endforeach

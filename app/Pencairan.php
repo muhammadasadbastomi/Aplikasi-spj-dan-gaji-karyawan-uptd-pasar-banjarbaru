@@ -11,6 +11,11 @@ class Pencairan extends Model
     	return $this->belongsToMany('App\Rincian');
     }
 
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
+
     public function getCreatedAtAttribute()
     {
     return \Carbon\Carbon::parse($this->attributes['created_at'])

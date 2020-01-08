@@ -32,6 +32,7 @@
                                                 <th>Keperluan</th>
                                                 <th>Bulan</th>
                                                 <th>Total (Rp.)</th>
+                                                <th>Di Input Oleh</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
@@ -43,6 +44,7 @@
                                                 <th>Keperluan</th>
                                                 <th>Bulan</th>
                                                 <th>Total (Rp.)</th>
+                                                <th>Di Input Oleh</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </tfoot>
@@ -115,6 +117,7 @@
                         {"data": "keperluan"},
                         {"data": "created_at"},
                         {"data": "total"},
+                        {"data": "user.username"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let name = row.name;

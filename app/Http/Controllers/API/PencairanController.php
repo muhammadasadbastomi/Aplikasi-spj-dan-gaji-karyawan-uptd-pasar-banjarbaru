@@ -14,7 +14,7 @@ class PencairanController extends APIController
     public function get(){
         $pencairan = json_decode(redis::get("pencairan::all"));
         if (!$pencairan) {
-            $pencairan = pencairan::all();
+            $pencairan = pencairan::with('user')->get();
             if (!$pencairan) {
                 return $this->returnController("error", "failed get pencairan data");
             }

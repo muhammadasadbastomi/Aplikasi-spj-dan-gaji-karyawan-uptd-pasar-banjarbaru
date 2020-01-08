@@ -149,13 +149,13 @@ class adminController extends Controller
             $item = item::where('keperluan','Belanja Peralatan dan Perlengkapan komputer')->get();
             return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
-            $kendaraan = Kendaraan::all();
+            $kendaraan = Kendaraan::where('jenis_kendaraan','Oprasional Transport Roda 2')->get();
             $no_rek = '1551.201.01.06';
             $tgl= Carbon::now()->formatLocalized("%B");
             $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
             return view('pencairan.inputKeteranganRoda',compact('item','tgl','keperluan','kendaraan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 4"){
-            $kendaraan = Kendaraan::all();
+            $kendaraan = Kendaraan::where('jenis_kendaraan','Oprasional Transport Roda 4')->get();
             $no_rek = '1551.201.01.06';
             $tgl= Carbon::now()->formatLocalized("%B");
             $item = item::where('keperluan','Belanja Oprasional Transport Roda 2')->get();
@@ -167,10 +167,11 @@ class adminController extends Controller
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
             return view('pencairan.inputKeteranganGajih',compact('keperluan','pegawai','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Makan Minum Harian"){
-            $no_rek = '1551.201.01.09';
+            $item = item::where('keperluan','Belanja Makan Minum Harian')->get();
+            $no_rek = '1551.201.01.08';
             $tgl= Carbon::now()->formatLocalized("%B");
             $pegawai = Pegawai::all();
-            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek','pegawai','pencairan_id'));
+            return view('pencairan.inputKeteranganMakanminum',compact('keperluan','pegawai','no_rek','item','tgl','pencairan_id'));
         }
 
     }

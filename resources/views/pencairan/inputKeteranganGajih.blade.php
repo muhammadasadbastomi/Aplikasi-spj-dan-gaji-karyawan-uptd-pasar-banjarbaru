@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="form-group m-t-20">
                                         <label> Jumlah Karyawan Kontrak</label>
-                                         : <label for="" class="badge badge-success"> {{$pegawai->count()}} Karyawan Kontrak (ambil jumlah dari data pegawai))</label>
+                                         : <label for="" class="badge badge-success"> {{$pegawai->count()}} Karyawan Kontrak </label>
                                          <input type="hidden" name="volume" id="volume" value="{{$pegawai->count()}}">
                                     </div>
                                     <div class="card-footer text-right">
