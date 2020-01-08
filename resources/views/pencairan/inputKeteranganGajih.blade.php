@@ -64,7 +64,7 @@
           $("form").submit(function (e) {
                     e.preventDefault()
                     let form = $('#modal-body form');
-                        let url = '{{route("API.pencairan.create")}}'
+                        let url = '{{route("API.rincian.create")}}'
                         let id = $('#id').val();
                         $.ajax({
                             url: url,
