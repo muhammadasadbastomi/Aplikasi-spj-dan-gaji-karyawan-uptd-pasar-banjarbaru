@@ -131,29 +131,29 @@ class adminController extends Controller
 
         if($keperluan == "Belanja Alat Tulis kantor"){
             $no_rek = '1551.201.01.04';
-            $tgl= Carbon::now()->format('M');
+            $tgl= Carbon::now()->formatLocalized("%B");
             $item = item::where('keperluan','Belanja Alat Tulis kantor')->get();
             return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Peralatan dan Perlengkapan komputer"){
             $no_rek = '1551.201.01.05';
-            $tgl= Carbon::now()->format('M');
+            $tgl= Carbon::now()->formatLocalized("%B");
             $item = item::where('keperluan','Belanja Peralatan dan Perlengkapan komputer')->get();
             return view('pencairan.inputKeterangan',compact('keperluan','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Oprasional Transport Roda 2"){
             $kendaraan = Kendaraan::all();
             $no_rek = '1551.201.01.06';
-            $tgl= Carbon::now()->format('M');
+            $tgl= Carbon::now()->formatLocalized("%B");
             return view('pencairan.inputKeteranganRoda',compact('keperluan','kendaraan','no_rek','pencairan_id'));
         }elseif($keperluan == "Belanja Gajih Pegawai Kontrak"){
             $item = item::where('keperluan','Belanja Gajih Pegawai Kontrak
             ')->get();
             $no_rek = '1551.201.01.08';
-            $tgl= Carbon::now()->format('M');
+            $tgl= Carbon::now()->formatLocalized("%B");
             $pegawai = Pegawai::where('status_pegawai','Kontrak')->get();
             return view('pencairan.inputKeteranganGajih',compact('keperluan','pegawai','no_rek','item','tgl','pencairan_id'));
         }elseif($keperluan == "Belanja Makan Minum Harian"){
             $no_rek = '1551.201.01.09';
-            $tgl= Carbon::now()->format('M');
+            $tgl= Carbon::now()->formatLocalized("%B");
             $pegawai = Pegawai::all();
             return view('pencairan.inputKeteranganMakanminum',compact('keperluan','no_rek','pegawai','pencairan_id'));
         }
