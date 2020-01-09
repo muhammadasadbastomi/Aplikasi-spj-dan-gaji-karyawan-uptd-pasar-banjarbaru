@@ -183,9 +183,9 @@ class adminController extends Controller
         return view('pencairan.inputKeterangan');
     }
     //Halaman Data kendaraan
-    public function pencairanEdit(){
-    
-        return view('pencairan.edit');
+    public function pencairanFilter(){
+        
+        return view('pencairan.filter');
     }
 
     //Halaman Data kendaraan
@@ -288,6 +288,15 @@ class adminController extends Controller
         $tgl= Carbon::now()->format('d-m-Y');
         $pptk = pptk::where('jabatan','Kepala UPT')->first();
         $pdf =PDF::loadView('laporan.dataPencairanKeseluruhan', ['pptk'=>$pptk,'pencairan'=>$pencairan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data pencairan.pdf');
+    }
+
+    public function pencairanFilterCetak(Request $request){
+        $pencairan=pencairan::where('keperluan',$request->keperluan)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.dataPencairanFilter', ['pptk'=>$pptk,'pencairan'=>$pencairan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data pencairan.pdf');
     }

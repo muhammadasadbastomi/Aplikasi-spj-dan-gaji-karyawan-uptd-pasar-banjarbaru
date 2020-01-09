@@ -164,7 +164,9 @@ Route::get('/notaPencairan/cetak/{id}', 'adminController@notaPencairan')
 Route::get('pencairan/cetak', 'adminController@pencairanCetak')
        ->name('pencairanCetak');
 Route::get('pencairan/filter', 'adminController@pencairanFilter')
-       ->name('pencairanFilter');  
+       ->name('pencairanFilter');
+Route::post('pencairan/filter', 'adminController@pencairanFilterCetak')
+       ->name('pencairanFilterCetak');    
 
 //pptk
 Route::get('/pptkIndex', 'adminController@pptkIndex')
