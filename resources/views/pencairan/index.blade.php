@@ -21,8 +21,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data Pencairan</h5>
                                 <div class="text-right">
-                                <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Keseluruhan</a>
-                                <a href="" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter cetak</a>
+                                <a href="{{Route('pencairanCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Keseluruhan</a>
+                                <a href="{{Route('pencairanFilter')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter cetak</a>
                                 </div>
                                 <br>
                                 <div class="table-responsive">

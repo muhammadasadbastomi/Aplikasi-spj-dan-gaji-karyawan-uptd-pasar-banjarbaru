@@ -160,9 +160,13 @@ Route::get('/pencairan/detail/{uuid}', 'adminController@pencairanDetail')
 Route::get('/inputKeterangan', 'adminController@inputKeterangan')
        ->name('inputKeterangan');
 Route::get('/notaPencairan/cetak/{id}', 'adminController@notaPencairan')
-       ->name('notaPencairan');
+       ->name('notaPencairan'); 
+Route::get('pencairan/cetak', 'adminController@pencairanCetak')
+       ->name('pencairanCetak');
+Route::get('pencairan/filter', 'adminController@pencairanFilter')
+       ->name('pencairanFilter');  
 
-//user
+//pptk
 Route::get('/pptkIndex', 'adminController@pptkIndex')
        ->name('pptkIndex');
 Route::get('/pptk/cetak', 'adminController@pptkCetak')
