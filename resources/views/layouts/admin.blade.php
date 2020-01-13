@@ -78,8 +78,15 @@
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> Nama Admin</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>                                <div class="dropdown-divider"></div>
                                 <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
                             </div>
                         </li>
@@ -124,7 +131,7 @@
             </footer>
         </div>
     </div>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer ></script>
+    <script src="{{asset('datatable/jquery.datatable.min.js')}}" defer ></script>
     <script src="{{asset('admin/assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('admin/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
     <script src="{{asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
