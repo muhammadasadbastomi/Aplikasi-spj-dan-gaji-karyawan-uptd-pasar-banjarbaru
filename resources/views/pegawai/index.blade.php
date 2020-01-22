@@ -71,13 +71,25 @@
      </div>
      <div class="form-group m-t-20">
         <label> Golongan</label>
-        <select name="golongan_id" id="golongan_id" class="form-control">
+        <select name="golongan_id" id="golongan" class="form-control">
             <option value=""> -- Pilih Golongan --</option>
+            <option value="II/a"> II/a</option>
+            <option value="II/b"> II/b</option>
+            <option value="II/c"> II/c</option>
+            <option value="II/d"> II/d</option>
+            <option value="III/a"> III/a</option>
+            <option value="III/b"> III/b</option>
+            <option value="III/c"> III/c</option>
+            <option value="III/d"> III/d</option>
+            <option value="IV/a"> IV/a</option>
+            <option value="IV/b"> IV/b</option>
+            <option value="IV/c"> IV/c</option>
+            <option value="IV/d"> IV/d</option>
         </select>
      </div>
      <div class="form-group m-t-20">
         <label> Jabatan</label>
-        <select name="jabatan_id" id="jabatan_id" class="form-control">
+        <select name="jabatan_id" id="jabatan" class="form-control">
             <option value=""> -- Pilih Jabatan --</option>
         </select>
      </div>
@@ -142,37 +154,6 @@
 @endsection
 @section('script')
 <script>
-
-    getGolongan = () => {
-        $.ajax({
-                type: "GET",
-                url: "{{ url('/api/golongan')}}",
-                beforeSend: false,
-                success : function(returnData) {
-                    $.each(returnData.data, function (index, value) {
-                    $('#golongan_id').append(
-                        '<option value="'+value.uuid+'">'+value.golongan+'</option>'
-                    )
-                })
-            }
-        })
-    }
-    getJabatan = () => {
-        $.ajax({
-                type: "GET",
-                url: "{{ url('/api/jabatan')}}",
-                beforeSend: false,
-                success : function(returnData) {
-                    $.each(returnData.data, function (index, value) {
-                    $('#jabatan_id').append(
-                        '<option value="'+value.uuid+'">'+value.jabatan+'</option>'
-                    )
-                })
-            }
-        })
-    }
-    getGolongan();
-    getJabatan();
     //fungsi hapus
 
     hapus = (uuid, nama)=>{

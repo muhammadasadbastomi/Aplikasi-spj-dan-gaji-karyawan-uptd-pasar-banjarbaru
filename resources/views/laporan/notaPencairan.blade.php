@@ -26,15 +26,15 @@
         <table width="100%">
         <tr>
             <td width="10%">Referensi</td>
-            <td width="30%">:</td>
+            <td width="30%">:-</td>
             <td width="10%">BKU No </td>
-            <td>:</td>
+            <td>: {{$pencairan->id}} </td>
         </tr>
         <tr>
             <td width="10%">Pembebanan</td>
-            <td width="30%">:</td>
+            <td width="30%">: DPA UPTD Pasar Bauntung</td>
             <td width="13%">BUKTI NO.</td>
-            <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ BKEL/BAUNTUNG/DISDAG/2020</td>
+            <td>:{{$pencairan->id}}/ BKEL/BAUNTUNG/DISDAG/2020</td>
         </tr>
         <tr>
             <td width="10%">Kegiatan</td>
@@ -64,21 +64,26 @@
         <br>
         <br>
         <table>
+        @php
+            $pajak = $pencairan->total * 10/100;
+            $total = $pencairan->total - $pajak ;
+        @endphp
         <tr>
             <td width="10%;">Pajak</td>
-            <td>: </td>
+            <td>: PPN</td>
         </tr>
         <tr>
             <td width="10%;">Potongan</td>
-            <td>:</td>
+            <td>: 10% = Rp.{{$pajak}}</td>
         </tr>
         <tr>
         <td width="10%;"></td>
         <td>_______________________</td>
         </tr>
         <tr>
-        <td width="10%;">jumlah</td>
-        <td> <b>Rp. {{$pencairan->total}}</b></td>
+
+        <td width="10%;">jumlah Pencairan </td>
+        <td> <b>Rp. {{$total}}</b></td>
         </tr>
         </table>
         <br><br><br>
