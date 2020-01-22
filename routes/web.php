@@ -113,6 +113,14 @@ Route::get('/pegawai/detail/{uuid}', 'adminController@pegawaiDetail')
        ->name('pegawaiDetail');
 Route::get('/pegawai/Cetak', 'adminController@pegawaiCetak')
        ->name('pegawaiCetak');
+Route::get('/pegawai/filter/jabatan', 'adminController@pegawaiFilterJabatan')
+       ->name('pegawaiFilterJabatan');
+Route::post('/pegawai/filter/jabatan', 'adminController@pegawaiFilterJabatan')
+       ->name('pegawaiFilterJabatanCetak');
+Route::get('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolongan')
+       ->name('pegawaiFilterGolongan');
+Route::post('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolongan')
+       ->name('pegawaiFilterGolonganCetak');
 //akhir route pegawai
 
 //route keperluan

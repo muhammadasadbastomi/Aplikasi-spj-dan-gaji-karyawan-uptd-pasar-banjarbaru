@@ -21,7 +21,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data Pegawai</h5>
                                 <div class="text-right">
-                                <a href="{{route('pegawaiCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <a href="{{route('pegawaiFilterGolongan')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter Golongan</a>
+                                <a href="{{route('pegawaiFilterJabatan')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter Jabatan</a>
+                                <a href="{{route('pegawaiCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Pegawai</a>
                                 <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
@@ -89,8 +91,14 @@
      </div>
      <div class="form-group m-t-20">
         <label> Jabatan</label>
-        <select name="jabatan_id" id="jabatan" class="form-control">
+        <select name="jabatan" id="jabatan" class="form-control">
             <option value=""> -- Pilih Jabatan --</option>
+            <option value="Kepala UPT"> Kepala UPT</option>
+            <option value="Kasubag TU"> Kasubag TU</option>
+            <option value="Pelaksana"> Pelaksana</option>
+            <option value="Tenaga Kebersihan Kantor"> Tenaga Kebersihan Kantor</option>
+            <option value="Tenaga Keamanan Kantor">Tenaga Keamanan Kantor</option>
+            <option value="Pengawas Kebersihan Pasar">Pengawas Kebersihan Pasar</option>
         </select>
      </div>
      <div class="form-group m-t-20">

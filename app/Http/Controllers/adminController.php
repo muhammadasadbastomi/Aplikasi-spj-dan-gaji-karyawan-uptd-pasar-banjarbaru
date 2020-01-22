@@ -46,7 +46,7 @@ class adminController extends Controller
 
         return view('pegawai.index');
     }
-    //halaman Detail karyawan
+    //halaman Detail pegawai
     public function pegawaiDetail($uuid){
         $id = HCrypt::decrypt($uuid);
         $pegawai = pegawai::findOrFail($id);
@@ -54,9 +54,15 @@ class adminController extends Controller
     }
 
     //Halaman Data Pegawai
-    public function pegawaiEdit(){
+    public function pegawaiFilterGolongan(){
 
-        return view('pegawai.edit');
+        return view('pegawai.filterGolongan');
+    }
+
+    //Halaman Data Pegawai
+    public function pegawaiFilterJabatan(){
+
+        return view('pegawai.filterJabatan');
     }
 
     //Halaman Data Keperluan
@@ -299,6 +305,24 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.dataPencairanFilter', ['pptk'=>$pptk,'pencairan'=>$pencairan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data pencairan.pdf');
+    }
+
+    public function pegawaiFilterGolonganCetak(Request $request){
+        $pegawai=pegawai::where('golongan',$request->golongan)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.pegawaiFilterGolongan', ['pptk'=>$pptk,'pegawai'=>$pegawai,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data pegawai Filter Golongan.pdf');
+    }
+
+    public function pegawaiFilterJabatanCetak(Request $request){
+        $pegawai=pegawai::where('jabatan',$request->jabatan)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.pegawaiFilterJabatan', ['pptk'=>$pptk,'pegawai'=>$pegawai,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data pegawai Filter Golongan.pdf');
     }
 
 }

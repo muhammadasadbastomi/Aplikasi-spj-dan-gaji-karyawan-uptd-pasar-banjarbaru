@@ -21,7 +21,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Tabel Data User</h5>
                                 <div class="text-right">
-                                <a href="{{Route('userCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#tambahData" id="tambah"><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
