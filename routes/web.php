@@ -115,11 +115,11 @@ Route::get('/pegawai/Cetak', 'adminController@pegawaiCetak')
        ->name('pegawaiCetak');
 Route::get('/pegawai/filter/jabatan', 'adminController@pegawaiFilterJabatan')
        ->name('pegawaiFilterJabatan');
-Route::post('/pegawai/filter/jabatan', 'adminController@pegawaiFilterJabatan')
+Route::post('/pegawai/filter/jabatan', 'adminController@pegawaiFilterJabatanCetak')
        ->name('pegawaiFilterJabatanCetak');
 Route::get('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolongan')
        ->name('pegawaiFilterGolongan');
-Route::post('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolongan')
+Route::post('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolonganCetak')
        ->name('pegawaiFilterGolonganCetak');
 //akhir route pegawai
 

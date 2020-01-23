@@ -24,7 +24,8 @@
                             <img src="{{asset('/img/pegawai/'.$pegawai->foto)}}" height="300" alt="">
                         </div>
                         <div class="card-footer text-center">
-                            <a href="" class="btn btn-block btn-primary"> cetak profil pegawi</a>
+                            <a href="" class="btn btn-block btn-primary"> {{$pegawai->nama}}</a> <br>
+                            <p>NIP. {{$pegawai->NIP}}</p>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -77,11 +78,11 @@
                                                 </tr>
                                                 <tr>
                                                 <th>golongan</th>
-                                                <td>: {{$pegawai->golongan->golongan}}</td>
+                                                <td>: {{$pegawai->golongan}}</td>
                                                 </tr>
                                                 <tr>
                                                 <th>jabatan</th>
-                                                <td>: {{$pegawai->jabatan->jabatan}}</td>
+                                                <td>: {{$pegawai->jabatan}}</td>
                                                 </tr>                             
                                                 <tr>
                                                 <th>Status Pernikahan</th>
