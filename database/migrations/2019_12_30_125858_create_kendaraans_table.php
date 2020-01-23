@@ -21,6 +21,8 @@ class CreateKendaraansTable extends Migration
             $table->string('merk')->length('100');
             $table->string('warna')->length('50');
             $table->string('jenis_kendaraan')->length('30');
+            $table->date('tahun_keluar');
+            $table->date('tahun_lelang');
             $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
             $table->timestamps();
         });

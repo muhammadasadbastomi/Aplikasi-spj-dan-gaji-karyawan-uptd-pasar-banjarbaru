@@ -50,6 +50,8 @@ class KendaraanController extends APIController
         $kendaraan->merk             =  $req->merk;
         $kendaraan->warna            =  $req->warna;
         $kendaraan->jenis_kendaraan  =  $req->jenis_kendaraan;
+        $kendaraan->tahun_keluar  =  $req->tahun_keluar;
+        $kendaraan->tahun_lelang  =  $req->tahun_lelang;
 
         $kendaraan->save();
         
@@ -90,6 +92,8 @@ class KendaraanController extends APIController
         $kendaraan->merk                =  $req->merk;
         $kendaraan->warna               =  $req->warna;
         $kendaraan->jenis_kendaraan     =  $req->jenis_kendaraan;
+        $kendaraan->tahun_keluar  =  $req->tahun_keluar;
+        $kendaraan->tahun_lelang  =  $req->tahun_lelang;
 
         $kendaraan->update();
     
