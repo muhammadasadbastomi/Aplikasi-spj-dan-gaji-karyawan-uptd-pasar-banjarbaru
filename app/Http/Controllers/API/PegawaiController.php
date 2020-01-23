@@ -42,12 +42,9 @@ class PegawaiController extends APIController
     public function create(Request $req){
         $pegawai = New pegawai;
         
-        // decrypt uuid from $req
-        $golongan_id = HCrypt::decrypt($req->golongan_id);
-        $jabatan_id = HCrypt::decrypt($req->jabatan_id);
 
-        $pegawai->golongan_id      =  $golongan_id;
-        $pegawai->jabatan_id       =  $jabatan_id;
+        $pegawai->golongan         =  $req->golongan;
+        $pegawai->jabatan          =  $req->jabatan;
         $pegawai->NIP              =  $req->NIP;
         $pegawai->nama             =  $req->nama;
         $pegawai->tempat_lahir     =  $req->tempat_lahir;
@@ -100,12 +97,9 @@ class PegawaiController extends APIController
         if (!$pegawai){
                 return $this->returnController("error", "failed find data pelanggan");
             }
-        // decrypt uuid from $req
-        $golongan_id = HCrypt::decrypt($req->golongan_id);
-        $jabatan_id = HCrypt::decrypt($req->jabatan_id);
-
-        $pegawai->golongan_id      =  $golongan_id;
-        $pegawai->jabatan_id       =  $jabatan_id;
+        
+        $pegawai->golongan         =  $req->golongan;
+        $pegawai->jabatan          =  $req->jabatan;
         $pegawai->NIP              =  $req->NIP;
         $pegawai->nama             =  $req->nama;
         $pegawai->tempat_lahir     =  $req->tempat_lahir;
