@@ -28,6 +28,7 @@ class CreatePegawaisTable extends Migration
             $table->string('status_pegawai')->length(25);
             $table->string('status_kawin')->length(25);
             $table->string('golongan_darah')->length(5);
+            $table->double('mkg');
             $table->string('foto')->length('255')->default('default.jpg');
             $table->timestamps();
         });

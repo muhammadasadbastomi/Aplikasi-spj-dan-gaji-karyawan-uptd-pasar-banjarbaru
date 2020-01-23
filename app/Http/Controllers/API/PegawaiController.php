@@ -55,6 +55,7 @@ class PegawaiController extends APIController
         $pegawai->status_pegawai   =  $req->status_pegawai;
         $pegawai->status_kawin     =  $req->status_kawin;
         $pegawai->golongan_darah   =  $req->golongan_darah;
+        $pegawai->mkg   =  $req->mkg;
         if($req->foto != null){
             $img = $req->file('foto');
             $FotoExt  = $img->getClientOriginalExtension();
@@ -109,6 +110,7 @@ class PegawaiController extends APIController
         $pegawai->status_pegawai   =  $req->status_pegawai;
         $pegawai->status_kawin     =  $req->status_kawin;
         $pegawai->golongan_darah   =  $req->golongan_darah;
+        $pegawai->mkg   =  $req->mkg;
         if($req->foto != null){
             $img = $req->file('foto');
             $FotoExt  = $img->getClientOriginalExtension();
