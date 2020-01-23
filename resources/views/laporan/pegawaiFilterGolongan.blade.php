@@ -84,7 +84,7 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA JENIS PEGAWAI</h2>
+            <h2 style="text-align:center;">DATA PEGAWAI FILTER GOLONGAN</h2>
             <table class="table table-bordered table-hover text-center">
                 <thead>
                     <tr>
@@ -102,8 +102,8 @@
                     <tr>
                         <td>{{$r->nama}}</td>
                         <td>{{$r->NIP}} </td>
-                        <td>{{$r->golongan->golongan}}</td>
-                        <td>{{$r->jabatan->jabatan}}</td>
+                        <td>{{$r->golongan}}</td>
+                        <td>{{$r->jabatan}}</td>
                         <td>{{$r->jk}}</td>
                         <td>{{$r->status_pegawai}}</td>
                     </tr>

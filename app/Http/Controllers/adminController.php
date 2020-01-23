@@ -308,7 +308,7 @@ class adminController extends Controller
     }
 
     public function pegawaiFilterGolonganCetak(Request $request){
-        $pegawai=pegawai::where('golongan',$request->golongan)->get();
+        $pegawai=pegawai::where('golongan',$request->golongan_id)->get();
         $tgl= Carbon::now()->format('d-m-Y');
         $pptk = pptk::where('jabatan','Kepala UPT')->first();
         $pdf =PDF::loadView('laporan.pegawaiFilterGolongan', ['pptk'=>$pptk,'pegawai'=>$pegawai,'tgl'=>$tgl]);
