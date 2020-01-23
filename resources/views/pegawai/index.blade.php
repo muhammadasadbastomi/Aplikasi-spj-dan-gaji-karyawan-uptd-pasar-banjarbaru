@@ -73,7 +73,7 @@
      </div>
      <div class="form-group m-t-20">
         <label> Golongan</label>
-        <select name="golongan_id" id="golongan" class="form-control">
+        <select name="golongan" id="golongan" class="form-control">
             <option value=""> -- Pilih Golongan --</option>
             <option value="II/a"> II/a</option>
             <option value="II/b"> II/b</option>
@@ -206,8 +206,8 @@
         $('#tambah').click(function(){
             $('.modal-title').text('Tambah Data');
             $('#unit_kerja_id').val('');
-            $('#golongan_id').val('');
-            $('#jabatan_id').val('');
+            $('#golongan').val('');
+            $('#jabatan').val('');
             $('#NIP').val('');
             $('#nama').val('');
             $('#tempat_lahir').val('');  
@@ -230,8 +230,8 @@
                 success : function(returnData) {
                     $('.modal-title').text('Edit Data');
                     $('#id').val(returnData.data.uuid);
-                    $('#golongan_id').val(returnData.data.golongan.uuid);
-                    $('#jabatan_id').val(returnData.data.jabatan.uuid);
+                    $('#golongan').val(returnData.data.golongan);
+                    $('#jabatan').val(returnData.data.jabatan);
                     $('#NIP').val(returnData.data.NIP);
                     $('#nama').val(returnData.data.nama);
                     $('#tempat_lahir').val(returnData.data.tempat_lahir);  
@@ -267,8 +267,8 @@
                 columns: [
                     {"data": "nama"},
                     {"data": "NIP"},
-                    {"data": "golongan.golongan"},
-                    {"data": "jabatan.jabatan"},
+                    {"data": "golongan"},
+                    {"data": "jabatan"},
                     {"data": "status_pegawai"},
                     {data: null , render : function ( data, type, row, meta ) {
                         let uuid = row.uuid;

@@ -14,15 +14,6 @@ class Pegawai extends Model
         'id', 
     ];
 
-    // public function golongan()
-    // {
-    //     return $this->belongsTo('App\Golongan');
-    // }
-
-    // public function jabatan()
-    // {
-    //     return $this->belongsTo('App\Jabatan');
-    // }
 
     public function kendaraan()
     {

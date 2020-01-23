@@ -14,7 +14,7 @@ class PegawaiController extends APIController
     public function get(){
         $pegawai = json_decode(redis::get("pegawai::all"));
         if (!$pegawai) {
-            $pegawai = pegawai::with('golongan','jabatan')->get();
+            $pegawai = pegawai::all();
             if (!$pegawai) {
                 return $this->returnController("error", "failed get pegawai data");
             }
@@ -30,7 +30,7 @@ class PegawaiController extends APIController
         }
         $pegawai = Redis::get("pegawai:$id");
         if (!$pegawai) {
-            $pegawai = pegawai::with('golongan','jabatan')->where('id',$id)->first();
+            $pegawai = pegawai::where('id',$id)->first();
             if (!$pegawai){
                 return $this->returnController("error", "failed find data pegawai");
             }
@@ -126,7 +126,7 @@ class PegawaiController extends APIController
         if (!$pegawai) {
             return $this->returnController("error", "failed find data pegawai");
         }
-        $pegawai = pegawai::with('golongan','jabatan')->where('id',$id)->first();
+        $pegawai = pegawai::where('id',$id)->first();
         Redis::del("pegawai:all");
         Redis::set("pegawai:$id", $pegawai);
 
