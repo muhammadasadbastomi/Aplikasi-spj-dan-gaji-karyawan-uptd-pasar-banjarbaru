@@ -325,4 +325,13 @@ class adminController extends Controller
         return $pdf->stream('Laporan data pegawai Filter Golongan.pdf');
     }
 
+    public function profilPegawaiCetak($id){
+        $pegawai=pegawai::findOrFail($id);
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.pegawaiProfil', ['pptk'=>$pptk,'pegawai'=>$pegawai,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data profil pegawai.pdf');
+    }
+
 }

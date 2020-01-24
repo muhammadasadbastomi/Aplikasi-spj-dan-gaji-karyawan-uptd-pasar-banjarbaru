@@ -33,6 +33,7 @@
                                                 <th>Nama</th>
                                                 <th>Satuan</th>
                                                 <th>Harga satuan (Rp.)</th>
+                                                <th>Tahun Berlaku</th>
                                                 <th>Keperluan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -45,6 +46,7 @@
                                                 <th>Nama</th>
                                                 <th>Satuan</th>
                                                 <th>Harga satuan (Rp.)</th>
+                                                <th>Tahun Berlaku</th>
                                                 <th>Keperluan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -86,6 +88,10 @@
      <div class="form-group">
         <label>Harga </label>
         <input type="text" class="form-control phone-inputmask" id="harga" name="harga" placeholder="">
+     </div>
+     <div class="form-group">
+        <label>tahun HSP </label>
+        <input type="date" class="form-control phone-inputmask" id="tahun_berlaku" name="tahun_berlaku" placeholder="2015">
      </div>
      <div class="form-group">
         <label>Keperluan </label>
@@ -157,6 +163,7 @@
                 $('#nama').val('');
                 $('#satuan').val('');
                 $('#harga').val('');
+                $('#tahun_berlaku').val('');
                 $('#keperluan').val('');    
                 $('#btn-form').text('Simpan Data');
                 $('#tambahData').modal('show');
@@ -174,6 +181,7 @@
                         $('#nama').val(returnData.data.nama);
                         $('#satuan').val(returnData.data.satuan);
                         $('#harga').val(returnData.data.harga);
+                        $('#tahun_berlaku').val(returnData.data.tahun_berlaku);
                         $('#keperluan').val(returnData.data.keperluan);    
                         $('#btn-form').text('Ubah Data');
                         $('#tambahData').modal('show');
@@ -198,8 +206,11 @@
                     },
                     columns: [
                         {"data": "nama"},
-                        {"data": "satuan"},
-                        {"data": "harga"},
+                        {data: null , render : function ( data, type, row, meta ) {
+                           return '<p>Rp.'+ row.harga +'</p>'
+                        }},
+                        {"data": "satuan"},                        
+                        {"data": "tahun_berlaku"},
                         {"data": "keperluan"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
