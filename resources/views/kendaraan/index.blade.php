@@ -33,7 +33,9 @@
                                                 <th>Merk</th>
                                                 <th>Warna</th>
                                                 <th>Jenis Kendaraan</th>
+                                                <th>Tahun</th>
                                                 <th>Pemegang</th>
+                                                <th>Tahun Lelang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
@@ -45,13 +47,14 @@
                                                 <th>Merk</th>
                                                 <th>Warna</th>
                                                 <th>Jenis Kendaraan</th>
+                                                <th>Tahun</th>
                                                 <th>Pemegang</th>
+                                                <th>Tahun Lelang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </tfoot>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -97,10 +100,18 @@
             </select>
         </div>
         <div class="form-group">
+            <label>Tahun Keluar </label>
+            <input type="date" class="form-control phone-inputmask" id="tahun_keluar" name="tahun_keluar" placeholder="">
+        </div>
+        <div class="form-group">
             <label>Pemegang Aset </label>
             <select name="pegawai_id" id="pegawai_id" class="form-control">
                 <option value="">-- pilih pegawai --</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label>Tahun Lelang </label>
+            <input type="date" class="form-control phone-inputmask" id="tahun_lelang" name="tahun_lelang" placeholder="">
         </div>
     </div>
       <div class="modal-footer">
@@ -176,7 +187,9 @@
             $('#jenis_kendaraan').val('');
             $('#nopol').val('');
             $('#merk').val('');
-            $('#warna').val('');                                    
+            $('#warna').val('');
+            $('#tahun_keluar').val('');                                    
+            $('#tahun_lelang').val('');                                                                        
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
@@ -193,7 +206,9 @@
                     $('#jenis_kendaraan').val(returnData.data.jenis_kendaraan);
                     $('#nopol').val(returnData.data.nopol);
                     $('#merk').val(returnData.data.merk);
-                    $('#warna').val(returnData.data.warna);  
+                    $('#warna').val(returnData.data.warna);
+                    $('#tahun_keluar').val(returnData.data.tahun_keluar);  
+                    $('#tahun_lelang').val(returnData.data.tahun_lelang);    
                     $('#btn-form').text('Ubah Data');
                     $('#tambahData').modal('show'); 
                 }
@@ -221,7 +236,9 @@
                     {"data": "merk"},
                     {"data": "warna"},
                     {"data": "jenis_kendaraan"},
+                    {"data": "tahun_keluar"},
                     {"data": "pegawai.nama"},
+                    {"data": "tahun_lelang"},
                     {data: null , render : function ( data, type, row, meta ) {
                         let uuid = row.uuid;
                         let nama = row.nopol;

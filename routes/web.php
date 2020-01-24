@@ -121,6 +121,8 @@ Route::get('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolongan')
        ->name('pegawaiFilterGolongan');
 Route::post('/pegawai/filter/golongan', 'adminController@pegawaiFilterGolonganCetak')
        ->name('pegawaiFilterGolonganCetak');
+Route::get('/pegawai/profil/cetak/{id}', 'adminController@profilPegawaiCetak')
+       ->name('profilPegawaiCetak');
 //akhir route pegawai
 
 //route keperluan

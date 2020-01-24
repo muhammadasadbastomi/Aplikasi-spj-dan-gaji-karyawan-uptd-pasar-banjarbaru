@@ -20,12 +20,11 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
-                            
                             <img src="{{asset('/img/pegawai/'.$pegawai->foto)}}" height="300" alt="">
                         </div>
                         <div class="card-footer text-center">
-                            <a href="" class="btn btn-block btn-primary"> {{$pegawai->nama}}</a> <br>
-                            <p>NIP. {{$pegawai->NIP}}</p>
+                            <p> {{$pegawai->nama}} <br> NIP. {{$pegawai->NIP}}</p>
+                            <a href="{{Route('profilPegawaiCetak',['id' => $pegawai->id])}}" class="btn btn-sm btn-primary">Cetak Data Pegawai</a>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -67,7 +66,8 @@
                                                 <tr>
                                                 <th>Agama</th>
                                                 <td>: {{$pegawai->agama}}</td>
-                                                </tr>                            <tr>
+                                                </tr>                            
+                                                <tr>
                                                 <th>golongan Darah</th>
                                                 <td>: {{$pegawai->golongan_darah}}</td>
                                                 </tr>
@@ -79,6 +79,10 @@
                                                 <tr>
                                                 <th>golongan</th>
                                                 <td>: {{$pegawai->golongan}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th>Masa Kerja Golongan</th>
+                                                <td>: {{$pegawai->mkg}} tahun</td>
                                                 </tr>
                                                 <tr>
                                                 <th>jabatan</th>

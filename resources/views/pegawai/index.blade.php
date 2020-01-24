@@ -34,6 +34,7 @@
                                                 <th>Nama</th>
                                                 <th>NIP</th>
                                                 <th>Golongan</th>
+                                                <th>Masa Kerja</th>
                                                 <th>Jabatan</th>
                                                 <th>Status Kepegawaian</th>
                                                 <th class="text-center">Aksi</th>
@@ -88,6 +89,10 @@
             <option value="IV/c"> IV/c</option>
             <option value="IV/d"> IV/d</option>
         </select>
+     </div>
+     <div class="form-group m-t-20">
+        <label> </label>Masa Kerja Golongan
+        <input type="text" class="form-control date-inputmask" name="mkg" id="mkg" placeholder="Tempat Kelahiran">
      </div>
      <div class="form-group m-t-20">
         <label> Jabatan</label>
@@ -207,6 +212,7 @@
             $('.modal-title').text('Tambah Data');
             $('#unit_kerja_id').val('');
             $('#golongan').val('');
+            $('#mkg').val('');
             $('#jabatan').val('');
             $('#NIP').val('');
             $('#nama').val('');
@@ -231,6 +237,7 @@
                     $('.modal-title').text('Edit Data');
                     $('#id').val(returnData.data.uuid);
                     $('#golongan').val(returnData.data.golongan);
+                    $('#mkg').val(returnData.data.mkg);
                     $('#jabatan').val(returnData.data.jabatan);
                     $('#NIP').val(returnData.data.NIP);
                     $('#nama').val(returnData.data.nama);
@@ -268,6 +275,9 @@
                     {"data": "nama"},
                     {"data": "NIP"},
                     {"data": "golongan"},
+                    {data: null , render : function ( data, type, row, meta ) {
+                       return '<p>'+ row.mkg +' tahun</p>'
+                    }},                    
                     {"data": "jabatan"},
                     {"data": "status_pegawai"},
                     {data: null , render : function ( data, type, row, meta ) {
