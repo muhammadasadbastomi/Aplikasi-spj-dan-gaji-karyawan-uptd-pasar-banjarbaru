@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('satuan')->length(20);
             $table->string('harga')->length(100);
             $table->string('keperluan')->length(100);
-            $table->date('tahun_berlaku');
+            $table->string('tahun_berlaku')->length(5);
             $table->timestamps();
         });
     }
