@@ -145,6 +145,8 @@ Route::get('/kendaraan', 'adminController@kendaraanIndex')
        ->name('kendaraanIndex');
 Route::get('/kendaraan/Cetak', 'adminController@kendaraanCetak')
        ->name('kendaraanCetak');
+Route::get('/sk/cetak/{uuid}', 'adminController@skCetak')
+       ->name('skCetak');
 //akhir route kendaraan
 
 //route standard harga

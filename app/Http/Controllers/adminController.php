@@ -333,5 +333,14 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data profil pegawai.pdf');
     }
-
+    
+    public function skCetak($uuid){
+        $id = HCrypt::decrypt($uuid);
+        $kendaraan=kendaraan::findOrFail($id);
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.skKendaraan', ['pptk'=>$pptk,'kendaraan'=>$kendaraan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan SK pemegang kendaraan.pdf');
+    }
 }

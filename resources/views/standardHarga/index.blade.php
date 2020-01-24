@@ -91,7 +91,7 @@
      </div>
      <div class="form-group">
         <label>tahun HSP </label>
-        <input type="date" class="form-control phone-inputmask" id="tahun_berlaku" name="tahun_berlaku" placeholder="2015">
+        <input type="text" class="form-control phone-inputmask" id="tahun_berlaku" name="tahun_berlaku" >
      </div>
      <div class="form-group">
         <label>Keperluan </label>
@@ -118,6 +118,11 @@
 
 @section('script') 
     <script>
+        $("#tahun_berlaku").datepicker( {
+            format: " yyyy", // Notice the Extra space at the beginning
+            viewMode: "years", 
+            minViewMode: "years"
+        });
         //fungsi hapus
         hapus = (uuid, name) =>{
             let csrf_token=$('meta[name="csrf_token"]').attr('content');

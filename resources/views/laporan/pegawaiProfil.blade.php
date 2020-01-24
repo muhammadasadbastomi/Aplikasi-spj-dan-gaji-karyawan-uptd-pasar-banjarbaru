@@ -67,9 +67,9 @@
                     <img  class="pemko" src="img/logo.png"  >
             </div>
             <div class="headtext">
-                <h3 style="margin:0px;">PEMERINTAH KABUPATEN BALANGAN</h3>
-                <h1 style="margin:0px;">BADAN KEPEGAWAIAN DAERAH</h1>
-                <p style="margin:0px;">Alamat : Batu Piring, South Paringin, Balangan Regency, South Kalimantan 71662</p>
+            <h2 style="margin:0px;">PEMERINTAH KOTA BANJARBARU</h2>
+            <H3 style="margin:0px;">UPTD PASAR BAUNTUNG</H3>
+            <p style="margin:0px;">Alamat : Pasar Bauntung Banjar Baru Lantai 2, Jalan Lanan, Loktabat Utara, Kec. Banjarbaru Utara, Kota Banjar Baru, Kalimantan Selatan 70714</p>
             </div>
             <hr>
     </div>

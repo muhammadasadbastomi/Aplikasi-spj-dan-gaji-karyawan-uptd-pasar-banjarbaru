@@ -101,7 +101,7 @@
         </div>
         <div class="form-group">
             <label>Tahun Keluar </label>
-            <input type="date" class="form-control phone-inputmask" id="tahun_keluar" name="tahun_keluar" placeholder="">
+            <input type="text" class="form-control phone-inputmask" id="tahun_keluar" name="tahun_keluar" placeholder="">
         </div>
         <div class="form-group">
             <label>Pemegang Aset </label>
@@ -111,7 +111,7 @@
         </div>
         <div class="form-group">
             <label>Tahun Lelang </label>
-            <input type="date" class="form-control phone-inputmask" id="tahun_lelang" name="tahun_lelang" placeholder="">
+            <input type="text" class="form-control phone-inputmask" id="tahun_lelang" name="tahun_lelang" placeholder="">
         </div>
     </div>
       <div class="modal-footer">
@@ -125,6 +125,17 @@
 @endsection
 @section('script')
 <script>
+    $("#tahun_keluar").datepicker( {
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years", 
+        minViewMode: "years"
+    });
+    $("#tahun_lelang").datepicker( {
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years", 
+        minViewMode: "years"
+    });
+
     getPegawai = () => {
         $.ajax({
                 type: "GET",
@@ -243,7 +254,7 @@
                         let uuid = row.uuid;
                         let nama = row.nopol;
                         return type === 'display'  ?
-                        ' <button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="fas fa-edit"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-danger" > <i class="fas fa-trash"></i></button>':
+                        '<a href="sk/cetak/'+ uuid +'" class="btn btn-sm btn-success"><i class="fas fa-print"></i> SK </a> <button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal"><i class="fas fa-edit"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-danger" > <i class="fas fa-trash"></i></button>':
                     data;
                     }}
                 ]
