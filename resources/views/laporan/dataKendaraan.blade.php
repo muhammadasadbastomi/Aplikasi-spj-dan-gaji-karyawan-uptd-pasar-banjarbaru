@@ -102,7 +102,7 @@
                         <td>{{$r->nopol}}</td>
                         <td>{{$r->merk}} </td>
                         <td>{{$r->warna}} </td>
-                        <td>{{$r->jenis_kendaraan->jenis}} </td>
+                        <td>{{$r->jenis_kendaraan}} </td>
                         <td>{{$r->pegawai->nama}} </td>
                     </tr>
                     @endforeach

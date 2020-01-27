@@ -101,7 +101,7 @@
                 </tr>
             </table>
 
-            <p>Dengan ini menyerahkan aset Dinas Berupa Kendaraan Roda / Roda 4 Dengan Keterangan Sebagai Berikut :</p>
+            <p>Dengan ini menyerahkan aset Dinas Berupa Kendaraan Roda 2 / Roda 4 Dengan Keterangan Sebagai Berikut :</p>
             <table width="50%;" style="padding-left:5%">
                 <tr>
                     <td width="20%">Nopol</td>

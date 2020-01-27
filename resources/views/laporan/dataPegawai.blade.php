@@ -98,7 +98,6 @@
                 </thead>
                 <tbody>
                     @foreach ($pegawai as $r)
-
                     <tr>
                         <td>{{$r->nama}}</td>
                         <td>{{$r->NIP}} </td>
