@@ -22,6 +22,7 @@
                                 <h5 class="card-title">Tabel Data Kendaraan</h5>
                                 <div class="text-right">
                                 <a href="{{Route('kendaraanCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
+                                <a href="{{Route('kendaraanFilter')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Filter Jenis</a>
                                 <a href="" class="btn btn-outline-danger" data-toggle="modal" id="tambah"><i class="mdi mdi-add"></i>+ tambah data</a>               
                                 </div>
                                 <br>
@@ -59,10 +60,7 @@
                         </div>
                     </div>
                 </div>
-             
-
-            </div>
-           
+            </div>     
         </div>
 
 <!-- Modal -->

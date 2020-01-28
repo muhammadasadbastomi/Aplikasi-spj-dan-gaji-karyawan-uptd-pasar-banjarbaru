@@ -103,6 +103,12 @@ class adminController extends Controller
     }
 
     //Halaman Data kendaraan
+    public function kendaraanFilter(){
+    
+        return view('kendaraan.filter');
+    }
+
+    //Halaman Data kendaraan
     public function jenisKendaraanIndex(){
 
         return view('jenisKendaraan.index');
@@ -358,5 +364,14 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.pencairanBulan', ['pptk'=>$pptk,'pencairan'=>$pencairan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan Pencairan Perbulan.pdf');
+    }
+
+    public function kendaraanFilterCetak(Request $request){
+        $kendaraan=kendaraan::where('jenis_kendaraan',$request->jenis_kendaraan)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pdf =PDF::loadView('laporan.kendaraanFilter', ['pptk'=>$pptk,'kendaraan'=>$kendaraan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data kendaraan filter.pdf');
     }
 }

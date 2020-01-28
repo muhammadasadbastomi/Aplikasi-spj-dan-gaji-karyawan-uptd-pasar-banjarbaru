@@ -145,6 +145,10 @@ Route::get('/kendaraan', 'adminController@kendaraanIndex')
        ->name('kendaraanIndex');
 Route::get('/kendaraan/Cetak', 'adminController@kendaraanCetak')
        ->name('kendaraanCetak');
+Route::get('/kendaraan/filter', 'adminController@kendaraanFilter')
+       ->name('kendaraanFilter');
+Route::post('/kendaraan/filter', 'adminController@kendaraanFilterCetak')
+       ->name('kendaraanFilterCetak');
 Route::get('/sk/cetak/{uuid}', 'adminController@skCetak')
        ->name('skCetak');
 //akhir route kendaraan
