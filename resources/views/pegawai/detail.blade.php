@@ -87,10 +87,13 @@
                                                 <tr>
                                                 <th>jabatan</th>
                                                 <td>: {{$pegawai->jabatan}}</td>
-                                                </tr>                             
+                                                </tr>                       
                                                 <tr>
-                                                <th>Status Pernikahan</th>
-                                                <td>: {{$pegawai->status_kawin}}</td>
+                                                @if($pegawai->tahun+5 <= $now)
+                                                <th>Note*</th>      
+                                                <td>: <a href="" class="btn btn-lg btn-danger">Silahkan urus berkas untuk kenaikan pangkat/golongan</a></td>
+                                                @else
+                                                @endif
                                                 </tr>
                                             </tbody>
                                             </table>

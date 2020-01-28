@@ -109,6 +109,14 @@
                 <option value="">-- pilih pegawai --</option>
             </select>
         </div>
+<<<<<<< HEAD
+=======
+        {{-- <div class="form-group">
+            <label>Tahun Lelang </label>
+            <input type="text" class="form-control phone-inputmask" id="tahun_lelang" name="tahun_lelang" placeholder="">
+        </div> --}}
+    </div>
+>>>>>>> a12bd2ee6b76c80674bc00aa3df02e1607f87664
       <div class="modal-footer">
         <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
         <button type="submit" name="submit" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>
@@ -195,7 +203,7 @@
             $('#merk').val('');
             $('#warna').val('');
             $('#tahun_keluar').val('');                                    
-            $('#tahun_lelang').val('');                                                                        
+            // $('#tahun_lelang').val('');                                                                        
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
@@ -214,7 +222,7 @@
                     $('#merk').val(returnData.data.merk);
                     $('#warna').val(returnData.data.warna);
                     $('#tahun_keluar').val(returnData.data.tahun_keluar);  
-                    $('#tahun_lelang').val(returnData.data.tahun_lelang);    
+                    // $('#tahun_lelang').val(returnData.data.tahun_lelang);    
                     $('#btn-form').text('Ubah Data');
                     $('#tambahData').modal('show'); 
                 }
