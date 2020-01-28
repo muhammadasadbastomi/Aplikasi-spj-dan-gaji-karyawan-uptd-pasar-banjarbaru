@@ -94,9 +94,8 @@
             <label>Jenis </label>
             <select name="jenis_kendaraan" id="jenis_kendaraan" class="form-control">
                 <option value="">-- Pilih Jenis --</option>
-                <option value=" Oprasional Transport Roda 2"> Oprasional Transport Roda 2</option>
-                <option value=" Oprasional Transport Roda 2"> Oprasional Transport Roda 3</option>
-                <option value=" Oprasional Transport Roda 4"> Oprasional Transport Roda 4</option> 
+                <option value="Oprasional Transport Roda 2"> Oprasional Transport Roda 2</option>
+                <option value="Oprasional Transport Roda 4"> Oprasional Transport Roda 4</option> 
             </select>
         </div>
         <div class="form-group">
@@ -195,7 +194,6 @@
             $('#merk').val('');
             $('#warna').val('');
             $('#tahun_keluar').val('');                                    
-            // $('#tahun_lelang').val('');                                                                        
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
