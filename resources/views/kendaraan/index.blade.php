@@ -109,11 +109,6 @@
                 <option value="">-- pilih pegawai --</option>
             </select>
         </div>
-        <div class="form-group">
-            <label>Tahun Lelang </label>
-            <input type="text" class="form-control phone-inputmask" id="tahun_lelang" name="tahun_lelang" placeholder="">
-        </div>
-    </div>
       <div class="modal-footer">
         <a href=""  class="" data-dismiss="modal"><i class="mdi mdi-close-circle-outline"></i> Batal</a>
         <button type="submit" name="submit" class="btn btn-primary"> <i class="mdi mdi-content-save-outline"></i> Simpan</button>

@@ -97,7 +97,6 @@
                 </thead>
                 <tbody>
                     @foreach ($kendaraan as $r)
-
                     <tr>
                         <td>{{$r->nopol}}</td>
                         <td>{{$r->merk}} </td>
