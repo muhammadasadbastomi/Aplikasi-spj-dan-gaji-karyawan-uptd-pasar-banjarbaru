@@ -30,3 +30,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: trianggautama08
       MYSQL_DATABASE: spj_uptd
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: spj_phpmyadmin
+      environment:
+          - PMA_HOST=db
+      restart: always
+      ports:
+          - 8080:80
+      volumes:
+          - /sessions
+      links:
+          - db

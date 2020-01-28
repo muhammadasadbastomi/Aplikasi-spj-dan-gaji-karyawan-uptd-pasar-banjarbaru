@@ -50,7 +50,8 @@ class adminController extends Controller
     public function pegawaiDetail($uuid){
         $id = HCrypt::decrypt($uuid);
         $pegawai = pegawai::findOrFail($id);
-        return view('pegawai.detail', compact('pegawai'));
+        $now = carbon::now()->format('Y');
+        return view('pegawai.detail', compact('pegawai','now'));
     }
 
     //Halaman Data Pegawai

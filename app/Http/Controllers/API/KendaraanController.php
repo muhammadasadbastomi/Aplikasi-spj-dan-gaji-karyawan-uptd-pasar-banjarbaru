@@ -30,7 +30,7 @@ class KendaraanController extends APIController
         }
         $kendaraan = Redis::get("kendaraan:$id");
         if (!$kendaraan) {
-            $kendaraan = kendaraan::with('jenis_kendaraan','pegawai')->where('id',$id)->first();
+            $kendaraan = kendaraan::with('pegawai')->where('id',$id)->first();
             if (!$kendaraan){
                 return $this->returnController("error", "failed find data kendaraan");
             }
@@ -51,7 +51,7 @@ class KendaraanController extends APIController
         $kendaraan->warna            =  $req->warna;
         $kendaraan->jenis_kendaraan  =  $req->jenis_kendaraan;
         $kendaraan->tahun_keluar  =  $req->tahun_keluar;
-        $kendaraan->tahun_lelang  =  $req->tahun_lelang;
+        $kendaraan->tahun_lelang  =  $req->tahun_keluar+5;
 
         $kendaraan->save();
         
@@ -93,7 +93,7 @@ class KendaraanController extends APIController
         $kendaraan->warna               =  $req->warna;
         $kendaraan->jenis_kendaraan     =  $req->jenis_kendaraan;
         $kendaraan->tahun_keluar  =  $req->tahun_keluar;
-        $kendaraan->tahun_lelang  =  $req->tahun_lelang;
+        $kendaraan->tahun_lelang  =  $req->tahun_keluar+5;
 
         $kendaraan->update();
     
@@ -101,7 +101,7 @@ class KendaraanController extends APIController
         if (!$kendaraan) {
             return $this->returnController("error", "failed find data kendaraan");
         }
-        $kendaraan = kendaraan::with('jenis_kendaraan','pegawai')->where('id',$id)->first();
+        $kendaraan = kendaraan::with('pegawai')->where('id',$id)->first();
         Redis::del("kendaraan:all");
         Redis::set("kendaraan:$id", $kendaraan);
 

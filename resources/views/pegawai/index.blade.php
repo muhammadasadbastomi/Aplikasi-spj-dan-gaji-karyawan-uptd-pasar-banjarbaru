@@ -34,6 +34,7 @@
                                                 <th>Nama</th>
                                                 <th>NIP</th>
                                                 <th>Golongan</th>
+                                                <th>Tahun Berlaku</th>
                                                 <th>Masa Kerja</th>
                                                 <th>Jabatan</th>
                                                 <th>Status Kepegawaian</th>
@@ -90,6 +91,7 @@
             <option value="IV/d"> IV/d</option>
         </select>
      </div>
+     <div class="form-group"><label  class=" form-control-label">Tahun berlaku</label><input type="text" id="datepicker" name="tahun" placeholder="Tahun Berlaku" class="form-control"></div>
      <div class="form-group m-t-20">
         <label> </label>Masa Kerja Golongan
         <input type="text" class="form-control date-inputmask" name="mkg" id="mkg" placeholder="Tempat Kelahiran">
@@ -167,6 +169,14 @@
 @endsection
 @section('script')
 <script>
+    $('#datepicker').datepicker({
+    format: "yyyy",
+    weekStart: 1,
+    orientation: "bottom",
+    keyboardNavigation: false,
+    viewMode: "years",
+    minViewMode: "years"
+});
     //fungsi hapus
 
     hapus = (uuid, nama)=>{
@@ -213,6 +223,7 @@
             $('#unit_kerja_id').val('');
             $('#golongan').val('');
             $('#mkg').val('');
+            $('#tahun').val('');
             $('#jabatan').val('');
             $('#NIP').val('');
             $('#nama').val('');
@@ -238,6 +249,7 @@
                     $('#id').val(returnData.data.uuid);
                     $('#golongan').val(returnData.data.golongan);
                     $('#mkg').val(returnData.data.mkg);
+                    $('#mkg').val(returnData.data.tahun);
                     $('#jabatan').val(returnData.data.jabatan);
                     $('#NIP').val(returnData.data.NIP);
                     $('#nama').val(returnData.data.nama);
@@ -275,9 +287,10 @@
                     {"data": "nama"},
                     {"data": "NIP"},
                     {"data": "golongan"},
+                    {"data": "tahun"},  
                     {data: null , render : function ( data, type, row, meta ) {
                        return '<p>'+ row.mkg +' tahun</p>'
-                    }},                    
+                    }},                  
                     {"data": "jabatan"},
                     {"data": "status_pegawai"},
                     {data: null , render : function ( data, type, row, meta ) {
