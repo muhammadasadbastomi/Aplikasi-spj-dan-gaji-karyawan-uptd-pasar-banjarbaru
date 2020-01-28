@@ -178,7 +178,11 @@ Route::get('pencairan/cetak', 'adminController@pencairanCetak')
 Route::get('pencairan/filter', 'adminController@pencairanFilter')
        ->name('pencairanFilter');
 Route::post('pencairan/filter', 'adminController@pencairanFilterCetak')
-       ->name('pencairanFilterCetak');    
+       ->name('pencairanFilterCetak');
+Route::get('pencairan/filter/waktu', 'adminController@pencairanFilterWaktu')
+       ->name('pencairanFilterWaktu');
+Route::post('pencairan/filter/waktu', 'adminController@pencairanFilterWaktuCetak')
+       ->name('pencairanFilterWaktuCetak');      
 
 //pptk
 Route::get('/pptkIndex', 'adminController@pptkIndex')
