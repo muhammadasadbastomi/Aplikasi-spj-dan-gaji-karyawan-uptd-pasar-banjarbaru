@@ -84,7 +84,7 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA JENIS PEGAWAI</h2>
+            <h2 style="text-align:center;">DATA PEGAWAI KESELURUHAN</h2>
             <table class="table table-bordered table-hover text-center">
                 <thead>
                     <tr>
