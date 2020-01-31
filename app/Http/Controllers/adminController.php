@@ -279,7 +279,9 @@ class adminController extends Controller
     public function pptkCetak(){
         $pptk=pptk::all();
         $tgl= Carbon::now()->format('d-m-Y');
-        $pdf =PDF::loadView('laporan.dataPptk', ['pptk'=>$pptk,'tgl'=>$tgl]);
+        $pptk = pptk::where('jabatan','Kepala UPT')->first();
+        $pptkAll = pptk::all();
+        $pdf =PDF::loadView('laporan.dataPptk', ['pptk'=>$pptk,'pptkAll'=>$pptkAll,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data pptk.pdf');
     }
