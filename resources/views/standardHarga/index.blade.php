@@ -23,7 +23,7 @@
                                 <div class="text-right">
                                 <a href="{{route('itemCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <a href="{{route('itemFilter')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Filter</a>
-                                <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
@@ -39,7 +39,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -58,10 +58,10 @@
                         </div>
                     </div>
                 </div>
-             
+
 
             </div>
-           
+
         </div>
 
 <!-- Modal -->
@@ -116,11 +116,11 @@
 </div>
 @endsection
 
-@section('script') 
+@section('script')
     <script>
         $("#tahun_berlaku").datepicker( {
             format: " yyyy", // Notice the Extra space at the beginning
-            viewMode: "years", 
+            viewMode: "years",
             minViewMode: "years"
         });
         //fungsi hapus
@@ -161,7 +161,7 @@
                     }
                 })
             }
-    
+
             //event btn tambah klik
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
@@ -169,12 +169,12 @@
                 $('#satuan').val('');
                 $('#harga').val('');
                 $('#tahun_berlaku').val('');
-                $('#keperluan').val('');    
+                $('#keperluan').val('');
                 $('#btn-form').text('Simpan Data');
                 $('#tambahData').modal('show');
             })
 
-            //event btn edit klik        
+            //event btn edit klik
             edit = uuid =>{
                 $.ajax({
                     type: "GET",
@@ -187,7 +187,7 @@
                         $('#satuan').val(returnData.data.satuan);
                         $('#harga').val(returnData.data.harga);
                         $('#tahun_berlaku').val(returnData.data.tahun_berlaku);
-                        $('#keperluan').val(returnData.data.keperluan);    
+                        $('#keperluan').val(returnData.data.keperluan);
                         $('#btn-form').text('Ubah Data');
                         $('#tambahData').modal('show');
                     }
@@ -211,10 +211,10 @@
                     },
                     columns: [
                         {"data": "nama"},
+                        {"data": "satuan"},
                         {data: null , render : function ( data, type, row, meta ) {
                            return '<p>Rp.'+ row.harga +'</p>'
                         }},
-                        {"data": "satuan"},                        
                         {"data": "tahun_berlaku"},
                         {"data": "keperluan"},
                         {data: null , render : function ( data, type, row, meta ) {
@@ -227,7 +227,7 @@
                     ]
                 });
 
-                //event form submit            
+                //event form submit
                 $("form").submit(function (e) {
                     e.preventDefault()
                     let form = $('#modal-body form');
@@ -279,5 +279,5 @@
                 } );
                 } );
     </script>
-    
+
 @endsection
