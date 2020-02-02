@@ -7,21 +7,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-       .headtext{
-           text-align:center;
-       }
-       .isi{
-           margin:auto;
-       }
+        body {}
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        table,
+        th,
+        td {
+        }
+        th {
+            background-color: darkslategray;
+            text-align: center;
+            color: aliceblue;
+        }
+        td {}
+        br {
+            margin-bottom: 5px !important;
+        }
+        .judul {
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 0px;
+            text-align: center;
+            height: 150px;
+            padding: 0px;
+        }
+        .pemko {
+            width: 75px;
+        }
+        .logo {
+            float: left;
+            margin-right: 0px;
+            width: 15%;
+            padding: 0px;
+            text-align: right;
+        }
+        .headtext {
+            float: right;
+            margin-left: 0px;
+            width: 75%;
+            padding-left: 0px;
+            padding-right: 10%;
+        }
+        hr {
+            margin-top: 10%;
+            height: 3px;
+            background-color: black;
+        }
+        .ttd {
+            margin-left: 70%;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .text-center{
+            text-align:center;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
+    <div class="header">
+        <div class="logo">
+            <img class="pemko" src="img/logo.png">
+        </div>
         <div class="headtext">
             <h2 style="margin:0px;">PEMERINTAH KOTA BANJARBARU</h2>
+            <H3 style="margin:0px;">UPTD PASAR BAUNTUNG</H3>
+            <p style="margin:0px;">Alamat : Pasar Bauntung Banjar Baru Lantai 2, Jalan Lanan, Loktabat Utara, Kec. Banjarbaru Utara, Kota Banjar Baru, Kalimantan Selatan 70714</p>
         </div>
         <hr>
+    </div>
         <br>
         <table width="100%">
         <tr>
@@ -94,7 +153,7 @@
                 Pengguna Anggaran <br>
                 <br><br><br><br>
                 <p style="text-decoration:underline; margin:2px;">{{$pptk->nama}}</p>
-                <p style=" margin:2px;">{{$pptk->NIP}}</p>
+                <p style=" margin:2px;">NIP.{{$pptk->NIP}}</p>
 
             </td>
             <td width="30%" style="text-align:center;">
@@ -102,7 +161,7 @@
                 Bendahara Pengeluaran <br>
                 <br><br><br><br>
                 <p style="text-decoration:underline; margin:2px;">{{$bendahara->nama}}</p>
-                <p style=" margin:2px;">{{$bendahara->NIP}}</p>
+                <p style=" margin:2px;">NIP.{{$bendahara->NIP}}</p>
 
             </td>
             <td width="20%" style="text-align:center;">
