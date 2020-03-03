@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Request as ApiRequest;
 use App\Pegawai;
 use HCrypt;
 
@@ -40,8 +42,22 @@ class PegawaiController extends APIController
     }
 
     public function create(Request $req){
+
+        $cekValidasi = Validator::make(ApiRequest::all(), [
+
+            'NIP' => 'required|unique:pegawais',
+
+        ]);
+
+        $message = 'NIP tidak boleh sama ';
+        if ($cekValidasi->fails()) {
+            return response()->json([
+                'Error' => $message
+            ],202);
+        }
+
         $pegawai = New pegawai;
-        
+
 
         $pegawai->golongan         =  $req->golongan;
         $pegawai->jabatan          =  $req->jabatan;
@@ -65,17 +81,17 @@ class PegawaiController extends APIController
             $img->move('img/pegawai', $foto);
             $pegawai->foto       = $foto;
         }else{
-            
+
         }
 
         $pegawai->save();
-        
+
         $pegawai_id= $pegawai->id;
-        
+
         $uuid = HCrypt::encrypt($pegawai_id);
         $setuuid = pegawai::findOrFail($pegawai_id);
         $setuuid->uuid = $uuid;
-            
+
         $setuuid->update();
 
         if (!$pegawai) {
@@ -95,11 +111,11 @@ class PegawaiController extends APIController
         }
 
         $pegawai = pegawai::findOrFail($id);
-        
+
         if (!$pegawai){
                 return $this->returnController("error", "failed find data pelanggan");
             }
-        
+
         $pegawai->golongan         =  $req->golongan;
         $pegawai->jabatan          =  $req->jabatan;
         $pegawai->NIP              =  $req->NIP;
@@ -125,8 +141,8 @@ class PegawaiController extends APIController
         }
 
         $pegawai->update();
-    
-            
+
+
         if (!$pegawai) {
             return $this->returnController("error", "failed find data pegawai");
         }
@@ -134,7 +150,7 @@ class PegawaiController extends APIController
         Redis::del("pegawai:all");
         Redis::set("pegawai:$id", $pegawai);
 
-        return $this->returnController("ok", $pegawai); 
+        return $this->returnController("ok", $pegawai);
     }
 
     public function delete($uuid){
