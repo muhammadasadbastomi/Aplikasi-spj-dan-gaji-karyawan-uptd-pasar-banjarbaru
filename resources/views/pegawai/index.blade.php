@@ -24,7 +24,7 @@
                                 <a href="{{route('pegawaiFilterGolongan')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter Golongan</a>
                                 <a href="{{route('pegawaiFilterJabatan')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> Filter Jabatan</a>
                                 <a href="{{route('pegawaiCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Pegawai</a>
-                                <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="" class="btn btn-outline-danger" id="tambah" data-toggle="modal" ><i class="mdi mdi-add"></i>+ tambah data</a>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
@@ -41,7 +41,7 @@
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>                         
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
 
 <!-- Modal -->
@@ -146,7 +146,7 @@
                 <option value="PTT">PTT</option>
                 <option value="Kontrak">Kontrak</option>
             </select>
-        </div>                    
+        </div>
         <div class="form-group"><label  class=" form-control-label">Status Perkawinan</label>
             <select name="status_kawin" id="status_kawin" class="form-control">
                 <option value="">-- pilih Status Perkawinan --</option>
@@ -216,8 +216,8 @@
                 }
             })
         }
-        
-        //event btn klikx   
+
+        //event btn klikx
         $('#tambah').click(function(){
             $('.modal-title').text('Tambah Data');
             $('#unit_kerja_id').val('');
@@ -227,14 +227,14 @@
             $('#jabatan').val('');
             $('#NIP').val('');
             $('#nama').val('');
-            $('#tempat_lahir').val('');  
+            $('#tempat_lahir').val('');
             $('#tanggal_lahir').val('');
-            $('#alamat').val('');   
-            $('#status_pegawai').val('');     
-            $('#status_kawin').val('');    
-            $('#golongan_darah').val('');                     
-            $('#agama').val('');                     
-            $('#foto').val('');                                     
+            $('#alamat').val('');
+            $('#status_pegawai').val('');
+            $('#status_kawin').val('');
+            $('#golongan_darah').val('');
+            $('#agama').val('');
+            $('#foto').val('');
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
@@ -253,20 +253,20 @@
                     $('#jabatan').val(returnData.data.jabatan);
                     $('#NIP').val(returnData.data.NIP);
                     $('#nama').val(returnData.data.nama);
-                    $('#tempat_lahir').val(returnData.data.tempat_lahir);  
+                    $('#tempat_lahir').val(returnData.data.tempat_lahir);
                     $('#tanggal_lahir').val(returnData.data.tanggal_lahir);
                     $('#alamat').val(returnData.data.alamat);
-                    $("input[name=jk][value=" + returnData.data.jk + "]").attr('checked', 'checked');   
-                    $('#status_pegawai').val(returnData.data.status_pegawai);     
-                    $('#status_kawin').val(returnData.data.status_kawin);    
-                    $('#golongan_darah').val(returnData.data.golongan_darah);                     
-                    $('#agama').val(returnData.data.agama);                     
+                    $("input[name=jk][value=" + returnData.data.jk + "]").attr('checked', 'checked');
+                    $('#status_pegawai').val(returnData.data.status_pegawai);
+                    $('#status_kawin').val(returnData.data.status_kawin);
+                    $('#golongan_darah').val(returnData.data.golongan_darah);
+                    $('#agama').val(returnData.data.agama);
                     $('#btn-form').text('Ubah Data');
-                    $('#tambahData').modal('show'); 
+                    $('#tambahData').modal('show');
                 }
             })
         }
-        //fungsi render datatable        
+        //fungsi render datatable
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 responsive: true,
@@ -287,10 +287,10 @@
                     {"data": "nama"},
                     {"data": "NIP"},
                     {"data": "golongan"},
-                    {"data": "tahun"},  
+                    {"data": "tahun"},
                     {data: null , render : function ( data, type, row, meta ) {
                        return '<p>'+ row.mkg +' tahun</p>'
-                    }},                  
+                    }},
                     {"data": "jabatan"},
                     {"data": "status_pegawai"},
                     {data: null , render : function ( data, type, row, meta ) {
@@ -302,7 +302,7 @@
                     }}
                 ]
             });
-            //event form submit        
+            //event form submit
             $("form").submit(function (e) {
                 e.preventDefault()
                 let form = $('#modal-body form');
@@ -344,13 +344,27 @@
                             form.trigger('reset');
                             $('#tambahData').modal('hide');
                             $('#datatable').DataTable().ajax.reload();
-                            Swal.fire({
+                            if (response.Error) {
+
+                                var array = $.map(response, function(value, index) {
+                                                    return [value];
+                                });
+                                Swal.fire({
+                                position: 'top-end',
+                                icon: 'error',
+                                title: response.Error,
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                            }else{
+                                Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
                                 title: 'Data Berhasil Disimpan',
                                 showConfirmButton: false,
                                 timer: 1500
-                            })
+                                })
+                            }
                         },
                         error:function(response){
                             console.log(response);
