@@ -35,7 +35,7 @@
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>                         
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-            </div>          
+            </div>
         </div>
         <div class="modal fade" id="tambahData"  role="dialog" >
                     <div class="modal-dialog modal-lg" >
@@ -75,8 +75,8 @@
                         </div>
                     </div>
                 </div>
-      </div>  
- </div> 
+      </div>
+ </div>
 @endsection
 
 @section('script')
@@ -118,13 +118,13 @@
                 }
             })
         }
-        
-        //event btn klikx   
+
+        //event btn klikx
         $('#tambah').click(function(){
             $('.modal-title').text('Tambah Data');
             $('#nama').val('');
             $('#NIP').val('');
-            $('#jabatan').val('');                                  
+            $('#jabatan').val('');
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
@@ -142,11 +142,11 @@
                     $('#NIP').val(returnData.data.NIP);
                     $('#jabatan').val(returnData.data.jabatan);
                     $('#btn-form').text('Ubah Data');
-                    $('#tambahData').modal('show'); 
+                    $('#tambahData').modal('show');
                 }
             })
         }
-        //fungsi render datatable         
+        //fungsi render datatable
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 responsive: true,
@@ -176,7 +176,7 @@
                     }}
                 ]
             });
-            //event form submit        
+            //event form submit
             $("form").submit(function (e) {
                 e.preventDefault()
                 let form = $('#modal-body form');
@@ -215,13 +215,27 @@
                             form.trigger('reset');
                             $('#tambahData').modal('hide');
                             $('#datatable').DataTable().ajax.reload();
+                        if (response.Error) {
+
+                            var array = $.map(response, function(value, index) {
+                                                return [value];
+                            });
                             Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Data Berhasil Disimpan',
-                                showConfirmButton: false,
-                                timer: 1500
+                            position: 'top-end',
+                            icon: 'error',
+                            title: response.Error,
+                            showConfirmButton: false,
+                            timer: 1500
                             })
+                        }else{
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Berhasil Disimpan',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                        }
                         },
                         error:function(response){
                             console.log(response);
