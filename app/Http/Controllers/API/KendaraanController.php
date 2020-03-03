@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Request as ApiRequest;
 use App\Kendaraan;
 use HCrypt;
 
@@ -40,8 +42,22 @@ class KendaraanController extends APIController
     }
 
     public function create(Request $req){
+
+        $cekValidasi = Validator::make(ApiRequest::all(), [
+
+            'nopol' => 'required|unique:kendaraans',
+
+        ]);
+
+        $message = 'Nomor polisi tidak boleh sama ';
+        if ($cekValidasi->fails()) {
+            return response()->json([
+                'Error' => $message
+            ],202);
+        }
+
         $kendaraan = New kendaraan;
-        
+
         // decrypt uuid from $req
         $pegawai_id = HCrypt::decrypt($req->pegawai_id);
 
@@ -54,13 +70,13 @@ class KendaraanController extends APIController
         $kendaraan->tahun_lelang  =  $req->tahun_keluar+5;
 
         $kendaraan->save();
-        
+
         $kendaraan_id= $kendaraan->id;
-        
+
         $uuid = HCrypt::encrypt($kendaraan_id);
         $setuuid = kendaraan::findOrFail($kendaraan_id);
         $setuuid->uuid = $uuid;
-            
+
         $setuuid->update();
 
         if (!$kendaraan) {
@@ -80,7 +96,7 @@ class KendaraanController extends APIController
         }
 
         $kendaraan = kendaraan::findOrFail($id);
-        
+
         if (!$kendaraan){
                 return $this->returnController("error", "failed find data pelanggan");
             }
@@ -96,8 +112,8 @@ class KendaraanController extends APIController
         $kendaraan->tahun_lelang  =  $req->tahun_keluar+5;
 
         $kendaraan->update();
-    
-            
+
+
         if (!$kendaraan) {
             return $this->returnController("error", "failed find data kendaraan");
         }
@@ -105,7 +121,7 @@ class KendaraanController extends APIController
         Redis::del("kendaraan:all");
         Redis::set("kendaraan:$id", $kendaraan);
 
-        return $this->returnController("ok", $kendaraan); 
+        return $this->returnController("ok", $kendaraan);
     }
 
     public function delete($uuid){
