@@ -34,7 +34,7 @@
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>                         
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>
@@ -67,8 +67,8 @@
                         </div>
                     </div>
                 </div>
-      </div>  
- </div> 
+      </div>
+ </div>
 @endsection
 @section('script')
     <script>
@@ -115,12 +115,12 @@
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
                 $('#golongan').val('');
-                $('#keterangan').val('');  
+                $('#keterangan').val('');
                 $('#btn-form').text('Simpan Data');
                 $('#mediumModal').modal('show');
             })
 
-            //event btn edit klik        
+            //event btn edit klik
             edit = uuid =>{
                 $.ajax({
                     type: "GET",
@@ -130,14 +130,14 @@
                         $('.modal-title').text('Edit Data');
                         $('#id').val(returnData.data.uuid);
                         $('#golongan').val(returnData.data.golongan);
-                        $('#keterangan').val(returnData.data.keterangan);  
+                        $('#keterangan').val(returnData.data.keterangan);
                         $('#btn-form').text('Ubah Data');
                         $('#mediumModal').modal('show');
                     }
                 })
             }
 
-            //fungsi render datatable            
+            //fungsi render datatable
             $(document).ready(function() {
                 $('#datatable').DataTable( {
                     responsive: true,
@@ -164,7 +164,7 @@
                         }}
                     ]
                 });
-    
+
                 //event form submit
                 $("form").submit(function (e) {
                     e.preventDefault()
@@ -201,13 +201,27 @@
                                 form.trigger('reset');
                                 $('#mediumModal').modal('hide');
                                 $('#datatable').DataTable().ajax.reload();
-                                Swal.fire({
+                                if (response.Error) {
+
+                                    var array = $.map(response, function(value, index) {
+                                                        return [value];
+                                    });
+                                    Swal.fire({
                                     position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Your work has been saved',
+                                    icon: 'error',
+                                    title: response.Error,
                                     showConfirmButton: false,
                                     timer: 1500
-                                })
+                                    })
+                                }else{
+                                    Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Disimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                    })
+                                }
                             },
                             error:function(response){
                                 console.log(response);
