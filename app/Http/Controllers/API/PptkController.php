@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Request as ApiRequest;
 use App\Pptk;
 use HCrypt;
 use Illuminate\Support\Facades\Redis;
@@ -39,8 +41,22 @@ class PptkController extends APIController
     }
 
     public function create(Request $req){
+
+        $cekValidasi = Validator::make(ApiRequest::all(), [
+
+            'NIP' => 'required|unique:pptks',
+
+        ]);
+
+        $message = 'NIP tidak boleh sama ';
+        if ($cekValidasi->fails()) {
+            return response()->json([
+                'Error' => $message
+            ],202);
+        }
+
         $pptk = pptk::create($req->all());
-        
+
         //set uuid
         $pptk_id = $pptk->id;
         $uuid = HCrypt::encrypt($pptk_id);
@@ -60,7 +76,7 @@ class PptkController extends APIController
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
         }
-       
+
         $pptk = pptk::findOrFail($id);
 
         if (!$pptk) {
