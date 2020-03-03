@@ -23,7 +23,7 @@
                                 <div class="text-right">
                                 <a href="{{Route('kendaraanCetak')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak</a>
                                 <a href="{{Route('kendaraanFilter')}}" class="btn btn-outline-info"><i class="mdi mdi-printer"></i> cetak Filter Jenis</a>
-                                <a href="" class="btn btn-outline-danger" data-toggle="modal" id="tambah"><i class="mdi mdi-add"></i>+ tambah data</a>               
+                                <a href="" class="btn btn-outline-danger" data-toggle="modal" id="tambah"><i class="mdi mdi-add"></i>+ tambah data</a>
                                 </div>
                                 <br>
                                 <div class="table-responsive">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-            </div>     
+            </div>
         </div>
 
 <!-- Modal -->
@@ -93,7 +93,7 @@
             <select name="jenis_kendaraan" id="jenis_kendaraan" class="form-control">
                 <option value="">-- Pilih Jenis --</option>
                 <option value="Oprasional Transport Roda 2"> Oprasional Transport Roda 2</option>
-                <option value="Oprasional Transport Roda 4"> Oprasional Transport Roda 4</option> 
+                <option value="Oprasional Transport Roda 4"> Oprasional Transport Roda 4</option>
             </select>
         </div>
         <div class="form-group">
@@ -119,12 +119,12 @@
 <script>
     $("#tahun_keluar").datepicker( {
         format: " yyyy", // Notice the Extra space at the beginning
-        viewMode: "years", 
+        viewMode: "years",
         minViewMode: "years"
     });
     $("#tahun_lelang").datepicker( {
         format: " yyyy", // Notice the Extra space at the beginning
-        viewMode: "years", 
+        viewMode: "years",
         minViewMode: "years"
     });
 
@@ -182,8 +182,8 @@
                 }
             })
         }
-        
-        //event btn klikx   
+
+        //event btn klikx
         $('#tambah').click(function(){
             $('.modal-title').text('Tambah Data');
             $('#pegawai_id').val('');
@@ -191,7 +191,7 @@
             $('#nopol').val('');
             $('#merk').val('');
             $('#warna').val('');
-            $('#tahun_keluar').val('');                                    
+            $('#tahun_keluar').val('');
             $('#btn-form').text('Simpan Data');
             $('#tambahData').modal('show');
         })
@@ -209,14 +209,14 @@
                     $('#nopol').val(returnData.data.nopol);
                     $('#merk').val(returnData.data.merk);
                     $('#warna').val(returnData.data.warna);
-                    $('#tahun_keluar').val(returnData.data.tahun_keluar);  
-                    // $('#tahun_lelang').val(returnData.data.tahun_lelang);    
+                    $('#tahun_keluar').val(returnData.data.tahun_keluar);
+                    // $('#tahun_lelang').val(returnData.data.tahun_lelang);
                     $('#btn-form').text('Ubah Data');
-                    $('#tambahData').modal('show'); 
+                    $('#tambahData').modal('show');
                 }
             })
         }
-        //fungsi render datatable        
+        //fungsi render datatable
         $(document).ready(function() {
             $('#datatable').DataTable( {
                 responsive: true,
@@ -250,7 +250,7 @@
                     }}
                 ]
             });
-            //event form submit        
+            //event form submit
             $("form").submit(function (e) {
                 e.preventDefault()
                 let form = $('#modal-body form');
@@ -289,13 +289,27 @@
                             form.trigger('reset');
                             $('#tambahData').modal('hide');
                             $('#datatable').DataTable().ajax.reload();
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Data Berhasil Disimpan',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
+                            if (response.Error) {
+
+                                    var array = $.map(response, function(value, index) {
+                                                        return [value];
+                                    });
+                                    Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: response.Error,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                    })
+                                }else{
+                                    Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Disimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                    })
+                                }
                         },
                         error:function(response){
                             console.log(response);
